@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/drawable/ic_home.xml" value="0.1805" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_main.xml" value="0.18802083333333333" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.335" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.21120136810602821" />
       </map>
     </option>
   </component>
