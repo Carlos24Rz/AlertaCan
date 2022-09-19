@@ -21,5 +21,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>¡Encuentra perros cercanos!</string>
 </dict>
 </plist>
