@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.45000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="log-inScreen" translatesAutoresizingMaskIntoConstraints="NO" id="tuP-95-vyY">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="log-inScreen" translatesAutoresizingMaskIntoConstraints="NO" id="tuP-95-vyY">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="99U-xh-ewM">
@@ -56,18 +56,27 @@
                                     <constraint firstItem="jl9-FD-GdZ" firstAttribute="top" secondItem="Kxb-aq-DhP" secondAttribute="bottom" constant="41" id="xm2-E8-fmU"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wzn-nj-uBW">
+                                <rect key="frame" x="188" y="489.66666666666669" width="185" height="35.333333333333314"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Olvidé mi contraseña"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tuP-95-vyY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="70o-vs-PSJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tuP-95-vyY" secondAttribute="trailing" id="9T3-X9-0ST"/>
+                            <constraint firstItem="Wzn-nj-uBW" firstAttribute="top" secondItem="E9K-kL-zKx" secondAttribute="bottom" constant="21.300000000000001" id="I3g-xy-6HO"/>
                             <constraint firstItem="99U-xh-ewM" firstAttribute="centerY" secondItem="tuP-95-vyY" secondAttribute="centerY" constant="-250" id="J9B-NO-gBD"/>
                             <constraint firstAttribute="bottom" secondItem="tuP-95-vyY" secondAttribute="bottom" id="LaB-mp-qSw"/>
                             <constraint firstItem="E9K-kL-zKx" firstAttribute="top" secondItem="99U-xh-ewM" secondAttribute="bottom" constant="44" id="X73-sf-cj6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Wzn-nj-uBW" secondAttribute="trailing" constant="17" id="YcD-Xk-S5P"/>
                             <constraint firstItem="tuP-95-vyY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YsZ-jm-MVs"/>
                             <constraint firstItem="E9K-kL-zKx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="37" id="anM-cq-98N"/>
+                            <constraint firstItem="Wzn-nj-uBW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="188" id="d8a-Uv-oGG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="E9K-kL-zKx" secondAttribute="trailing" constant="37" id="frf-c7-EA9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Wzn-nj-uBW" secondAttribute="bottom" constant="285" id="jPf-DV-dtJ"/>
                             <constraint firstItem="99U-xh-ewM" firstAttribute="centerX" secondItem="tuP-95-vyY" secondAttribute="centerX" id="jdo-ss-oCz"/>
                         </constraints>
                     </view>
