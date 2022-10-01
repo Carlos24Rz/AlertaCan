@@ -35,18 +35,21 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout1">
 
             <TextView
+                android:id="@+id/id_state"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Perdido" />
 
             <TextView
+                android:id="@+id/id_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Canelo" />
 
             <TextView
+                android:id="@+id/id_breed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -147,18 +150,21 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
             <TextView
+                android:id="@+id/id_sex"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Macho" />
 
             <TextView
+                android:id="@+id/id_size"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Mediano" />
 
             <TextView
+                android:id="@+id/id_color"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -178,7 +184,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/id_date_missing"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
@@ -196,11 +202,11 @@
             android:text="@string/dog__date_registration"
             android:textColor="#01638D"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/textView5"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintStart_toStartOf="@+id/id_date_missing"
+            app:layout_constraintTop_toBottomOf="@+id/id_date_missing" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/id_date_registration"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
@@ -218,11 +224,11 @@
             android:text="@string/dog_last_time_seen"
             android:textColor="#01638D"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/textView7"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            app:layout_constraintStart_toStartOf="@+id/id_date_registration"
+            app:layout_constraintTop_toBottomOf="@+id/id_date_registration" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/id_last_time_location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
@@ -240,11 +246,11 @@
             android:text="@string/dog_description"
             android:textColor="#01638D"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/textView9"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            app:layout_constraintStart_toStartOf="@+id/id_last_time_location"
+            app:layout_constraintTop_toBottomOf="@+id/id_last_time_location" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/id_description"
             android:layout_width="0dp"
             android:layout_height="33dp"
             android:layout_marginEnd="32dp"
@@ -261,11 +267,11 @@
             android:text="@string/dog_owner_phone"
             android:textColor="#01638D"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/textView11"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+            app:layout_constraintStart_toStartOf="@+id/id_description"
+            app:layout_constraintTop_toBottomOf="@+id/id_description" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/id_owner_phone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
@@ -285,7 +291,7 @@
             android:text="Editar"
             android:textColor="#01638D"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/id_owner_phone"
             app:strokeColor="#01638D"
             app:strokeWidth="1dp" />
 
@@ -299,7 +305,7 @@
             android:text="Eliminar"
             android:textColor="#AA6122"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/id_owner_phone"
             app:strokeColor="#AA6122"
             app:strokeWidth="1dp"/>
 
