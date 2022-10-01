@@ -71,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Estado:"
+                android:text="@string/dog_state"
                 android:textColor="#01638D"
                 android:textColorHint="#01638D"
                 android:textStyle="bold" />
@@ -80,7 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Nombre:"
+                android:text="@string/dog_name"
                 android:textColor="#01638D"
                 android:textStyle="bold" />
 
@@ -88,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Raza:"
+                android:text="@string/dog_breed"
                 android:textColor="#01638D"
                 android:textStyle="bold" />
 
@@ -111,7 +111,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sexo:"
+                android:text="@string/dog_sex"
                 android:textColor="#01638D"
                 android:textColorHint="#01638D"
                 android:textStyle="bold" />
@@ -120,7 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Tamaño:"
+                android:text="@string/dog_size"
                 android:textColor="#01638D"
                 android:textStyle="bold" />
 
@@ -128,7 +128,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Color:"
+                android:text="@string/dog_color"
                 android:textColor="#01638D"
                 android:textStyle="bold" />
 
@@ -171,7 +171,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Fecha de desaparición"
+            android:text="@string/dog_date_disappearance"
             android:textColor="#01638D"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/linearLayout4"
@@ -193,7 +193,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Fecha de registro"
+            android:text="@string/dog__date_registration"
             android:textColor="#01638D"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/textView5"
@@ -215,7 +215,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Visto por última vez"
+            android:text="@string/dog_last_time_seen"
             android:textColor="#01638D"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -237,7 +237,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Descripción"
+            android:text="@string/dog_description"
             android:textColor="#01638D"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/textView9"
@@ -255,10 +255,10 @@
 
         <TextView
             android:id="@+id/textView12"
-            android:layout_width="wrap_content"
+            android:layout_width="@ph"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Télefono del dueño:"
+            android:text="@string/dog_owner_phone"
             android:textColor="#01638D"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/textView11"

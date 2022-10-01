@@ -3,4 +3,9 @@
     <string name="forgot_password"><u>Olvidé mi contraseña</u></string>
     <string name="signIn"><u>Regístrate</u></string>
     <string name="privacyNotice"><u>Aviso de Privacidad</u></string>
+
+    <string name="btn_edit">Editar</string>
+    <string name="btn_delete">Eliminar</string>
+    <string name="btn_matches">Ver matches</string>
+
 </resources>
