@@ -19,7 +19,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="Información del perro"
-            android:textSize="20sp"
+            android:textColor="#01638D"
+            android:textSize="20dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +34,9 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="36dp"
             android:text="¿Este perro es tuyo?"
-            android:textSize="16sp"
+            android:textColor="#01638D"
+            android:textSize="14sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -42,9 +46,11 @@
             android:layout_height="48dp"
             android:layout_marginStart="4dp"
             android:text="Inserta imagen del perro"
-            android:textSize="16sp"
+            android:textColor="#01638D"
+            android:textSize="14sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+            app:layout_constraintStart_toStartOf="@+id/id_dog_name"
             app:layout_constraintTop_toTopOf="@+id/imageView4"
             app:layout_constraintVertical_bias="0.437" />
 
@@ -54,7 +60,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
             android:text="Nombre del perro"
-            android:textSize="16sp"
+            android:textColor="#01638D"
+            android:textSize="14sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -62,7 +70,7 @@
 
         <RadioGroup
             android:id="@+id/radio_group"
-            android:layout_width="159dp"
+            android:layout_width="130dp"
             android:layout_height="27dp"
             android:layout_marginEnd="32dp"
             android:orientation="horizontal"
@@ -87,13 +95,15 @@
         </RadioGroup>
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="348dp"
-            android:layout_height="47dp"
+            android:id="@+id/id_dog_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
             android:ems="10"
+            android:hint="Canelo"
             android:inputType="textPersonName"
-            android:text="Name"
-            app:layout_constraintEnd_toEndOf="@+id/radio_group"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView9"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -102,12 +112,12 @@
             android:id="@+id/imageView4"
             android:layout_width="168dp"
             android:layout_height="112dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="36dp"
             android:contentDescription="@string/app_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.868"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+            app:layout_constraintTop_toBottomOf="@+id/id_dog_name"
             app:srcCompat="@drawable/img_canelo"
             tools:ignore="ImageContrastCheck" />
 
@@ -115,8 +125,10 @@
             android:id="@+id/textView13"
             android:layout_width="150dp"
             android:layout_height="19dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="36dp"
             android:text="Raza"
+            android:textColor="#01638D"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/textView11"
             app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
@@ -133,6 +145,8 @@
             android:layout_width="150dp"
             android:layout_height="19dp"
             android:text="Tamaño"
+            android:textColor="#01638D"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/imageView4"
             app:layout_constraintTop_toTopOf="@+id/textView13" />
 
@@ -148,8 +162,10 @@
             android:id="@+id/textView15"
             android:layout_width="150dp"
             android:layout_height="19dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="36dp"
             android:text="Color"
+            android:textColor="#01638D"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/id_spinner_breeds"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/id_spinner_breeds"
@@ -167,8 +183,10 @@
             android:id="@+id/textView16"
             android:layout_width="150dp"
             android:layout_height="19dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="36dp"
             android:text="Sexo"
+            android:textColor="#01638D"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/id_spinner_size"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/id_spinner_size"
@@ -186,67 +204,120 @@
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="36dp"
             android:text="Visto por última vez"
-            app:layout_constraintStart_toStartOf="@+id/id_spinner_color"
+            android:textColor="#01638D"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/id_spinner_color" />
 
         <TextView
-            android:id="@+id/textView18"
+            android:id="@+id/textView21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Visto por última vez"
-            tools:layout_editor_absoluteX="32dp"
-            tools:layout_editor_absoluteY="817dp" />
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="36dp"
+            android:text="@string/dog_description"
+            android:textColor="#01638D"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
 
         <TextView
             android:id="@+id/textView19"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="36dp"
             android:text="Télefono"
-            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+            android:textColor="#01638D"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/datePickerButton" />
 
         <TextView
             android:id="@+id/textView20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="36dp"
             android:text="Fecha de desaparición"
-            app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
-            app:layout_constraintTop_toTopOf="@+id/textView19" />
+            android:textColor="#01638D"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+
+        <Button
+            android:id="@+id/datePickerButton"
+            style="?android:spinnerStyle"
+            android:layout_width="0dp"
+            android:layout_height="39dp"
+            android:layout_marginEnd="32dp"
+            android:onClick="openDatePicker"
+
+
+            android:text="JAN 01 2020"
+            android:textColor="#2D2D2D"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView20"
+            app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
         <EditText
             android:id="@+id/editTextTextPersonName2"
-            android:layout_width="330dp"
-            android:layout_height="41dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
             android:ems="10"
+            android:hint="Calle Madero, junto al Walmart"
             android:inputType="textPersonName"
-            android:text="Name"
-            app:layout_constraintEnd_toEndOf="@+id/id_spinner_sex"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView17"
             app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
         <EditText
             android:id="@+id/editTextPhone"
-            android:layout_width="147dp"
+            android:layout_width="0dp"
             android:layout_height="42dp"
+            android:layout_marginEnd="32dp"
             android:ems="10"
             android:inputType="phone"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView19"
             app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
         <EditText
-            android:id="@+id/editTextDate3"
-            android:layout_width="146dp"
-            android:layout_height="41dp"
+            android:id="@+id/editTextTextPersonName3"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="32dp"
             android:ems="10"
-            android:inputType="date"
-            app:layout_constraintEnd_toEndOf="@+id/textView20"
+            android:hint="Es igualito a Scooby Doo"
+            android:inputType="textPersonName"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView21"
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+        <Button
+            android:id="@+id/id_btn_submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="44dp"
+            android:text="Publicar perro"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView20"
-            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
