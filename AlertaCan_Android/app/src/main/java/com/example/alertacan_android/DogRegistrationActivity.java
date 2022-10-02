@@ -1,5 +1,6 @@
 package com.example.alertacan_android;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -16,9 +17,22 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.Calendar;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-public class DogRegistrationActivity extends AppCompatActivity {
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+public class DogRegistrationActivity extends AppCompatActivity  {
+
+    public FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
@@ -31,7 +45,9 @@ public class DogRegistrationActivity extends AppCompatActivity {
     private String dogColorObj = "";
     private String dogSexObj = "";
     private String dogLastLocationSeenObj = "";
-//    private String dogName = "";
+    private Timestamp dogDateMissing;
+    private String dogPhoneObj = "";
+    private String dogDescriptionObj = "";
 
 
 
@@ -50,8 +66,7 @@ public class DogRegistrationActivity extends AppCompatActivity {
         // Listen to radio group
         listenRadioGroup();
 
-
-//        EditText nameEditTex = findViewById(R.id.id_dog_name);
+        // EditText nameEditTex = findViewById(R.id.id_dog_name);
         Button btnSubmit = findViewById(R.id.id_btn_submit);
 
         submitDog(btnSubmit);
@@ -69,15 +84,84 @@ public class DogRegistrationActivity extends AppCompatActivity {
                 {
                     public void onClick(View view)
                     {
+                        Map<String, Object> newDog = new HashMap<>();
+
                         // Getting dog is yours
                         String ansRadioGObj = ansRadioG;
+//                        newDog.put("is_yours", ansRadioGObj);
+
+                        if (ansRadioG == "Sí"){
+                            newDog.put("state", "Perdido");
+                        }else {
+                            newDog.put("state", "Encontrado");
+                        }
 
                         // Getting dog name
-                        EditText text = (EditText)findViewById(R.id.id_dog_name);
-                        dogNameObj = text.getText().toString();
+                        EditText textName = (EditText)findViewById(R.id.id_dog_name);
+                        dogNameObj = textName.getText().toString();
+                        newDog.put("name", dogNameObj);
 
-                        
+                        // Getting breed
+                        Spinner spinnerBreed = (Spinner) findViewById(R.id.id_spinner_breeds);
+                        dogBreedObj = spinnerBreed.getSelectedItem().toString();
+                        newDog.put("breed", dogBreedObj);
 
+                        // Getting breed
+                        Spinner spinnerSize = (Spinner) findViewById(R.id.id_spinner_size);
+                        dogSizeObj = spinnerSize.getSelectedItem().toString();
+                        newDog.put("size", dogSizeObj);
+
+                        // Getting color
+                        Spinner spinnerColor = (Spinner) findViewById(R.id.id_spinner_color);
+                        dogColorObj = spinnerColor.getSelectedItem().toString();
+                        newDog.put("color", dogColorObj);
+
+                        // Getting sex
+                        Spinner spinnerSex = (Spinner) findViewById(R.id.id_spinner_sex);
+                        dogSexObj = spinnerSex.getSelectedItem().toString();
+                        newDog.put("sex", dogSexObj);
+
+                        // Getting dog last time location
+                        EditText textLastTime = (EditText)findViewById(R.id.id_last_location);
+                        dogLastLocationSeenObj = textLastTime.getText().toString();
+                        newDog.put("last_time_location", dogLastLocationSeenObj);
+
+                        // Getting date missing
+                        Timestamp dogDateMissingObj = dogDateMissing;
+                        newDog.put("date_missing", dogDateMissingObj);
+
+                        // Getting date registration
+                        Timestamp dogDateRegistrationObj = new Timestamp(System.currentTimeMillis());
+                        newDog.put("date_registration", dogDateRegistrationObj);
+
+                        // Getting phone
+                        EditText textPhone = (EditText)findViewById(R.id.id_phone);
+                        dogPhoneObj = textPhone.getText().toString();
+                        newDog.put("owner_phone", dogPhoneObj);
+
+                        // Getting description
+                        EditText textDescription = (EditText)findViewById(R.id.id_dog_description);
+                        dogDescriptionObj = textDescription.getText().toString();
+                        newDog.put("description", dogDescriptionObj);
+
+
+                        db.collection("dogs")
+                                .add(newDog)
+                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        Log.d("simon", "DocumentSnapshot written with ID: " + documentReference.getId());
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.d("no simon", "Error adding document", e);
+                                    }
+                                });
+
+
+                        Log.d("newDog", newDog.toString());
 
 
 
@@ -159,7 +243,19 @@ public class DogRegistrationActivity extends AppCompatActivity {
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-//                month = month + 1;
+
+                // updating the variable that saves the timestamnp
+                String dateStr = Integer.toString(year) + "-" + Integer.toString(month+1) + "-" + Integer.toString(day) + " 00:00:00.000";
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+                Date parsedDate = null;
+                try {
+                    parsedDate = dateFormat.parse(dateStr);
+                    dogDateMissing = new java.sql.Timestamp(parsedDate.getTime());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+
                 String date = makeDateString(day, month, year);
                 dateButton.setText(date);
             }
