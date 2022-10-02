@@ -50,4 +50,7 @@ dependencies {
     // Importing Firestore
     implementation 'com.google.firebase:firebase-firestore'
 
+    // Importing Authentication
+    implementation 'com.google.firebase:firebase-auth'
+
 }

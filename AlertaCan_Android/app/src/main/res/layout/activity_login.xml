@@ -48,12 +48,13 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/emailLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginEnd="36dp"
+        app:errorEnabled="true"
         android:hint="Username"
         app:boxBackgroundColor="#FAFAFA"
         app:boxStrokeColor="#009DE0"
@@ -65,18 +66,20 @@
         app:startIconDrawable="@drawable/ic_person">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
+        android:id="@+id/passwordLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginEnd="36dp"
+        app:errorEnabled="true"
         android:hint="Password"
         app:boxBackgroundColor="#FAFAFA"
         app:boxStrokeColor="#009DE0"
@@ -84,11 +87,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/emailLayout"
         app:layout_constraintVertical_bias="0.01999998"
         app:startIconDrawable="@drawable/ic_lock">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword" />
@@ -96,7 +100,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/forgotPasswordTextView"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -110,24 +114,52 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.86"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/passwordLayout"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/button"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loginButtonLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginEnd="36dp"
-        android:fontFamily="@font/quicksand"
-        android:text="Iniciar Sesión"
-        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextView"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ProgressBar
+            android:id="@+id/loginProgressBar"
+            android:visibility="gone"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/white"
+            android:indeterminateTintMode="src_atop"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/button_background_color"
+            android:fontFamily="@font/quicksand"
+            android:onClick="login"
+            android:text="Iniciar Sesión"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         android:id="@+id/view"
@@ -139,7 +171,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/loginButtonLayout"
         app:layout_constraintVertical_bias="0.19" />
 
     <LinearLayout
@@ -162,6 +194,7 @@
             android:textAlignment="viewEnd" />
 
         <TextView
+            android:id="@+id/signupTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand"
@@ -173,6 +206,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/privacyTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/quicksand"
