@@ -18,7 +18,7 @@ public class HomeActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        Toast.makeText(HomeActivity.this, mAuth.getCurrentUser().toString(),
+        Toast.makeText(HomeActivity.this, mAuth.getCurrentUser().getEmail(),
                 Toast.LENGTH_SHORT).show();
 
     }

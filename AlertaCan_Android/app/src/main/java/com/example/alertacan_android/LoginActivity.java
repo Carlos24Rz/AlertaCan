@@ -52,7 +52,10 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         if(mAuth.getCurrentUser() != null){
-            startActivity(new Intent(this, HomeActivity.class));
+            Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
         }
 
 
@@ -68,13 +71,35 @@ public class LoginActivity extends AppCompatActivity {
 
         loginButton.setEnabled(false);
 
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                login(view);
+            }
+        });
+
+        signupTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        forgotPasswordTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, ResetPasswordActivity.class);
+                startActivity(intent);
+            }
+        });
+
         emailEditText.addTextChangedListener(loginTextWatcher);
         passwordEditText.addTextChangedListener(loginTextWatcher);
 
-
     }
 
-    public void login(View view){
+    private void login(View view){
         if(!validateEmail()) return;
 
         loginButton.setText("");
@@ -83,9 +108,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         String email = emailEditText.getText().toString().trim();
-        System.out.println(email);
         String password = passwordEditText.getText().toString().trim();
-        System.out.println(password);
 
         mAuth.signInWithEmailAndPassword(email,password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -94,7 +117,11 @@ public class LoginActivity extends AppCompatActivity {
 
                         if (task.isSuccessful()){
                             Log.d(TAG,"Login succesful");
-                            startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+
+                            Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                            finish();
 
                         } else {
                             loginButton.setText("Login");
@@ -104,15 +131,15 @@ public class LoginActivity extends AppCompatActivity {
                             try{
                                 throw task.getException();
                             } catch (FirebaseNetworkException e){
-                                Toast.makeText(LoginActivity.this, "Check your network connection",
+                                Toast.makeText(LoginActivity.this, "Comprueba tu conexión a internet",
                                         Toast.LENGTH_SHORT).show();
 
                             } catch (FirebaseAuthInvalidCredentialsException e){
-                                Toast.makeText(LoginActivity.this, "Invalid user or password",
+                                Toast.makeText(LoginActivity.this, "Correo o contraseña incorrecta",
                                         Toast.LENGTH_SHORT).show();
 
                             } catch (FirebaseAuthInvalidUserException e){
-                                Toast.makeText(LoginActivity.this, "Invalid user or password",
+                                Toast.makeText(LoginActivity.this, "Correo o contraseña incorrecta",
                                         Toast.LENGTH_SHORT).show();
 
                             } catch (Exception e){
@@ -126,12 +153,11 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
     private boolean validateEmail(){
         String emailInput = emailEditText.getText().toString().trim();
 
         if(!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()){
-            emailLayout.setError("Please Enter a valid email address");
+            emailLayout.setError("Introduce un correo electrónico válido");
             return false;
         }
 
