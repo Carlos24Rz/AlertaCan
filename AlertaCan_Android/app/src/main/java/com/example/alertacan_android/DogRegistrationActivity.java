@@ -92,7 +92,7 @@ public class DogRegistrationActivity extends AppCompatActivity  {
         progressBarImg = findViewById(R.id.progressBar);
         progressBarImg.setVisibility(View.INVISIBLE);
 
-         reference = FirebaseStorage.getInstance().getReference();
+        reference = FirebaseStorage.getInstance().getReference();
 
         imageViewDog.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -117,7 +117,6 @@ public class DogRegistrationActivity extends AppCompatActivity  {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if ( requestCode==2 && resultCode==RESULT_OK && data!=null){
             imageUri = data.getData();
             imageViewDog.setImageURI(imageUri);
@@ -131,12 +130,32 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                 {
                     public void onClick(View view)
                     {
+
+                        // image
+                        if (imageUri!=null && dogNameObj!=null && dogLastLocationSeenObj!=null && dogPhoneObj!=null && dogDescriptionObj!=null ){
+                            uploadToFirebase(imageUri);
+
+                        } else{
+                            Toast.makeText(DogRegistrationActivity.this, "Por favor llena todos los campos", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    private void uploadToFirebase(Uri  uri){
+        final StorageReference fileRef = reference.child( "uploads/" + System.currentTimeMillis() + "." + getFileExtension(uri));
+        fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        dogUrlObj = uri.toString();
+
                         Map<String, Object> newDog = new HashMap<>();
 
                         // Getting dog is yours
                         String ansRadioGObj = ansRadioG;
-//                        newDog.put("is_yours", ansRadioGObj);
-
                         if (ansRadioG == "Sí"){
                             newDog.put("state", "Perdido");
                         }else {
@@ -191,13 +210,7 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                         dogDescriptionObj = textDescription.getText().toString();
                         newDog.put("description", dogDescriptionObj);
 
-                        // image
-                        if (imageUri != null){
-                            uploadToFirebase(imageUri);
-                            newDog.put("imageUrl", dogUrlObj);
-                        } else{
-                            Toast.makeText(DogRegistrationActivity.this, "Please select an image", Toast.LENGTH_SHORT).show();
-                        }
+                        newDog.put("imageUrl", dogUrlObj);
 
                         db.collection("dogs")
                                 .add(newDog)
@@ -214,23 +227,6 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                                         Toast.makeText(DogRegistrationActivity.this, "Error al registrar el perro", Toast.LENGTH_SHORT).show();
                                     }
                                 });
-
-
-                        Log.d("newDog", newDog.toString());
-                    }
-                });
-    }
-
-    private void uploadToFirebase(Uri  uri){
-        final StorageReference fileRef = reference.child( "uploads/" + System.currentTimeMillis() + "." + getFileExtension(uri));
-        fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        dogUrlObj = uri.toString();
-                        Toast.makeText(DogRegistrationActivity.this, "Uploading successfully", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
