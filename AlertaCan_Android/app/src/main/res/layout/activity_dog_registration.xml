@@ -49,9 +49,9 @@
             android:textColor="#01638D"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+            app:layout_constraintBottom_toBottomOf="@+id/id_image_dog"
             app:layout_constraintStart_toStartOf="@+id/id_dog_name"
-            app:layout_constraintTop_toTopOf="@+id/imageView4"
+            app:layout_constraintTop_toTopOf="@+id/id_image_dog"
             app:layout_constraintVertical_bias="0.437" />
 
         <TextView
@@ -109,7 +109,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/id_image_dog"
             android:layout_width="168dp"
             android:layout_height="112dp"
             android:layout_marginTop="36dp"
@@ -118,7 +118,7 @@
             app:layout_constraintHorizontal_bias="0.868"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/id_dog_name"
-            app:srcCompat="@drawable/img_canelo"
+            app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24"
             tools:ignore="ImageContrastCheck" />
 
         <TextView
@@ -130,7 +130,7 @@
             android:textColor="#01638D"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/textView11"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+            app:layout_constraintTop_toBottomOf="@+id/id_image_dog" />
 
         <Spinner
             android:id="@+id/id_spinner_breeds"
@@ -147,7 +147,7 @@
             android:text="Tamaño"
             android:textColor="#01638D"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/imageView4"
+            app:layout_constraintEnd_toEndOf="@+id/id_image_dog"
             app:layout_constraintTop_toTopOf="@+id/textView13" />
 
         <Spinner
@@ -318,6 +318,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/id_dog_description"
             app:layout_constraintVertical_bias="0.0" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            app:layout_constraintEnd_toStartOf="@+id/id_image_dog"
+            app:layout_constraintTop_toBottomOf="@+id/id_dog_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

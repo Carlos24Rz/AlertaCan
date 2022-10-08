@@ -1,17 +1,24 @@
 package com.example.alertacan_android;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.ContentResolver;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -21,6 +28,10 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.sql.Timestamp;
 import java.text.ParseException;
@@ -33,6 +44,8 @@ import java.util.Map;
 public class DogRegistrationActivity extends AppCompatActivity  {
 
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
+    public StorageReference reference;
+    private Uri imageUri;
 
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
@@ -48,6 +61,14 @@ public class DogRegistrationActivity extends AppCompatActivity  {
     private Timestamp dogDateMissing;
     private String dogPhoneObj = "";
     private String dogDescriptionObj = "";
+
+
+    // for the image
+    private ImageView imageViewDog;
+    private ProgressBar progressBarImg;
+
+    private String dogUrlObj;
+
 
 
 
@@ -66,6 +87,24 @@ public class DogRegistrationActivity extends AppCompatActivity  {
         // Listen to radio group
         listenRadioGroup();
 
+        // for the image
+        imageViewDog = findViewById(R.id.id_image_dog);
+        progressBarImg = findViewById(R.id.progressBar);
+        progressBarImg.setVisibility(View.INVISIBLE);
+
+         reference = FirebaseStorage.getInstance().getReference();
+
+        imageViewDog.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent galleryIntent = new Intent();
+                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+                galleryIntent.setType("image/*");
+                startActivityForResult(galleryIntent, 2);
+            }
+        });
+
+
         // EditText nameEditTex = findViewById(R.id.id_dog_name);
         Button btnSubmit = findViewById(R.id.id_btn_submit);
 
@@ -75,7 +114,15 @@ public class DogRegistrationActivity extends AppCompatActivity  {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if ( requestCode==2 && resultCode==RESULT_OK && data!=null){
+            imageUri = data.getData();
+            imageViewDog.setImageURI(imageUri);
+        }
+    }
 
     public void submitDog(Button btnSubmit){
 
@@ -144,29 +191,67 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                         dogDescriptionObj = textDescription.getText().toString();
                         newDog.put("description", dogDescriptionObj);
 
+                        // image
+                        if (imageUri != null){
+                            uploadToFirebase(imageUri);
+                            newDog.put("imageUrl", dogUrlObj);
+                        } else{
+                            Toast.makeText(DogRegistrationActivity.this, "Please select an image", Toast.LENGTH_SHORT).show();
+                        }
 
                         db.collection("dogs")
                                 .add(newDog)
                                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                     @Override
                                     public void onSuccess(DocumentReference documentReference) {
-                                        Log.d("simon", "DocumentSnapshot written with ID: " + documentReference.getId());
+
+                                        Toast.makeText(DogRegistrationActivity.this, "Perro registrado", Toast.LENGTH_SHORT).show();
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Log.d("no simon", "Error adding document", e);
+                                        Toast.makeText(DogRegistrationActivity.this, "Error al registrar el perro", Toast.LENGTH_SHORT).show();
                                     }
                                 });
 
 
                         Log.d("newDog", newDog.toString());
-
-
-
                     }
                 });
+    }
+
+    private void uploadToFirebase(Uri  uri){
+        final StorageReference fileRef = reference.child( "uploads/" + System.currentTimeMillis() + "." + getFileExtension(uri));
+        fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        dogUrlObj = uri.toString();
+                        Toast.makeText(DogRegistrationActivity.this, "Uploading successfully", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                progressBarImg.setVisibility(View.VISIBLE);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                progressBarImg.setVisibility(View.INVISIBLE);
+                Toast.makeText(DogRegistrationActivity.this, "Uploading failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private String getFileExtension(Uri mUri){
+        ContentResolver cr = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cr.getType(mUri));
     }
 
 
