@@ -85,24 +85,23 @@ public class HomeActivity extends AppCompatActivity {
                 .build();
 
         adapter = new DogCardAdapter(options);
+        adapter.setStateRestorationPolicy(RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY);
 
         RecyclerView recyclerView = findViewById(R.id.lostDogsRecylerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setItemAnimator(null);
         recyclerView.setAdapter(adapter);
 
         adapter.setOnItemClickListener(new DogCardAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
                 String id = documentSnapshot.getId();
-                Toast.makeText(HomeActivity.this, "Position" + position + "ID:" + id, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(HomeActivity.this,MyDogInfoActivity.class);
                 intent.putExtra("dogId", id);
                 startActivity(intent);
             }
         });
-
-
     }
 
     @Override
