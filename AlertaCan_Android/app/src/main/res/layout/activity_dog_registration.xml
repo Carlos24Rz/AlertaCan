@@ -324,9 +324,12 @@
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
-            app:layout_constraintEnd_toStartOf="@+id/id_image_dog"
-            app:layout_constraintTop_toBottomOf="@+id/id_dog_name" />
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_btn_submit" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -91,7 +91,6 @@ public class DogRegistrationActivity extends AppCompatActivity  {
         imageViewDog = findViewById(R.id.id_image_dog);
         progressBarImg = findViewById(R.id.progressBar);
         progressBarImg.setVisibility(View.INVISIBLE);
-
         reference = FirebaseStorage.getInstance().getReference();
 
         imageViewDog.setOnClickListener(new View.OnClickListener(){
@@ -105,12 +104,9 @@ public class DogRegistrationActivity extends AppCompatActivity  {
         });
 
 
-        // EditText nameEditTex = findViewById(R.id.id_dog_name);
+        // event listener fot the submit button
         Button btnSubmit = findViewById(R.id.id_btn_submit);
-
         submitDog(btnSubmit);
-
-
 
     }
 
@@ -130,11 +126,9 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                 {
                     public void onClick(View view)
                     {
-
-                        // image
                         if (imageUri!=null && dogNameObj!=null && dogLastLocationSeenObj!=null && dogPhoneObj!=null && dogDescriptionObj!=null ){
+                            // if all the inputs are filled, upload to firebase
                             uploadToFirebase(imageUri);
-
                         } else{
                             Toast.makeText(DogRegistrationActivity.this, "Por favor llena todos los campos", Toast.LENGTH_SHORT).show();
                         }
@@ -148,10 +142,10 @@ public class DogRegistrationActivity extends AppCompatActivity  {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+
+                    // the images was successfully submited to firebase
                     @Override
                     public void onSuccess(Uri uri) {
-                        dogUrlObj = uri.toString();
-
                         Map<String, Object> newDog = new HashMap<>();
 
                         // Getting dog is yours
@@ -210,6 +204,8 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                         dogDescriptionObj = textDescription.getText().toString();
                         newDog.put("description", dogDescriptionObj);
 
+                        // Getting image url
+                        dogUrlObj = uri.toString();
                         newDog.put("imageUrl", dogUrlObj);
 
                         db.collection("dogs")
@@ -217,7 +213,6 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                     @Override
                                     public void onSuccess(DocumentReference documentReference) {
-
                                         Toast.makeText(DogRegistrationActivity.this, "Perro registrado", Toast.LENGTH_SHORT).show();
                                     }
                                 })
@@ -227,6 +222,7 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                                         Toast.makeText(DogRegistrationActivity.this, "Error al registrar el perro", Toast.LENGTH_SHORT).show();
                                     }
                                 });
+                        progressBarImg.setVisibility(View.INVISIBLE);
                     }
                 });
             }
@@ -239,11 +235,12 @@ public class DogRegistrationActivity extends AppCompatActivity  {
             @Override
             public void onFailure(@NonNull Exception e) {
                 progressBarImg.setVisibility(View.INVISIBLE);
-                Toast.makeText(DogRegistrationActivity.this, "Uploading failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DogRegistrationActivity.this, "Error al subir la foto", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
+    // Function to get the file extension of the image
     private String getFileExtension(Uri mUri){
         ContentResolver cr = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
@@ -272,10 +269,6 @@ public class DogRegistrationActivity extends AppCompatActivity  {
             }
         });
     }
-
-
-
-
 
     // Function to load all four different spinners
     public void loadSpinners(){
