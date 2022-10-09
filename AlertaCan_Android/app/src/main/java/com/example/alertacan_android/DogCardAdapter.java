@@ -11,9 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.squareup.picasso.Picasso;
 
 public class DogCardAdapter extends FirestoreRecyclerAdapter<Dog, DogCardAdapter.DogCardViewHolder> {
+    private OnItemClickListener listener;
+
 
     public DogCardAdapter(@NonNull FirestoreRecyclerOptions<Dog> options) {
         super(options);
@@ -54,7 +57,27 @@ public class DogCardAdapter extends FirestoreRecyclerAdapter<Dog, DogCardAdapter
             dogRaceTextView = itemView.findViewById(R.id.dogRaceTextView);
             dogImageView = itemView.findViewById(R.id.dogImageView);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getBindingAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null) {
+                        listener.onItemClick(getSnapshots().getSnapshot(position),position);
+                    }
 
+                }
+            });
         }
     }
+
+    public interface OnItemClickListener {
+        void onItemClick(DocumentSnapshot documentSnapshot, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+
+
 }

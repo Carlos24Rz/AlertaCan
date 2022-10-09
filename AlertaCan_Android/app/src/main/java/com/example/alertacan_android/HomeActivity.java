@@ -5,12 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.firebase.ui.firestore.SnapshotParser;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -25,6 +30,10 @@ public class HomeActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     private DogCardAdapter adapter;
 
+    BottomNavigationView bottomMenu;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,10 +41,28 @@ public class HomeActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        bottomMenu = findViewById(R.id.bottomNavigationView);
+
         Toast.makeText(HomeActivity.this, mAuth.getCurrentUser().getEmail(),
                 Toast.LENGTH_SHORT).show();
 
         populateRecyclerView();
+
+        bottomMenu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getTitle().toString()){
+                    case ("Añadir Perro") :
+                        Intent intent = new Intent(HomeActivity.this,DogRegistrationActivity.class);
+                        startActivity(intent);
+                        return true;
+                }
+                return false;
+            }
+        });
+
+
     }
 
     private void populateRecyclerView(){
@@ -62,6 +89,20 @@ public class HomeActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.lostDogsRecylerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new DogCardAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                String id = documentSnapshot.getId();
+                Toast.makeText(HomeActivity.this, "Position" + position + "ID:" + id, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(HomeActivity.this,MyDogInfoActivity.class);
+                intent.putExtra("dogId", id);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override

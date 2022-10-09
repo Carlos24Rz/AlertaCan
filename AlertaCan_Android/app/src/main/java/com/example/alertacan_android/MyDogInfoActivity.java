@@ -31,6 +31,8 @@ public class MyDogInfoActivity extends AppCompatActivity {
     TextView descriptionTextView;
     TextView ownerPhoneTextView;
 
+    String DOG_ID;
+
     public String formatDate(int day, int dayOfMonth, int month, int year){
         String[] days = new String[]{"Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado" };
         String[] months = new String[]{ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre",
@@ -55,8 +57,13 @@ public class MyDogInfoActivity extends AppCompatActivity {
         descriptionTextView = findViewById(R.id.id_description);
         ownerPhoneTextView = findViewById(R.id.id_owner_phone);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            DOG_ID = extras.getString("dogId");
+        }
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference docRef = db.collection("dogs").document("KIz2P3gcLaD5t3Ez5OwR");
+        DocumentReference docRef = db.collection("dogs").document(DOG_ID);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {

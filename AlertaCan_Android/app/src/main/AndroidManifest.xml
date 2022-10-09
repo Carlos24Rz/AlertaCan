@@ -22,11 +22,12 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <activity android:name= ".MyDogInfoActivity"/>
+        <activity android:name=".DogRegistrationActivity"/>
         <activity android:name=".HomeActivity"/>
         <activity android:name=".SignupActivity"/>
         <activity android:name=".ResetPasswordActivity"/>
