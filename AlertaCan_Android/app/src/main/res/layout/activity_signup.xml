@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignupActivity">
+    tools:context=".LoginActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.153" />
+        app:layout_constraintVertical_bias="0.069" />
 
     <TextView
         android:id="@+id/textView"
@@ -55,7 +55,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginEnd="36dp"
         app:errorEnabled="true"
-        android:hint="Correo electrónico"
+        android:hint="Correo Electrónico"
         app:boxBackgroundColor="#FAFAFA"
         app:boxStrokeColor="#009DE0"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -96,47 +96,59 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEditText"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
             android:singleLine="true"
             android:scrollHorizontally="true"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/forgotPasswordTextView"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/quicksand"
-        android:text="@string/forgot_password"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="#57a0d4"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.86"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordLayout"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/loginButtonLayout"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/repeatPasswordLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginEnd="36dp"
+        app:errorEnabled="true"
+        android:hint="Repita su Contraseña"
+        app:boxBackgroundColor="#FAFAFA"
+        app:boxStrokeColor="#009DE0"
+        app:endIconMode="password_toggle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordLayout"
+        app:layout_constraintVertical_bias="0.01999998"
+        app:startIconDrawable="@drawable/ic_lock">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/repeatPasswordEditText"
+            android:singleLine="true"
+            android:scrollHorizontally="true"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/signupButtonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginTop="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextView"
+        app:layout_constraintTop_toBottomOf="@+id/repeatPasswordLayout"
         app:layout_constraintVertical_bias="0.0">
 
         <ProgressBar
-            android:id="@+id/loginProgressBar"
+            android:id="@+id/signupProgressBar"
             android:visibility="gone"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -150,12 +162,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/signupButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/button_background_color"
             android:fontFamily="@font/quicksand"
-            android:text="Iniciar Sesión"
+            android:text="Crear cuenta"
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -175,7 +187,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButtonLayout"
+        app:layout_constraintTop_toBottomOf="@+id/signupButtonLayout"
         app:layout_constraintVertical_bias="0.19" />
 
     <LinearLayout
@@ -194,15 +206,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand"
-            android:text="¿No tienes cuenta? "
+            android:text="¿Ya tienes cuenta? "
             android:textAlignment="viewEnd" />
 
         <TextView
-            android:id="@+id/signupTextView"
+            android:id="@+id/loginTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand"
-            android:text="@string/signIn"
+            android:text="@string/login"
             android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textColor="#57a0d4" />

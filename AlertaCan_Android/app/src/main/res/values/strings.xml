@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">AlertaCan_Android</string>
     <string name="forgot_password"><u>Olvidé mi contraseña</u></string>
-    <string name="signIn"><u>Regístrate</u></string>
+    <string name="signIn"><u>Crear Cuenta</u></string>
+    <string name="login"><u>Iniciar Sesión</u></string>
     <string name="privacyNotice"><u>Aviso de Privacidad</u></string>
 
     <string name="btn_edit">Editar</string>
