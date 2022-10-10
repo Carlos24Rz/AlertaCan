@@ -13,6 +13,8 @@
 		070E7C9428B97655000C9B07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 070E7C9228B97655000C9B07 /* Main.storyboard */; };
 		070E7C9628B97656000C9B07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 070E7C9528B97656000C9B07 /* Assets.xcassets */; };
 		070E7C9928B97656000C9B07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 070E7C9728B97656000C9B07 /* LaunchScreen.storyboard */; };
+		A4900D7728F3CB100013203F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4900D7628F3CB100013203F /* LoginViewController.swift */; };
+		A4900D7928F3CB2A0013203F /* SingUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4900D7828F3CB2A0013203F /* SingUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		070E7C9528B97656000C9B07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		070E7C9828B97656000C9B07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		070E7C9A28B97656000C9B07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4900D7628F3CB100013203F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A4900D7828F3CB2A0013203F /* SingUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				070E7C9528B97656000C9B07 /* Assets.xcassets */,
 				070E7C9728B97656000C9B07 /* LaunchScreen.storyboard */,
 				070E7C9A28B97656000C9B07 /* Info.plist */,
+				A4900D7628F3CB100013203F /* LoginViewController.swift */,
+				A4900D7828F3CB2A0013203F /* SingUpViewController.swift */,
 			);
 			path = AlertaCan_IOS;
 			sourceTree = "<group>";
@@ -138,7 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4900D7728F3CB100013203F /* LoginViewController.swift in Sources */,
 				070E7C9128B97655000C9B07 /* ViewController.swift in Sources */,
+				A4900D7928F3CB2A0013203F /* SingUpViewController.swift in Sources */,
 				070E7C8D28B97655000C9B07 /* AppDelegate.swift in Sources */,
 				070E7C8F28B97655000C9B07 /* SceneDelegate.swift in Sources */,
 			);
