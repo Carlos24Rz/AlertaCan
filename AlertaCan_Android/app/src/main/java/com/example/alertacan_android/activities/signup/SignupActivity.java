@@ -1,4 +1,4 @@
-package com.example.alertacan_android;
+package com.example.alertacan_android.activities.signup;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.alertacan_android.activities.home.HomeActivity;
+import com.example.alertacan_android.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;

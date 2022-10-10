@@ -18,7 +18,7 @@
         android:theme="@style/Theme.AlertaCan_Android"
         tools:targetApi="31">
         <activity
-            android:name=".LoginActivity"
+            android:name=".activities.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,11 +26,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name= ".MyDogInfoActivity"/>
-        <activity android:name=".DogRegistrationActivity"/>
-        <activity android:name=".HomeActivity"/>
-        <activity android:name=".SignupActivity"/>
-        <activity android:name=".ResetPasswordActivity"/>
+        <activity android:name= ".activities.dogInfo.MyDogInfoActivity"/>
+        <activity android:name=".activities.dogRegistration.DogRegistrationActivity"/>
+        <activity android:name=".activities.home.HomeActivity"/>
+        <activity android:name=".activities.signup.SignupActivity"/>
+        <activity android:name=".activities.resetPassword.ResetPasswordActivity"/>
 
         <meta-data
             android:name="com.google.android.gms.version"

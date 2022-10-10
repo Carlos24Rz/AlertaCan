@@ -1,4 +1,4 @@
-package com.example.alertacan_android;
+package com.example.alertacan_android.models;
 
 public class Dog {
     private String mDogName;

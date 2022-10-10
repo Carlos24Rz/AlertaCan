@@ -1,4 +1,4 @@
-package com.example.alertacan_android;
+package com.example.alertacan_android.activities.login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,8 +15,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.alertacan_android.activities.home.HomeActivity;
+import com.example.alertacan_android.R;
+import com.example.alertacan_android.activities.resetPassword.ResetPasswordActivity;
+import com.example.alertacan_android.activities.signup.SignupActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -25,9 +28,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
-import com.google.firebase.auth.FirebaseUser;
-
-import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         if(mAuth.getCurrentUser() != null){
-            Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();

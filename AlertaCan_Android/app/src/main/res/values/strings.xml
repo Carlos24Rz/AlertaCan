@@ -8,5 +8,7 @@
     <string name="btn_edit">Editar</string>
     <string name="btn_delete">Eliminar</string>
     <string name="btn_matches">Ver matches</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
