@@ -13,6 +13,8 @@
 		070E7C9428B97655000C9B07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 070E7C9228B97655000C9B07 /* Main.storyboard */; };
 		070E7C9628B97656000C9B07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 070E7C9528B97656000C9B07 /* Assets.xcassets */; };
 		070E7C9928B97656000C9B07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 070E7C9728B97656000C9B07 /* LaunchScreen.storyboard */; };
+		64CAC26228F3D39E00B1C276 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CAC26128F3D39E00B1C276 /* HomeViewController.swift */; };
+		64CAC26828F3E1A200B1C276 /* DogCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CAC26728F3E1A200B1C276 /* DogCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		070E7C9528B97656000C9B07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		070E7C9828B97656000C9B07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		070E7C9A28B97656000C9B07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64CAC26128F3D39E00B1C276 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		64CAC26728F3E1A200B1C276 /* DogCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +62,10 @@
 			children = (
 				070E7C8C28B97655000C9B07 /* AppDelegate.swift */,
 				070E7C8E28B97655000C9B07 /* SceneDelegate.swift */,
+				64CAC26128F3D39E00B1C276 /* HomeViewController.swift */,
 				070E7C9028B97655000C9B07 /* ViewController.swift */,
 				070E7C9228B97655000C9B07 /* Main.storyboard */,
+				64CAC26728F3E1A200B1C276 /* DogCollectionViewCell.swift */,
 				070E7C9528B97656000C9B07 /* Assets.xcassets */,
 				070E7C9728B97656000C9B07 /* LaunchScreen.storyboard */,
 				070E7C9A28B97656000C9B07 /* Info.plist */,
@@ -140,7 +146,9 @@
 			files = (
 				070E7C9128B97655000C9B07 /* ViewController.swift in Sources */,
 				070E7C8D28B97655000C9B07 /* AppDelegate.swift in Sources */,
+				64CAC26828F3E1A200B1C276 /* DogCollectionViewCell.swift in Sources */,
 				070E7C8F28B97655000C9B07 /* SceneDelegate.swift in Sources */,
+				64CAC26228F3D39E00B1C276 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

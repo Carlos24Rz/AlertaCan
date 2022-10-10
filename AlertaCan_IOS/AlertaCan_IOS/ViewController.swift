@@ -12,6 +12,18 @@ import UIKit
 // Include CLLocationManagerDelegate to allow manager.delegatte in viewDidAppear
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
+    // ------------ GO TO HOME ------------
+    // Using the navIcon
+    @IBAction func HomeIconPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "mapToHome", sender: nil)
+    }
+    // Using the back button
+    @IBAction func BackButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "mapToHome", sender: nil)
+    }
+    
+    
+    
     // Map Kit Map View to create it
     // By itself only shows current location
     @IBOutlet var mapView: MKMapView!
