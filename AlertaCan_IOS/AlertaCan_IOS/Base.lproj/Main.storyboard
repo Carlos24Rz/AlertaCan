@@ -307,14 +307,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="OsD-0o-6Bi" userLabel="NavStack">
-                                <rect key="frame" x="0.0" y="760" width="390" height="50"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="OsD-0o-6Bi" userLabel="NavStack">
+                                <rect key="frame" x="0.0" y="750" width="390" height="60"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Vp-Rb-ahC" userLabel="mapView">
-                                        <rect key="frame" x="0.0" y="0.0" width="130" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="113.66666666666667" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygE-Ai-P6J" userLabel="mapButton">
-                                                <rect key="frame" x="45" y="5" width="40" height="40"/>
+                                                <rect key="frame" x="37" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="wfl-Wf-eas"/>
                                                     <constraint firstAttribute="height" constant="40" id="xag-HF-IN9"/>
@@ -323,7 +323,7 @@
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Off_map" translatesAutoresizingMaskIntoConstraints="NO" id="jfB-xK-R7z" userLabel="mapImage">
-                                                <rect key="frame" x="45" y="5" width="40" height="40"/>
+                                                <rect key="frame" x="37" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="1lZ-vv-0MA"/>
                                                     <constraint firstAttribute="height" constant="40" id="D8W-w2-2vu"/>
@@ -331,7 +331,6 @@
                                             </imageView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="6h6-eC-W7R"/>
                                             <constraint firstAttribute="height" constant="40" id="LdA-Eu-9VU"/>
                                             <constraint firstItem="jfB-xK-R7z" firstAttribute="centerY" secondItem="2Vp-Rb-ahC" secondAttribute="centerY" id="Z7e-MQ-3ye"/>
                                             <constraint firstItem="ygE-Ai-P6J" firstAttribute="centerX" secondItem="2Vp-Rb-ahC" secondAttribute="centerX" id="qGD-z9-zjx"/>
@@ -340,10 +339,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YNL-WU-Ta8" userLabel="homeView">
-                                        <rect key="frame" x="130" y="0.0" width="130" height="50"/>
+                                        <rect key="frame" x="114.66666666666669" y="0.0" width="114" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXD-LL-bEm" userLabel="homeButton">
-                                                <rect key="frame" x="45" y="5" width="40" height="40"/>
+                                                <rect key="frame" x="36.999999999999986" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="CHM-IK-Og4"/>
                                                     <constraint firstAttribute="width" constant="40" id="RPo-b5-H27"/>
@@ -352,7 +351,7 @@
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="On_home" translatesAutoresizingMaskIntoConstraints="NO" id="vym-Za-988" userLabel="homeImage">
-                                                <rect key="frame" x="45" y="5" width="40" height="40"/>
+                                                <rect key="frame" x="36.999999999999986" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="5Wg-RW-VLm"/>
                                                     <constraint firstAttribute="width" constant="40" id="R8i-Rv-5PF"/>
@@ -360,7 +359,6 @@
                                             </imageView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="4Fh-dj-nkb"/>
                                             <constraint firstAttribute="height" constant="40" id="Fdm-x7-lah"/>
                                             <constraint firstItem="PXD-LL-bEm" firstAttribute="centerX" secondItem="YNL-WU-Ta8" secondAttribute="centerX" id="G5v-dz-r9L"/>
                                             <constraint firstItem="vym-Za-988" firstAttribute="centerX" secondItem="YNL-WU-Ta8" secondAttribute="centerX" id="M31-f3-Os1"/>
@@ -369,10 +367,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="soz-a7-V7l" userLabel="registerView">
-                                        <rect key="frame" x="260" y="0.0" width="130" height="50"/>
+                                        <rect key="frame" x="229.66666666666663" y="0.0" width="160.33333333333337" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xhe-R5-H8h" userLabel="registerButton">
-                                                <rect key="frame" x="45" y="5" width="40" height="40"/>
+                                                <rect key="frame" x="60.333333333333343" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="eng-PM-YHM"/>
                                                     <constraint firstAttribute="height" constant="40" id="eoc-qq-4fg"/>
@@ -381,7 +379,7 @@
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Off_register_dog" translatesAutoresizingMaskIntoConstraints="NO" id="RQa-m0-0AV" userLabel="registerImage">
-                                                <rect key="frame" x="45" y="5" width="40" height="40"/>
+                                                <rect key="frame" x="60.333333333333343" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="7ag-Dv-QVu"/>
                                                     <constraint firstAttribute="height" constant="40" id="AcD-9j-tDw"/>
@@ -391,7 +389,6 @@
                                         <constraints>
                                             <constraint firstItem="RQa-m0-0AV" firstAttribute="centerY" secondItem="soz-a7-V7l" secondAttribute="centerY" id="4Ld-v2-kOc"/>
                                             <constraint firstAttribute="height" constant="40" id="CKG-5X-OhS"/>
-                                            <constraint firstAttribute="width" constant="40" id="U61-Kc-DPq"/>
                                             <constraint firstItem="Xhe-R5-H8h" firstAttribute="centerY" secondItem="soz-a7-V7l" secondAttribute="centerY" id="YgV-gh-VMs"/>
                                             <constraint firstItem="RQa-m0-0AV" firstAttribute="centerX" secondItem="soz-a7-V7l" secondAttribute="centerX" id="nar-3n-zOA"/>
                                             <constraint firstItem="Xhe-R5-H8h" firstAttribute="centerX" secondItem="soz-a7-V7l" secondAttribute="centerX" id="wjM-s3-9sA"/>
@@ -402,7 +399,7 @@
                                 <constraints>
                                     <constraint firstItem="2Vp-Rb-ahC" firstAttribute="centerY" secondItem="OsD-0o-6Bi" secondAttribute="centerY" id="Sn7-z1-RAV"/>
                                     <constraint firstItem="YNL-WU-Ta8" firstAttribute="centerY" secondItem="OsD-0o-6Bi" secondAttribute="centerY" id="WCk-QE-Oje"/>
-                                    <constraint firstAttribute="height" constant="50" id="WtM-zc-dVX"/>
+                                    <constraint firstAttribute="height" constant="60" id="WtM-zc-dVX"/>
                                     <constraint firstItem="soz-a7-V7l" firstAttribute="centerY" secondItem="OsD-0o-6Bi" secondAttribute="centerY" id="bYf-rm-kwM"/>
                                 </constraints>
                             </stackView>
