@@ -278,9 +278,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17F-F7-4p8">
-                                <rect key="frame" x="174" y="412" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17F-F7-4p8">
+                                <rect key="frame" x="170" y="412" width="50" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -288,6 +287,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rTT-Cw-qpB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="17F-F7-4p8" firstAttribute="leading" secondItem="rTT-Cw-qpB" secondAttribute="leading" constant="170" id="N0U-lb-GoR"/>
+                            <constraint firstItem="rTT-Cw-qpB" firstAttribute="trailing" secondItem="17F-F7-4p8" secondAttribute="trailing" constant="170" id="OXB-uP-KKl"/>
+                            <constraint firstItem="rTT-Cw-qpB" firstAttribute="bottom" secondItem="17F-F7-4p8" secondAttribute="bottom" constant="377" id="Vtb-Ak-afc"/>
+                            <constraint firstItem="17F-F7-4p8" firstAttribute="top" secondItem="rTT-Cw-qpB" secondAttribute="top" constant="365" id="eAG-BP-Wr6"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6fa-pP-e4C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
