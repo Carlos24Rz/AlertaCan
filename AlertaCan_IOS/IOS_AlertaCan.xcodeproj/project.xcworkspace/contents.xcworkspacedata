@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/carlos/Desktop/AlertaCan/AlertaCan_IOS/IOS_AlertaCan.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>
