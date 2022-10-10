@@ -22,6 +22,7 @@ class Utilities {
         
         // Remove border on text field
         textfield.borderStyle = .none
+        //ttytu
         
         // Add the line to the text field
         textfield.layer.addSublayer(bottomLine)

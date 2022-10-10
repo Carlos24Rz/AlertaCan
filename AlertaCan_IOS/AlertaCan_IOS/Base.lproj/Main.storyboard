@@ -84,7 +84,7 @@
                                     <constraint firstAttribute="height" constant="65" id="9bQ-zz-bNU"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2T8-8A-S0T">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2T8-8A-S0T">
                                 <rect key="frame" x="40" y="574.66666666666663" width="310" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="Tk6-bL-aLW"/>
@@ -169,7 +169,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4N-uC-yQi">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4N-uC-yQi">
                                         <rect key="frame" x="0.0" y="162" width="310" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
@@ -252,35 +252,6 @@
             </objects>
             <point key="canvasLocation" x="2007.6923076923076" y="-133.64928909952607"/>
         </scene>
-        <!--Form View Controller-->
-        <scene sceneID="GGc-oh-WWv">
-            <objects>
-                <viewController storyboardIdentifier="FormVC" id="1Py-fy-aaq" customClass="FormViewController" customModule="IOS_AlertaCan" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JEe-2Q-1w4">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Form" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSS-c5-wp8">
-                                <rect key="frame" x="176" y="412" width="38" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="BUh-gb-U9t"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="ZSS-c5-wp8" firstAttribute="top" secondItem="BUh-gb-U9t" secondAttribute="top" constant="365" id="0QT-Yr-Ub1"/>
-                            <constraint firstItem="ZSS-c5-wp8" firstAttribute="leading" secondItem="BUh-gb-U9t" secondAttribute="leading" constant="176" id="Y9h-Ws-bZ2"/>
-                            <constraint firstItem="BUh-gb-U9t" firstAttribute="bottom" secondItem="ZSS-c5-wp8" secondAttribute="bottom" constant="377" id="eS3-Zc-agP"/>
-                            <constraint firstItem="BUh-gb-U9t" firstAttribute="trailing" secondItem="ZSS-c5-wp8" secondAttribute="trailing" constant="176" id="zbs-aa-Qus"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lwt-0F-dMZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2004.6153846153845" y="580.80568720379142"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="d8J-JJ-ROJ">
             <objects>
@@ -298,6 +269,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WlB-ui-HMZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="58.46153846153846" y="-2.1327014218009479"/>
+        </scene>
+        <!--Form View Controller-->
+        <scene sceneID="8gr-Tm-MUM">
+            <objects>
+                <viewController storyboardIdentifier="FormVC" id="yeY-CK-Gou" customClass="FormViewController" customModule="IOS_AlertaCan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rhn-0s-mEX">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17F-F7-4p8">
+                                <rect key="frame" x="174" y="412" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rTT-Cw-qpB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6fa-pP-e4C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="988" y="739"/>
         </scene>
     </scenes>
     <resources>
