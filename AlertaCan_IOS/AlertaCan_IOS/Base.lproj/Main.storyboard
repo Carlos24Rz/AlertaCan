@@ -84,6 +84,15 @@
                                     <constraint firstAttribute="height" constant="65" id="9bQ-zz-bNU"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2T8-8A-S0T">
+                                <rect key="frame" x="40" y="574.66666666666663" width="310" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="Tk6-bL-aLW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -98,12 +107,15 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SFm-vK-P2d" secondAttribute="trailing" constant="75" id="LXm-jI-gq0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZCp-7X-ri5" secondAttribute="trailing" constant="93" id="Lu6-F8-a6R"/>
                             <constraint firstItem="SFm-vK-P2d" firstAttribute="top" secondItem="ENe-mc-Boe" secondAttribute="bottom" constant="20" id="NqB-LD-8cf"/>
+                            <constraint firstItem="2T8-8A-S0T" firstAttribute="top" secondItem="ZCp-7X-ri5" secondAttribute="bottom" constant="7" id="QnT-ak-OJ0"/>
                             <constraint firstItem="Gq0-hY-bEE" firstAttribute="top" secondItem="SFm-vK-P2d" secondAttribute="bottom" constant="20" id="Rh5-aL-qg0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2T8-8A-S0T" secondAttribute="trailing" constant="40" id="ZjM-kf-Dmd"/>
                             <constraint firstItem="ENe-mc-Boe" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.240521" id="axq-zW-F8S"/>
                             <constraint firstItem="ENe-mc-Boe" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.523077" id="eaQ-AO-TH4"/>
                             <constraint firstItem="ENe-mc-Boe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="fxR-1U-PY2"/>
                             <constraint firstItem="uGS-bA-ccb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="75" id="gLe-sF-ZMc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VWa-QF-cNQ" secondAttribute="trailing" constant="109" id="lQb-66-1aV"/>
+                            <constraint firstItem="2T8-8A-S0T" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="mZf-AU-MBB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Gq0-hY-bEE" secondAttribute="trailing" constant="75" id="pWs-Wc-aEV"/>
                             <constraint firstItem="ZCp-7X-ri5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="93" id="rjj-tE-Gfz"/>
                             <constraint firstItem="ENe-mc-Boe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="93" id="sR2-Bm-Z8g"/>
@@ -115,6 +127,7 @@
                     <navigationItem key="navigationItem" id="3Dq-iJ-pIz"/>
                     <connections>
                         <outlet property="emailTextField" destination="SFm-vK-P2d" id="HQC-aQ-w7k"/>
+                        <outlet property="errorLabel" destination="2T8-8A-S0T" id="PXJ-wk-aIa"/>
                         <outlet property="loginButton" destination="ZCp-7X-ri5" id="uTE-r2-vfm"/>
                         <outlet property="passwordTextField" destination="Gq0-hY-bEE" id="akt-Dl-cpQ"/>
                         <outlet property="privacyPolicyButton" destination="VWa-QF-cNQ" id="kNe-fj-18k"/>
