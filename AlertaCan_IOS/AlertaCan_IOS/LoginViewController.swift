@@ -41,11 +41,12 @@ class LoginViewController: UIViewController {
                 self.errorLabel.alpha = 1
             }
             else{
-                let formViewController =
-                self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.formViewController) as?
-                    FormViewController
-                
-                self.view.window?.rootViewController = formViewController; self.view.window?.makeKeyAndVisible()
+                self.performSegue(withIdentifier: "loginToHome", sender: nil)
+//                let formViewController =
+//                self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.formViewController) as?
+//                    FormViewController
+//
+//                self.view.window?.rootViewController = formViewController; self.view.window?.makeKeyAndVisible()
             }
             
         }

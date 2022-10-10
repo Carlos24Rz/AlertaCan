@@ -130,6 +130,7 @@
                         <outlet property="loginButton" destination="ZCp-7X-ri5" id="uTE-r2-vfm"/>
                         <outlet property="passwordTextField" destination="Gq0-hY-bEE" id="akt-Dl-cpQ"/>
                         <outlet property="privacyPolicyButton" destination="VWa-QF-cNQ" id="kNe-fj-18k"/>
+                        <segue destination="rm2-3v-f5d" kind="presentation" identifier="loginToHome" modalPresentationStyle="fullScreen" id="X4w-n4-k99"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -298,10 +299,10 @@
             </objects>
             <point key="canvasLocation" x="988" y="739"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="uKC-8d-PaU">
             <objects>
-                <viewController storyboardIdentifier="HomeTabVC" id="rm2-3v-f5d" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeTabVC" id="rm2-3v-f5d" userLabel="Home View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q2a-wb-VLZ">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
