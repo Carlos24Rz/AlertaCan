@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.example.alertacan_android.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -44,9 +45,13 @@ import java.util.Map;
 
 public class DogRegistrationActivity extends AppCompatActivity  {
 
+
+
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
     public StorageReference reference;
     private Uri imageUri;
+
+    FirebaseAuth mAuth;
 
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
@@ -62,6 +67,7 @@ public class DogRegistrationActivity extends AppCompatActivity  {
     private Timestamp dogDateMissing;
     private String dogPhoneObj = "";
     private String dogDescriptionObj = "";
+    private String dogOwnerObj = "";
 
 
     // for the image
@@ -93,6 +99,8 @@ public class DogRegistrationActivity extends AppCompatActivity  {
         progressBarImg = findViewById(R.id.progressBar);
         progressBarImg.setVisibility(View.INVISIBLE);
         reference = FirebaseStorage.getInstance().getReference();
+
+        mAuth = FirebaseAuth.getInstance();
 
         imageViewDog.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -208,6 +216,12 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                         // Getting image url
                         dogUrlObj = uri.toString();
                         newDog.put("imageUrl", dogUrlObj);
+
+                        // Getting current user
+                        dogOwnerObj = mAuth.getCurrentUser().getEmail();
+                        newDog.put("user", dogOwnerObj);
+
+                        Log.d("MMMMMMM", dogOwnerObj);
 
                         db.collection("dogs")
                                 .add(newDog)
