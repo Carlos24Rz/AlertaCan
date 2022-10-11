@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.alertacan_android.R;
+import com.example.alertacan_android.activities.dogInfo.DogInfoActivity;
 import com.example.alertacan_android.activities.dogInfo.MyDogInfoActivity;
 import com.example.alertacan_android.adapters.DogCardAdapter;
 import com.example.alertacan_android.interfaces.RecyclerViewInterface;
@@ -38,6 +39,8 @@ public class DogListFragment extends Fragment implements RecyclerViewInterface {
     private RecyclerView recyclerView;
     private List<Dog> mDogs;
 
+    private int fragmentValue;
+
     private View mView;
 
     @Override
@@ -58,9 +61,11 @@ public class DogListFragment extends Fragment implements RecyclerViewInterface {
         recyclerView.setLayoutManager(new LinearLayoutManager(mView.getContext()));
         mDogs = new ArrayList<>();
 
+        fragmentValue = args.getInt("menuVal");
+
         Query query;
 
-        switch(args.getInt("menuVal")) {
+        switch(fragmentValue) {
             case 0:
                 //get "encontrados" dogs
                 query = notebookRef
@@ -106,8 +111,9 @@ public class DogListFragment extends Fragment implements RecyclerViewInterface {
 
     @Override
     public void onItemClick(int position) {
-        Intent intent = new Intent(mView.getContext(), MyDogInfoActivity.class);
-        intent.putExtra("dogId",mDogs.get(position).getId());
+        Intent intent = new Intent(mView.getContext(), DogInfoActivity.class);
+        intent.putExtra("dogId", mDogs.get(position).getId());
+        intent.putExtra("fragmentValue", Integer.toString(fragmentValue));
         startActivity(intent);
     }
 }

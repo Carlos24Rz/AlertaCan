@@ -1,7 +1,11 @@
 package com.example.alertacan_android.activities.dogInfo;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,7 +17,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
+import java.io.InputStream;
 import java.util.Date;
 import java.util.Map;
 
@@ -30,6 +36,8 @@ public class MyDogInfoActivity extends AppCompatActivity {
     TextView lasTimeLocationTextView;
     TextView descriptionTextView;
     TextView ownerPhoneTextView;
+
+
 
     String DOG_ID;
 
@@ -56,6 +64,8 @@ public class MyDogInfoActivity extends AppCompatActivity {
         lasTimeLocationTextView = findViewById(R.id.id_last_time_location);
         descriptionTextView = findViewById(R.id.id_description);
         ownerPhoneTextView = findViewById(R.id.id_owner_phone);
+
+
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -90,6 +100,10 @@ public class MyDogInfoActivity extends AppCompatActivity {
                         String dogDescription = dataObj.get("description").toString();
                         String dogOwnerPhone = dataObj.get("owner_phone").toString();
 
+
+
+
+
                         nameTextView.setText(dogName);
                         stateTextView.setText((dogStatus));
                         breedTextView.setText(dogBreed);
@@ -101,6 +115,12 @@ public class MyDogInfoActivity extends AppCompatActivity {
                         lasTimeLocationTextView.setText(dogLastTimeLocation);
                         descriptionTextView.setText(dogDescription);
                         ownerPhoneTextView.setText(dogOwnerPhone);
+
+//                        new DownloadImageTask((ImageView) findViewById(R.id.id_image))
+//                                .execute(dogImageUrl);
+
+
+
                     } else {
                         Log.d("tag2", "No such document");
                     }
@@ -112,8 +132,5 @@ public class MyDogInfoActivity extends AppCompatActivity {
 
 
     }
-
-
-
 
 }
