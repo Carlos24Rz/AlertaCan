@@ -1,5 +1,6 @@
 package com.example.alertacan_android.activities.dogInfo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.alertacan_android.R;
+import com.example.alertacan_android.activities.dogRegistration.DogRegistrationActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
@@ -39,6 +41,20 @@ public class DogInfoActivity extends AppCompatActivity {
     String FRAGMENT_VALUE;
 
     ImageView imageDogView;
+
+    String dogName;
+    String dogStatus;
+    String dogBreed;
+    String dogSex;
+    String dogSize;
+    String dogColor;
+    String dogImageUrl;
+    String dogLastTimeLocation;
+    String dogDescription;
+    String dogOwnerPhone;
+
+    Date dateMissing;
+
 
     Button btnEdit;
     Button btnDelete;
@@ -98,24 +114,24 @@ public class DogInfoActivity extends AppCompatActivity {
                         Log.d("tag", "DocumentSnapshot data: " + document.getData());
 
                         Map<String, Object> dataObj = document.getData();
-                        String dogName = dataObj.get("name").toString();
-                        String dogStatus = dataObj.get("state").toString();
-                        String dogBreed = dataObj.get("breed").toString();
-                        String dogSex = dataObj.get("sex").toString();
-                        String dogSize = dataObj.get("size").toString();
-                        String dogColor = dataObj.get("color").toString();
+                        dogName = dataObj.get("name").toString();
+                        dogStatus = dataObj.get("state").toString();
+                        dogBreed = dataObj.get("breed").toString();
+                        dogSex = dataObj.get("sex").toString();
+                        dogSize = dataObj.get("size").toString();
+                        dogColor = dataObj.get("color").toString();
 
-                        Date dateMissing = document.getTimestamp("date_missing").toDate();
+                        dateMissing = document.getTimestamp("date_missing").toDate();
                         String dogDateMissing = formatDate(dateMissing.getDay(), dateMissing.getDate(), dateMissing.getMonth(), dateMissing.getYear());
 
                         Date dateRegistration = document.getTimestamp("date_registration").toDate();
                         String dogDateRegistration = formatDate(dateRegistration.getDay(), dateRegistration.getDate(), dateRegistration.getMonth(), dateRegistration.getYear());
 
-                        String dogLastTimeLocation = dataObj.get("last_time_location").toString();
-                        String dogDescription = dataObj.get("description").toString();
-                        String dogOwnerPhone = dataObj.get("owner_phone").toString();
+                        dogLastTimeLocation = dataObj.get("last_time_location").toString();
+                        dogDescription = dataObj.get("description").toString();
+                        dogOwnerPhone = dataObj.get("owner_phone").toString();
 
-                        String dogImageUrl = dataObj.get("imageUrl").toString();
+                        dogImageUrl = dataObj.get("imageUrl").toString();
 
                         nameTextView.setText(dogName);
                         stateTextView.setText((dogStatus));
@@ -141,6 +157,29 @@ public class DogInfoActivity extends AppCompatActivity {
                 } else {
                     Log.d("tag3", "get failed with ", task.getException());
                 }
+            }
+        });
+
+
+        // BTN LISTENERS
+        btnEdit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(DogInfoActivity.this, DogRegistrationActivity.class);
+                myIntent.putExtra("dog_id_intent", DOG_ID); //Optional parameters
+                myIntent.putExtra("dog_img_intent", dogImageUrl);
+                myIntent.putExtra("dog_name_intent", dogName);
+                myIntent.putExtra("dog_breed_intent", dogBreed);
+                myIntent.putExtra("dog_size_intent", dogSize);
+                myIntent.putExtra("dog_color_intent", dogColor);
+                myIntent.putExtra("dog_sex_intent", dogSex);
+                myIntent.putExtra("dog_last_time_intent", dogLastTimeLocation);
+                myIntent.putExtra("dog_description_intent", dogDescription);
+                myIntent.putExtra("dog_phone_intent", dogOwnerPhone);
+                myIntent.putExtra("dog_date_missing_intent", dateMissing);
+
+
+                DogInfoActivity.this.startActivity(myIntent);
             }
         });
 

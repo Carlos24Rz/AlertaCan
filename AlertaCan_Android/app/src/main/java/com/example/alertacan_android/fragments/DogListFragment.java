@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.alertacan_android.R;
 import com.example.alertacan_android.activities.dogInfo.DogInfoActivity;
-import com.example.alertacan_android.activities.dogInfo.MyDogInfoActivity;
 import com.example.alertacan_android.adapters.DogCardAdapter;
 import com.example.alertacan_android.interfaces.RecyclerViewInterface;
 import com.example.alertacan_android.models.Dog;
