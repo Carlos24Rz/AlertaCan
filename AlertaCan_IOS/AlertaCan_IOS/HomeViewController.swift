@@ -9,11 +9,35 @@ import UIKit
 import FirebaseAuth
 import FirebaseCore
 import Firebase
+import FirebaseFirestore
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Connect to the database
+        let db = Firestore.firestore()
+        // Retrieve all dogs
+        db.collection("dogs").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID)")
+                   
+//                    print("\(document.documentID) => \(document.data())")
+//                    print(document.data())
+                    let dict = document.data()
+                    let newDog = Dog(dog: dict)
+                    print(newDog.getInfoCard())
+                    print("-----------------")
+                }
+            }
+        }
+
+        
+        
         //authenticateUserAndConfigureView()
 
         // Do any additional setup after loading the view.
