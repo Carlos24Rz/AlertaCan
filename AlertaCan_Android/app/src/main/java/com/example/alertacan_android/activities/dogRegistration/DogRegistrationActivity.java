@@ -113,7 +113,8 @@ public class DogRegistrationActivity extends AppCompatActivity  {
         // initialize date picker
         initDatePicker();
         dateButton = findViewById(R.id.datePickerButton);
-        dateButton.setText(getTodaysDate());
+//        dateButton.setText(getTodaysDate());
+        dateButton.setText("");
 
         // load four spinners
         loadSpinners();
@@ -167,6 +168,8 @@ public class DogRegistrationActivity extends AppCompatActivity  {
             dogPhoneObj = extras.getString("dog_phone_intent");
             dogDateMissingObj = (Date) extras.get("dog_date_missing_intent");
 
+            // dogDateMissingObj = dogDateMissing;
+
             // Setting values to update
             Picasso.get()
                     .load(dog_img_intent)
@@ -194,8 +197,11 @@ public class DogRegistrationActivity extends AppCompatActivity  {
 
             textPhone.setText(dogPhoneObj);
 
-            dateButton.setText(makeDateString(dogDateMissingObj.getDate(), dogDateMissingObj.getMonth(), dogDateMissingObj.getYear()+1900));
+            dateButton.setText(makeDateString(dogDateMissingObj.getDate(), dogDateMissingObj.getMonth()+1, dogDateMissingObj.getYear()+1900));
             // dogDateMissingObj
+
+            dogDateMissing = java.sql.Timestamp.valueOf(makeDateTimeStamp(dogDateMissingObj.getDate(), dogDateMissingObj.getMonth()+1, dogDateMissingObj.getYear()+1900));
+
         }
 
 
@@ -229,7 +235,7 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                 {
                     public void onClick(View view)
                     {
-                        if (imageUri!=null && dogNameObj!=null && dogLastLocationSeenObj!=null && dogPhoneObj!=null && dogDescriptionObj!=null ){
+                        if (imageUri!=null && dogNameObj!=null && dogLastLocationSeenObj!=null && dogPhoneObj!=null && dogDescriptionObj!=null && dogDateMissing!=null){
                             // if all the inputs are filled, upload to firebase
                             uploadToFirebase(imageUri);
                         } else{
@@ -537,6 +543,10 @@ public class DogRegistrationActivity extends AppCompatActivity  {
 
     private String makeDateString(int day, int month, int year) {
         return getMonthFormat(month) + " " + day + " " + year;
+    }
+
+    private String makeDateTimeStamp(int day, int month, int year) {
+        return year + "-" + month + "-" + day + " 10:10:10.0";
     }
 
     private String getMonthFormat(int month) {
