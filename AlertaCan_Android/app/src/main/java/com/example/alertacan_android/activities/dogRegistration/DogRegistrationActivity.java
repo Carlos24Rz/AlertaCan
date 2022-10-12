@@ -47,8 +47,6 @@ import java.util.Map;
 
 public class DogRegistrationActivity extends AppCompatActivity  {
 
-
-
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
     public StorageReference reference;
     private Uri imageUri;
@@ -80,28 +78,20 @@ public class DogRegistrationActivity extends AppCompatActivity  {
     private String dogPhoneObj = "";
     private String dogDescriptionObj = "";
     private String dogOwnerObj = "";
-
     private Date dogDateMissingObj;
-
+    private String dogUrlObj;
 
     // for the image
     private ImageView imageViewDog;
     private ProgressBar progressBarImg;
 
-    private String dogUrlObj;
-
-
-
     private String DOG_ID;
-    private String dog_img_intent;
-
 
     // adapters for spinners
     ArrayAdapter<CharSequence> adapterBreeds;
     ArrayAdapter<CharSequence> adapterSize;
     ArrayAdapter<CharSequence> adapterColor;
     ArrayAdapter<CharSequence> adapterSex;
-
     Bundle extras;
 
 
@@ -110,15 +100,23 @@ public class DogRegistrationActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dog_registration);
 
+        // views
+        textName = (EditText)findViewById(R.id.id_dog_name);
+        spinnerBreed = (Spinner) findViewById(R.id.id_spinner_breeds);
+        spinnerSize = (Spinner) findViewById(R.id.id_spinner_size);
+        spinnerColor = (Spinner) findViewById(R.id.id_spinner_color);
+        spinnerSex = (Spinner) findViewById(R.id.id_spinner_sex);
+        textLastTime = (EditText)findViewById(R.id.id_last_location);
+        textDescription = (EditText)findViewById(R.id.id_dog_description);
+        textPhone = (EditText)findViewById(R.id.id_phone);
+
         // initialize date picker
         initDatePicker();
         dateButton = findViewById(R.id.datePickerButton);
-//        dateButton.setText(getTodaysDate());
         dateButton.setText("");
 
         // load four spinners
         loadSpinners();
-
 
         // Listen to radio group
         listenRadioGroup();
@@ -141,23 +139,11 @@ public class DogRegistrationActivity extends AppCompatActivity  {
             }
         });
 
-        // views
-        textName = (EditText)findViewById(R.id.id_dog_name);
-        spinnerBreed = (Spinner) findViewById(R.id.id_spinner_breeds);
-        spinnerSize = (Spinner) findViewById(R.id.id_spinner_size);
-        spinnerColor = (Spinner) findViewById(R.id.id_spinner_color);
-        spinnerSex = (Spinner) findViewById(R.id.id_spinner_sex);
-        textLastTime = (EditText)findViewById(R.id.id_last_location);
-        textDescription = (EditText)findViewById(R.id.id_dog_description);
-        textPhone = (EditText)findViewById(R.id.id_phone);
-
-
         // checking if there is a new dog or it is an update
         extras = getIntent().getExtras();
         if (extras != null) {
             DOG_ID = extras.getString("dog_id_intent");
-            dog_img_intent = extras.getString("dog_img_intent");
-            dogUrlObj = dog_img_intent;
+            dogUrlObj = extras.getString("dog_img_intent");
             dogNameObj = extras.getString("dog_name_intent");
             dogBreedObj = extras.getString("dog_breed_intent");
             dogSizeObj = extras.getString("dog_size_intent");
@@ -168,11 +154,9 @@ public class DogRegistrationActivity extends AppCompatActivity  {
             dogPhoneObj = extras.getString("dog_phone_intent");
             dogDateMissingObj = (Date) extras.get("dog_date_missing_intent");
 
-            // dogDateMissingObj = dogDateMissing;
-
             // Setting values to update
             Picasso.get()
-                    .load(dog_img_intent)
+                    .load(dogUrlObj)
                     .fit()
                     .centerCrop()
                     .into(imageViewDog);
@@ -198,13 +182,8 @@ public class DogRegistrationActivity extends AppCompatActivity  {
             textPhone.setText(dogPhoneObj);
 
             dateButton.setText(makeDateString(dogDateMissingObj.getDate(), dogDateMissingObj.getMonth()+1, dogDateMissingObj.getYear()+1900));
-            // dogDateMissingObj
-
             dogDateMissing = java.sql.Timestamp.valueOf(makeDateTimeStamp(dogDateMissingObj.getDate(), dogDateMissingObj.getMonth()+1, dogDateMissingObj.getYear()+1900));
-
         }
-
-
 
         // event listener fot the submit button
         Button btnSubmit = findViewById(R.id.id_btn_submit);
@@ -215,8 +194,6 @@ public class DogRegistrationActivity extends AppCompatActivity  {
             Log.d("update", "updating dog");
             updateDog(btnSubmit);
         }
-
-
     }
 
     @Override
@@ -229,7 +206,6 @@ public class DogRegistrationActivity extends AppCompatActivity  {
     }
 
     public void submitDog(Button btnSubmit){
-
         btnSubmit.setOnClickListener(
                 new View.OnClickListener()
                 {
@@ -246,7 +222,6 @@ public class DogRegistrationActivity extends AppCompatActivity  {
     }
 
     public void updateDog(Button btnSubmit){
-
         btnSubmit.setOnClickListener(
                 new View.OnClickListener()
                 {
@@ -325,9 +300,6 @@ public class DogRegistrationActivity extends AppCompatActivity  {
     }
 
 
-
-
-
     private void uploadToFirebase(Uri  uri){
         final StorageReference fileRef = reference.child( "uploads/" + System.currentTimeMillis() + "." + getFileExtension(uri));
         fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -396,11 +368,6 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                         dogOwnerObj = mAuth.getCurrentUser().getEmail();
                         newDog.put("user", dogOwnerObj);
 
-                        Log.d("MMMMMMM", dogOwnerObj);
-
-
-                        //
-
                         db.collection("dogs")
                                 .add(newDog)
                                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -415,8 +382,6 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                                         Toast.makeText(DogRegistrationActivity.this, "Error al registrar el perro", Toast.LENGTH_SHORT).show();
                                     }
                                 });
-
-
                         progressBarImg.setVisibility(View.INVISIBLE);
                     }
                 });
@@ -441,7 +406,6 @@ public class DogRegistrationActivity extends AppCompatActivity  {
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cr.getType(mUri));
     }
-
 
     // Function to listen the value of the radio group
     public void listenRadioGroup(){
@@ -468,31 +432,27 @@ public class DogRegistrationActivity extends AppCompatActivity  {
     // Function to load all four different spinners
     public void loadSpinners(){
         // Spinner breed
-        Spinner spinnerBreeds = (Spinner) findViewById(R.id.id_spinner_breeds);
         // Create an ArrayAdapter using the string array and a default spinner layout
         adapterBreeds = ArrayAdapter.createFromResource(this,
                 R.array.breeds_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapterBreeds.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
-        spinnerBreeds.setAdapter(adapterBreeds);
+        spinnerBreed.setAdapter(adapterBreeds);
 
         // Spinner size
-        Spinner spinnerSize = (Spinner) findViewById(R.id.id_spinner_size);
         adapterSize = ArrayAdapter.createFromResource(this,
                 R.array.sizes_array, android.R.layout.simple_spinner_item);
         adapterSize.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerSize.setAdapter(adapterSize);
 
         // Spinner color
-        Spinner spinnerColor = (Spinner) findViewById(R.id.id_spinner_color);
         adapterColor = ArrayAdapter.createFromResource(this,
                 R.array.colors_array, android.R.layout.simple_spinner_item);
         adapterColor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerColor.setAdapter(adapterColor);
 
         // Spinner sex
-        Spinner spinnerSex = (Spinner) findViewById(R.id.id_spinner_sex);
         adapterSex = ArrayAdapter.createFromResource(this,
                 R.array.sex_array, android.R.layout.simple_spinner_item);
         adapterSex.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
