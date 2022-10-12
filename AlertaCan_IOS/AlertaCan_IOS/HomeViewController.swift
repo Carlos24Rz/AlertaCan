@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseCore
+import Firebase
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //authenticateUserAndConfigureView()
 
         // Do any additional setup after loading the view.
     }
@@ -50,6 +54,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.dogImage.image = UIImage(named:  photos[indexPath.row])
         return cell
     }
+    
+    //Keep Login
+//    func authenticateUserAndConfigureView() {
+//
+//        if Auth.auth().currentUser == nil{
+//            DispatchQueue.main.sync {
+//                let navController = UINavigationController(rootViewController: LoginViewController()); navController.navigationBar.barStyle = .black
+//                self.present(navController, animated: true, completion: nil)
+//            }
+//        }
+//    }
     
     
 

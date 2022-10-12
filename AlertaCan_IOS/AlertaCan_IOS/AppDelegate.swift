@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         FirebaseApp.configure()
+        
+//        let navController = UINavigationController(rootViewController: HomeViewController()); navController.navigationBar.barStyle = .black
         return true
     }
 
