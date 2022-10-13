@@ -14,9 +14,16 @@ import FirebaseFirestore
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var dogsCollectionView: UICollectionView!
+    
+    // General database
     var dogsCollection : [Dog] = []
+    // TODO: Create a copy to filter according to the properties
+    // Collection to display on screen after filters:
+    var filteredCollection : [Dog] = []
     
-    
+    // ---------------------------------------------------
+    // ------------------ VIEW DID LOAD ------------------
+    // ---------------------------------------------------
     override func viewDidLoad() {
         // Connect to the database
         let db = Firestore.firestore()
@@ -30,47 +37,29 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     let newDog = Dog(dog: document.data())
                     self.dogsCollection.append(newDog)
                 }
-                // Update data after fetching is done
-                self.dogsCollectionView.reloadData()
             }
+            // Filter dogs with Perdido status and show those
+            // Perdido status is the default
+            for dog in self.dogsCollection {
+                if (dog.state == "Perdido") {
+                    self.filteredCollection.append(dog)
+                }
+            }
+            // Update data after fetching and filter is done
+            self.dogsCollectionView.reloadData()
             super.viewDidLoad()
         }
 
-        
-        
         //authenticateUserAndConfigureView()
-
-        // Do any additional setup after loading the view.
     }
     
-    // -----------COLLECTION VIEW -------
-    
-    
-    // set of images
-    var photos =  [
-        "lost1",
-        "lost2",
-        "lost3",
-        "lost4",
-        "lost5",
-        "lost6",
-        "lost7",
-        "lost8",
-        "lost1",
-        "lost2",
-        "lost3",
-        "lost4",
-        "lost5",
-        "lost6",
-        "lost7",
-        "lost8",
-    ]
-    
+    // ---------------------------------------------------
+    // ----------------- COLLECTION VIEW -----------------
+    // ---------------------------------------------------
     
     // Set number of items in collectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(dogsCollection)
-        return dogsCollection.count
+        return filteredCollection.count
     }
     
     // Fill collection view with dogs data
@@ -78,12 +67,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Modify template "dogCard"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dogCard", for: indexPath) as! DogCollectionViewCell
 //        cell.dogImage.image = UIImage(named:  photos[indexPath.row])
-        cell.dogImage.loadFrom(URLAddres: dogsCollection[indexPath.row].imageUrl ?? "")
-        cell.nameLabel.text = dogsCollection[indexPath.row].name
+        cell.dogImage.loadFrom(URLAddres: filteredCollection[indexPath.row].imageUrl ?? "")
+        cell.nameLabel.text = filteredCollection[indexPath.row].name
         cell.nameLabel.adjustsFontSizeToFitWidth = true
         cell.nameLabel.minimumScaleFactor = 0.2
         cell.nameLabel.numberOfLines = 0
-        cell.raceLabel.text = dogsCollection[indexPath.row].breed
+        cell.raceLabel.text = filteredCollection[indexPath.row].breed
         return cell
     }
     
@@ -112,7 +101,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 }
 
-// LOAD IMAGES FROM THE INTERNET
+
+// -------------------------------------------------------------
+// ------------- LOAD IMAGES FROM THE INTERNET -----------------
+// -------------------------------------------------------------
+
 extension UIImageView {
     func loadFrom(URLAddres: String) {
         guard let url = URL(string: URLAddres) else {return}

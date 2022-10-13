@@ -38,23 +38,4 @@ struct Dog {
         user = dog["user"] as? String ?? ""
     }
     
-//    init(_ date_missing : String, _ description : String, _ state : String, _ last_time_location : String, _ imageUrl : String, _ color : String, _ size : String, _ name : String, _ user : String, _ breed : String, _ date_registration : String, _ sex : String) {
-//        self.date_missing = date_missing
-//        self.description = description
-//        self.state = state
-//        self.last_time_location = last_time_location
-//        self.imageUrl = imageUrl
-//        self.color = color
-//        self.size = size
-//        self.name = name
-//        self.user = user
-//        self.breed = breed
-//        self.date_registration = date_missing
-//        self.sex = sex
-//    }
-    
-    func getInfoCard() -> [String] {
-        let infoCard = [imageUrl!, name!, breed!]
-        return infoCard
-    }
 }
