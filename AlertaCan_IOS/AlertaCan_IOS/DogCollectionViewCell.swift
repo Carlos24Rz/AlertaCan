@@ -10,5 +10,7 @@ import UIKit
 class DogCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var dogImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var raceLabel: UILabel!
 }
 

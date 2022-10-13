@@ -13,8 +13,10 @@ import FirebaseFirestore
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    @IBOutlet weak var dogsCollectionView: UICollectionView!
+    var dogsCollection : [Dog] = []
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
         
         // Connect to the database
         let db = Firestore.firestore()
@@ -24,16 +26,16 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    print("\(document.documentID)")
-                   
-//                    print("\(document.documentID) => \(document.data())")
-//                    print(document.data())
-                    let dict = document.data()
-                    let newDog = Dog(dog: dict)
-                    print(newDog.getInfoCard())
-                    print("-----------------")
+                    // for each dog create a dog object and add it to dogs collection
+                    let newDog = Dog(dog: document.data())
+                    self.dogsCollection.append(newDog)
                 }
+                // Update data after fetching is done
+                self.dogsCollectionView.reloadData()
+                
             }
+            
+            super.viewDidLoad()
         }
 
         
@@ -44,6 +46,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     // -----------COLLECTION VIEW -------
+    
     
     // set of images
     var photos =  [
@@ -66,16 +69,20 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     ]
     
     
-    
     // Set number of items in collectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count
+        print(dogsCollection)
+        return dogsCollection.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dogCard", for: indexPath) as! DogCollectionViewCell
-        
         cell.dogImage.image = UIImage(named:  photos[indexPath.row])
+        cell.nameLabel.text = dogsCollection[indexPath.row].name
+        cell.nameLabel.adjustsFontSizeToFitWidth = true
+        cell.nameLabel.minimumScaleFactor = 0.2
+        cell.nameLabel.numberOfLines = 1
+        cell.raceLabel.text = dogsCollection[indexPath.row].breed
         return cell
     }
     

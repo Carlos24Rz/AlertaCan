@@ -507,14 +507,14 @@
                                                                 <constraint firstAttribute="height" constant="100" id="eZy-73-5c6"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Labrador" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JwI-JV-pPe" userLabel="DogRace">
-                                                            <rect key="frame" x="40.666666666666657" y="105" width="69" height="20.333333333333329"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Labrador" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="JwI-JV-pPe" userLabel="DogRace">
+                                                            <rect key="frame" x="0.0" y="105" width="150" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canelo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="711-Ut-4WG" userLabel="DogName">
-                                                            <rect key="frame" x="48.666666666666657" y="129.66666666666666" width="53" height="20.333333333333343"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canelo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="711-Ut-4WG" userLabel="DogName">
+                                                            <rect key="frame" x="0.0" y="129.66666666666666" width="150" height="20.333333333333343"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -531,14 +531,18 @@
                                                     </subviews>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="rLh-3r-cB7" secondAttribute="trailing" id="1Rz-ph-dZi"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Yaq-V2-VH2" secondAttribute="trailing" id="4hY-rf-YfH"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Yaq-V2-VH2" secondAttribute="bottom" id="5hc-ll-SFM"/>
+                                                        <constraint firstItem="rLh-3r-cB7" firstAttribute="trailing" secondItem="6cy-7Z-1YR" secondAttribute="trailing" id="1Rz-ph-dZi"/>
+                                                        <constraint firstItem="Yaq-V2-VH2" firstAttribute="trailing" secondItem="6cy-7Z-1YR" secondAttribute="trailing" id="4hY-rf-YfH"/>
+                                                        <constraint firstItem="Yaq-V2-VH2" firstAttribute="bottom" secondItem="6cy-7Z-1YR" secondAttribute="bottom" id="5hc-ll-SFM"/>
                                                         <constraint firstItem="Yaq-V2-VH2" firstAttribute="leading" secondItem="6cy-7Z-1YR" secondAttribute="leading" id="A4G-t0-yUc"/>
                                                         <constraint firstItem="711-Ut-4WG" firstAttribute="bottom" secondItem="6cy-7Z-1YR" secondAttribute="bottom" constant="-10" id="CNj-FE-SjT"/>
                                                         <constraint firstItem="JwI-JV-pPe" firstAttribute="centerX" secondItem="6cy-7Z-1YR" secondAttribute="centerX" id="IDQ-zm-xMH"/>
+                                                        <constraint firstItem="JwI-JV-pPe" firstAttribute="leading" secondItem="6cy-7Z-1YR" secondAttribute="leading" id="LZr-KD-N5t"/>
+                                                        <constraint firstAttribute="trailing" secondItem="711-Ut-4WG" secondAttribute="trailing" id="WKa-JP-52V"/>
                                                         <constraint firstItem="rLh-3r-cB7" firstAttribute="top" secondItem="6cy-7Z-1YR" secondAttribute="top" id="WXB-iL-nYB"/>
+                                                        <constraint firstAttribute="trailing" secondItem="JwI-JV-pPe" secondAttribute="trailing" id="WYP-cg-UZg"/>
                                                         <constraint firstItem="JwI-JV-pPe" firstAttribute="top" secondItem="rLh-3r-cB7" secondAttribute="bottom" constant="5" id="Yik-CE-Hel"/>
+                                                        <constraint firstItem="711-Ut-4WG" firstAttribute="leading" secondItem="6cy-7Z-1YR" secondAttribute="leading" id="cUp-PO-pjF"/>
                                                         <constraint firstItem="711-Ut-4WG" firstAttribute="centerX" secondItem="6cy-7Z-1YR" secondAttribute="centerX" id="fOA-fN-SsG"/>
                                                         <constraint firstItem="Yaq-V2-VH2" firstAttribute="top" secondItem="6cy-7Z-1YR" secondAttribute="top" id="gjL-Gd-n2m"/>
                                                         <constraint firstItem="rLh-3r-cB7" firstAttribute="leading" secondItem="6cy-7Z-1YR" secondAttribute="leading" id="uBW-hw-EwV"/>
@@ -555,6 +559,8 @@
                                         <size key="customSize" width="150" height="160"/>
                                         <connections>
                                             <outlet property="dogImage" destination="rLh-3r-cB7" id="YhH-S6-qWS"/>
+                                            <outlet property="nameLabel" destination="711-Ut-4WG" id="apL-s4-J7g"/>
+                                            <outlet property="raceLabel" destination="JwI-JV-pPe" id="K9v-uE-DFI"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -678,6 +684,9 @@
                             <constraint firstItem="IC9-JI-BF4" firstAttribute="leading" secondItem="Q2a-wb-VLZ" secondAttribute="leadingMargin" constant="10" id="pfz-6p-Wx2"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dogsCollectionView" destination="QOP-ca-Wud" id="VcE-9b-2xp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kNW-Fv-hh0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
