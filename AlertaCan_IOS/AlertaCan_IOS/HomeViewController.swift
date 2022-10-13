@@ -16,8 +16,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var dogsCollectionView: UICollectionView!
     var dogsCollection : [Dog] = []
     
+    
     override func viewDidLoad() {
-        
         // Connect to the database
         let db = Firestore.firestore()
         // Retrieve all dogs
@@ -32,9 +32,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
                 // Update data after fetching is done
                 self.dogsCollectionView.reloadData()
-                
             }
-            
             super.viewDidLoad()
         }
 
@@ -122,7 +120,11 @@ extension UIImageView {
             if let imageData = try? Data(contentsOf: url) {
                 if let loadedImage = UIImage(data: imageData) {
                     self?.image = loadedImage
+                } else {
+                    self?.image = UIImage(named: "noPhoto")
                 }
+            } else {
+                self?.image = UIImage(named: "noPhoto")
             }
         }
 

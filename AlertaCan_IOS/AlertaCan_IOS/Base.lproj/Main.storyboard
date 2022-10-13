@@ -501,7 +501,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6cy-7Z-1YR" userLabel="dogView">
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="160"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lost1" translatesAutoresizingMaskIntoConstraints="NO" id="rLh-3r-cB7" userLabel="DogImage">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadingDog" translatesAutoresizingMaskIntoConstraints="NO" id="rLh-3r-cB7" userLabel="DogImage">
                                                             <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="100" id="eZy-73-5c6"/>
@@ -509,7 +509,7 @@
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Labrador" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="JwI-JV-pPe" userLabel="DogRace">
                                                             <rect key="frame" x="0.0" y="105" width="150" height="20.333333333333329"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -699,7 +699,7 @@
         <image name="Off_map" width="24" height="24"/>
         <image name="Off_register_dog" width="24" height="24"/>
         <image name="On_home" width="24" height="24"/>
-        <image name="lost1" width="125" height="91"/>
+        <image name="loadingDog" width="800" height="600"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
