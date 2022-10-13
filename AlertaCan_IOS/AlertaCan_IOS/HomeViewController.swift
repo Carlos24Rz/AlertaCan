@@ -75,13 +75,16 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return dogsCollection.count
     }
     
+    // Fill collection view with dogs data
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // Modify template "dogCard"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dogCard", for: indexPath) as! DogCollectionViewCell
-        cell.dogImage.image = UIImage(named:  photos[indexPath.row])
+//        cell.dogImage.image = UIImage(named:  photos[indexPath.row])
+        cell.dogImage.loadFrom(URLAddres: dogsCollection[indexPath.row].imageUrl ?? "")
         cell.nameLabel.text = dogsCollection[indexPath.row].name
         cell.nameLabel.adjustsFontSizeToFitWidth = true
         cell.nameLabel.minimumScaleFactor = 0.2
-        cell.nameLabel.numberOfLines = 1
+        cell.nameLabel.numberOfLines = 0
         cell.raceLabel.text = dogsCollection[indexPath.row].breed
         return cell
     }
@@ -109,4 +112,20 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     */
 
+}
+
+// LOAD IMAGES FROM THE INTERNET
+extension UIImageView {
+    func loadFrom(URLAddres: String) {
+        guard let url = URL(string: URLAddres) else {return}
+        DispatchQueue.main.async { [weak self] in
+            if let imageData = try? Data(contentsOf: url) {
+                if let loadedImage = UIImage(data: imageData) {
+                    self?.image = loadedImage
+                }
+            }
+        }
+
+    }
+    
 }
