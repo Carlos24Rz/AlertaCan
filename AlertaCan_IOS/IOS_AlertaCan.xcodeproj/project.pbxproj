@@ -15,7 +15,6 @@
 		070E7C9928B97656000C9B07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 070E7C9728B97656000C9B07 /* LaunchScreen.storyboard */; };
 		642F0E8928F4DCB600C1469D /* DogCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642F0E8828F4DCB600C1469D /* DogCollectionViewCell.swift */; };
 		642F0E8B28F4DD1000C1469D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642F0E8A28F4DD1000C1469D /* HomeViewController.swift */; };
-		64C3015A28F7734900E68F3D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64C3015928F7734900E68F3D /* GoogleService-Info.plist */; };
 		64C3015C28F7749200E68F3D /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C3015B28F7749200E68F3D /* Dog.swift */; };
 		A4900D7728F3CB100013203F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4900D7628F3CB100013203F /* LoginViewController.swift */; };
 		A4900D7928F3CB2A0013203F /* SingUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4900D7828F3CB2A0013203F /* SingUpViewController.swift */; };
@@ -49,6 +48,9 @@
 		A4900DB428F3DC1D0013203F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A4900DB328F3DC1D0013203F /* FirebaseStorage */; };
 		A4900DB628F3DC1D0013203F /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = A4900DB528F3DC1D0013203F /* FirebaseStorageCombine-Community */; };
 		A4900DB828F3EEEC0013203F /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4900DB728F3EEEC0013203F /* Constans.swift */; };
+		A493C58B28F8CB740094FF27 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A493C58A28F8CB740094FF27 /* GoogleService-Info.plist */; };
+		A493C58D28F8E9820094FF27 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A493C58C28F8E9820094FF27 /* InfoViewController.swift */; };
+		A493C58F28F9E3ED0094FF27 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A493C58E28F9E3ED0094FF27 /* MyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,13 +64,15 @@
 		070E7C9A28B97656000C9B07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		642F0E8828F4DCB600C1469D /* DogCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCollectionViewCell.swift; sourceTree = "<group>"; };
 		642F0E8A28F4DD1000C1469D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		64C3015928F7734900E68F3D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		64C3015B28F7749200E68F3D /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
 		A4900D7628F3CB100013203F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A4900D7828F3CB2A0013203F /* SingUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUpViewController.swift; sourceTree = "<group>"; };
 		A4900D7A28F3CFBF0013203F /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		A4900D7C28F3D9C40013203F /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		A4900DB728F3EEEC0013203F /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
+		A493C58A28F8CB740094FF27 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A493C58C28F8E9820094FF27 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		A493C58E28F9E3ED0094FF27 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +140,7 @@
 				070E7C9528B97656000C9B07 /* Assets.xcassets */,
 				070E7C9728B97656000C9B07 /* LaunchScreen.storyboard */,
 				070E7C9A28B97656000C9B07 /* Info.plist */,
-				64C3015928F7734900E68F3D /* GoogleService-Info.plist */,
+				A493C58A28F8CB740094FF27 /* GoogleService-Info.plist */,
 				A4900D7628F3CB100013203F /* LoginViewController.swift */,
 				64C3015B28F7749200E68F3D /* Dog.swift */,
 				A4900D7828F3CB2A0013203F /* SingUpViewController.swift */,
@@ -144,6 +148,8 @@
 				A4900D7A28F3CFBF0013203F /* FormViewController.swift */,
 				642F0E8828F4DCB600C1469D /* DogCollectionViewCell.swift */,
 				A4900DB728F3EEEC0013203F /* Constans.swift */,
+				A493C58C28F8E9820094FF27 /* InfoViewController.swift */,
+				A493C58E28F9E3ED0094FF27 /* MyViewController.swift */,
 			);
 			path = AlertaCan_IOS;
 			sourceTree = "<group>";
@@ -239,7 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				070E7C9928B97656000C9B07 /* LaunchScreen.storyboard in Resources */,
-				64C3015A28F7734900E68F3D /* GoogleService-Info.plist in Resources */,
+				A493C58B28F8CB740094FF27 /* GoogleService-Info.plist in Resources */,
 				070E7C9628B97656000C9B07 /* Assets.xcassets in Resources */,
 				070E7C9428B97655000C9B07 /* Main.storyboard in Resources */,
 			);
@@ -262,6 +268,8 @@
 				070E7C9128B97655000C9B07 /* ViewController.swift in Sources */,
 				A4900D7928F3CB2A0013203F /* SingUpViewController.swift in Sources */,
 				070E7C8D28B97655000C9B07 /* AppDelegate.swift in Sources */,
+				A493C58F28F9E3ED0094FF27 /* MyViewController.swift in Sources */,
+				A493C58D28F8E9820094FF27 /* InfoViewController.swift in Sources */,
 				070E7C8F28B97655000C9B07 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
