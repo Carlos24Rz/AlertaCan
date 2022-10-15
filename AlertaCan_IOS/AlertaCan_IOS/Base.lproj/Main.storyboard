@@ -714,14 +714,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="hnv-UF-oVS" userLabel="NavStack">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="hnv-UF-oVS" userLabel="NavStack">
                                 <rect key="frame" x="0.0" y="750" width="390" height="60"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1kD-R0-ayG" userLabel="mapView">
-                                        <rect key="frame" x="0.0" y="0.0" width="113.66666666666667" height="60"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1kD-R0-ayG" userLabel="mapView">
+                                        <rect key="frame" x="0.0" y="0.0" width="129.33333333333334" height="60"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DxD-hX-pDz" userLabel="mapButton">
-                                                <rect key="frame" x="37" y="10" width="40" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DxD-hX-pDz" userLabel="mapButton">
+                                                <rect key="frame" x="44.666666666666657" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="Ij9-NP-jPa"/>
                                                     <constraint firstAttribute="height" constant="40" id="rFB-7T-ixV"/>
@@ -729,8 +729,8 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Off_map" translatesAutoresizingMaskIntoConstraints="NO" id="oO5-ne-hkj" userLabel="mapImage">
-                                                <rect key="frame" x="37" y="10" width="40" height="40"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Off_map" translatesAutoresizingMaskIntoConstraints="NO" id="oO5-ne-hkj" userLabel="mapImage">
+                                                <rect key="frame" x="44.666666666666657" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="SlQ-zj-Hrs"/>
                                                     <constraint firstAttribute="width" constant="40" id="loX-94-bnl"/>
@@ -745,11 +745,11 @@
                                             <constraint firstItem="DxD-hX-pDz" firstAttribute="centerY" secondItem="1kD-R0-ayG" secondAttribute="centerY" id="vxG-mA-cLG"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e6g-uh-3mH" userLabel="homeView">
-                                        <rect key="frame" x="114.66666666666669" y="0.0" width="114" height="60"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6g-uh-3mH" userLabel="homeView">
+                                        <rect key="frame" x="130.33333333333331" y="0.0" width="129.33333333333331" height="60"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ORS-na-48y" userLabel="homeButton">
-                                                <rect key="frame" x="36.999999999999986" y="10" width="40" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ORS-na-48y" userLabel="homeButton">
+                                                <rect key="frame" x="44.666666666666657" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="B9Y-It-Qcn"/>
                                                     <constraint firstAttribute="width" constant="40" id="r54-N7-c9Q"/>
@@ -757,8 +757,8 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Off_home" translatesAutoresizingMaskIntoConstraints="NO" id="cUg-2C-dWn" userLabel="homeImage">
-                                                <rect key="frame" x="36.999999999999986" y="10" width="40" height="40"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Off_home" translatesAutoresizingMaskIntoConstraints="NO" id="cUg-2C-dWn" userLabel="homeImage">
+                                                <rect key="frame" x="44.666666666666657" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="7s1-vZ-rsy"/>
                                                     <constraint firstAttribute="height" constant="40" id="fge-EA-0zF"/>
@@ -773,11 +773,11 @@
                                             <constraint firstItem="cUg-2C-dWn" firstAttribute="centerY" secondItem="e6g-uh-3mH" secondAttribute="centerY" id="vyP-OU-r99"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rmA-ki-HGQ" userLabel="registerView">
-                                        <rect key="frame" x="229.66666666666663" y="0.0" width="160.33333333333337" height="60"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rmA-ki-HGQ" userLabel="registerView">
+                                        <rect key="frame" x="260.66666666666669" y="0.0" width="129.33333333333331" height="60"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2r-88-wyi" userLabel="registerButton">
-                                                <rect key="frame" x="60.333333333333343" y="10" width="40" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2r-88-wyi" userLabel="registerButton">
+                                                <rect key="frame" x="44.666666666666629" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="IR2-nD-Vhb"/>
                                                     <constraint firstAttribute="height" constant="40" id="bDB-1y-6yW"/>
@@ -785,8 +785,8 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="On_resgiter_dog" translatesAutoresizingMaskIntoConstraints="NO" id="cJq-fe-Of8" userLabel="registerImage">
-                                                <rect key="frame" x="60.333333333333343" y="10" width="40" height="40"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="On_resgiter_dog" translatesAutoresizingMaskIntoConstraints="NO" id="cJq-fe-Of8" userLabel="registerImage">
+                                                <rect key="frame" x="44.666666666666629" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="HIl-GH-sNb"/>
                                                     <constraint firstAttribute="height" constant="40" id="IBO-S4-nWH"/>
@@ -881,14 +881,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="8SI-jy-Z3C" userLabel="NavStack">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="8SI-jy-Z3C" userLabel="NavStack">
                                 <rect key="frame" x="0.0" y="750" width="390" height="60"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LQd-tm-0b7" userLabel="mapView">
-                                        <rect key="frame" x="0.0" y="0.0" width="113.66666666666667" height="60"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LQd-tm-0b7" userLabel="mapView">
+                                        <rect key="frame" x="0.0" y="0.0" width="129.33333333333334" height="60"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkV-MH-nXW" userLabel="mapButton">
-                                                <rect key="frame" x="37" y="10" width="40" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkV-MH-nXW" userLabel="mapButton">
+                                                <rect key="frame" x="44.666666666666657" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="Zdb-jL-H7t"/>
                                                     <constraint firstAttribute="height" constant="40" id="eft-el-OBl"/>
@@ -896,8 +896,8 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Off_map" translatesAutoresizingMaskIntoConstraints="NO" id="tvo-gn-zDR" userLabel="mapImage">
-                                                <rect key="frame" x="37" y="10" width="40" height="40"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Off_map" translatesAutoresizingMaskIntoConstraints="NO" id="tvo-gn-zDR" userLabel="mapImage">
+                                                <rect key="frame" x="44.666666666666657" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="5e8-hu-QkP"/>
                                                     <constraint firstAttribute="height" constant="40" id="brJ-ow-mES"/>
@@ -912,11 +912,11 @@
                                             <constraint firstItem="tvo-gn-zDR" firstAttribute="centerY" secondItem="LQd-tm-0b7" secondAttribute="centerY" id="wFG-RU-hSp"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zna-ni-cP3" userLabel="homeView">
-                                        <rect key="frame" x="114.66666666666669" y="0.0" width="114" height="60"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zna-ni-cP3" userLabel="homeView">
+                                        <rect key="frame" x="130.33333333333331" y="0.0" width="129.33333333333331" height="60"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dY2-cp-FJD" userLabel="homeButton">
-                                                <rect key="frame" x="36.999999999999986" y="10" width="40" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dY2-cp-FJD" userLabel="homeButton">
+                                                <rect key="frame" x="44.666666666666657" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="cHX-sA-9aX"/>
                                                     <constraint firstAttribute="height" constant="40" id="joX-hS-6sr"/>
@@ -924,8 +924,8 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Off_home" translatesAutoresizingMaskIntoConstraints="NO" id="WxR-ya-0cv" userLabel="homeImage">
-                                                <rect key="frame" x="36.999999999999986" y="10" width="40" height="40"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Off_home" translatesAutoresizingMaskIntoConstraints="NO" id="WxR-ya-0cv" userLabel="homeImage">
+                                                <rect key="frame" x="44.666666666666657" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="7oH-EN-65y"/>
                                                     <constraint firstAttribute="height" constant="40" id="F10-gL-1j4"/>
@@ -940,11 +940,11 @@
                                             <constraint firstItem="WxR-ya-0cv" firstAttribute="centerX" secondItem="Zna-ni-cP3" secondAttribute="centerX" id="SA8-NH-QIV"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="miA-jA-8JO" userLabel="registerView">
-                                        <rect key="frame" x="229.66666666666663" y="0.0" width="160.33333333333337" height="60"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="miA-jA-8JO" userLabel="registerView">
+                                        <rect key="frame" x="260.66666666666669" y="0.0" width="129.33333333333331" height="60"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifN-KD-mln" userLabel="registerButton">
-                                                <rect key="frame" x="60.333333333333343" y="10" width="40" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifN-KD-mln" userLabel="registerButton">
+                                                <rect key="frame" x="44.666666666666629" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="Emu-6H-Pkt"/>
                                                     <constraint firstAttribute="height" constant="40" id="FlC-Bx-BvJ"/>
@@ -952,8 +952,8 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="On_resgiter_dog" translatesAutoresizingMaskIntoConstraints="NO" id="aA3-4J-dm4" userLabel="registerImage">
-                                                <rect key="frame" x="60.333333333333343" y="10" width="40" height="40"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="On_resgiter_dog" translatesAutoresizingMaskIntoConstraints="NO" id="aA3-4J-dm4" userLabel="registerImage">
+                                                <rect key="frame" x="44.666666666666629" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="6S5-eZ-Abl"/>
                                                     <constraint firstAttribute="width" constant="40" id="fUa-zz-PcP"/>
