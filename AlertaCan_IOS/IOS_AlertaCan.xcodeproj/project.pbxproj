@@ -15,6 +15,7 @@
 		070E7C9928B97656000C9B07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 070E7C9728B97656000C9B07 /* LaunchScreen.storyboard */; };
 		642F0E8928F4DCB600C1469D /* DogCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642F0E8828F4DCB600C1469D /* DogCollectionViewCell.swift */; };
 		642F0E8B28F4DD1000C1469D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642F0E8A28F4DD1000C1469D /* HomeViewController.swift */; };
+		64AE821428FA21BC0042D864 /* DropDown in Frameworks */ = {isa = PBXBuildFile; productRef = 64AE821328FA21BC0042D864 /* DropDown */; };
 		64C3015C28F7749200E68F3D /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C3015B28F7749200E68F3D /* Dog.swift */; };
 		A4900D7728F3CB100013203F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4900D7628F3CB100013203F /* LoginViewController.swift */; };
 		A4900D7928F3CB2A0013203F /* SingUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4900D7828F3CB2A0013203F /* SingUpViewController.swift */; };
@@ -105,6 +106,7 @@
 				A4900DB428F3DC1D0013203F /* FirebaseStorage in Frameworks */,
 				A4900D9828F3DC1D0013203F /* FirebaseDynamicLinks in Frameworks */,
 				A4900D9C28F3DC1D0013203F /* FirebaseFirestoreCombine-Community in Frameworks */,
+				64AE821428FA21BC0042D864 /* DropDown in Frameworks */,
 				A4900DAC28F3DC1D0013203F /* FirebaseMessaging in Frameworks */,
 				A4900DA828F3DC1D0013203F /* FirebaseInstallations in Frameworks */,
 			);
@@ -198,6 +200,7 @@
 				A4900DB128F3DC1D0013203F /* FirebaseRemoteConfigSwift */,
 				A4900DB328F3DC1D0013203F /* FirebaseStorage */,
 				A4900DB528F3DC1D0013203F /* FirebaseStorageCombine-Community */,
+				64AE821328FA21BC0042D864 /* DropDown */,
 			);
 			productName = AlertaCan_IOS;
 			productReference = 070E7C8928B97655000C9B07 /* IOS_AlertaCan.app */;
@@ -229,6 +232,7 @@
 			mainGroup = 070E7C8028B97655000C9B07;
 			packageReferences = (
 				A4900D8028F3DC1D0013203F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				64AE821228FA21BC0042D864 /* XCRemoteSwiftPackageReference "DropDown" */,
 			);
 			productRefGroup = 070E7C8A28B97655000C9B07 /* Products */;
 			projectDirPath = "";
@@ -488,6 +492,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		64AE821228FA21BC0042D864 /* XCRemoteSwiftPackageReference "DropDown" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AssistoLab/DropDown";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		A4900D8028F3DC1D0013203F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -499,6 +511,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		64AE821328FA21BC0042D864 /* DropDown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64AE821228FA21BC0042D864 /* XCRemoteSwiftPackageReference "DropDown" */;
+			productName = DropDown;
+		};
 		A4900D8128F3DC1D0013203F /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A4900D8028F3DC1D0013203F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

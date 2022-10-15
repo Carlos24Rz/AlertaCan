@@ -10,10 +10,25 @@ import FirebaseAuth
 import FirebaseCore
 import Firebase
 import FirebaseFirestore
+import DropDown
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var dogsCollectionView: UICollectionView!
+    
+    @IBOutlet weak var sexButton: UIButton!
+    @IBOutlet weak var raceButton: UIButton!
+    @IBOutlet weak var colorButton: UIButton!
+    @IBOutlet weak var sizeButton: UIButton!
+        
+    // Filter options
+    let sexOptions : [String] = ["Todos", "Macho", "Hembra"]
+    let raceOptions : [String] = ["Todos", "Mestizo", "Husky", "Labrador", "Chihuahua", "Pastor Alemán", "Dálmata"]
+    let colorOptions : [String] = ["Todos", "Amarillo", "Café", "Blanco", "Negro", "Gris"]
+    let sizeOptions : [String] = ["Todos", "Pequeño", "Mediano", "Grande"]
+    
+    // Dropdown menus
+    let dropDown = DropDown()
     
     // General database
     var dogsCollection : [Dog] = []
@@ -21,10 +36,19 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // Collection to display on screen after filters:
     var filteredCollection : [Dog] = []
     
+    // Filter buttons
+    
+    
     // ---------------------------------------------------
     // ------------------ VIEW DID LOAD ------------------
     // ---------------------------------------------------
     override func viewDidLoad() {
+        // ----- Initialize button's format ------
+        let buttonCollection : [UIButton] = [sexButton, raceButton, colorButton, sizeButton]
+        for button in buttonCollection {
+            initializeButtonFormat(button: button)
+        }
+        // ------- DATABASE ------
         // Connect to the database
         let db = Firestore.firestore()
         // Retrieve all dogs
@@ -75,6 +99,68 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.raceLabel.text = filteredCollection[indexPath.row].breed
         return cell
     }
+    
+    
+    
+    // ---------------------------------------------------
+    // ----------------- APPLY FILTERS -------------------
+    // ---------------------------------------------------
+    @IBAction func filterPressed(_ sender: UIButton) {
+        if sender == sexButton {
+            dropDown.dataSource = sexOptions
+        } else if sender == sizeButton {
+            dropDown.dataSource = sizeOptions
+        } else if sender == raceButton {
+            dropDown.dataSource = raceOptions
+        } else {
+            dropDown.dataSource = colorOptions
+        }
+        dropDown.anchorView = sender
+        dropDown.bottomOffset = CGPoint(x: 0, y: sender.frame.size.height) //6
+        dropDown.show()
+        dropDown.selectionAction = {
+            [weak self] (index: Int, item: String) in
+            guard let _ = self else { return }
+            sender.setTitle(item, for: .normal)
+            self!.applyFilters(status: "Perdido", sex: self!.sexButton.currentTitle!, size: self!.sizeButton.currentTitle!, race: self!.raceButton.currentTitle!, color: self!.colorButton.currentTitle!)
+        }
+    }
+    
+    func applyFilters(status : String, sex : String, size : String, race : String, color : String) {
+        filteredCollection = []
+        for dog in dogsCollection {
+            if (status == dog.state) {
+                if (sex != "Todos") {
+                    if (dog.sex != sex) {continue}
+                }
+                if (size != "Todos") {
+                    if (dog.size != size) {continue}
+                }
+                if (color != "Todos") {
+                    if (dog.color != color) {continue}
+                }
+                if (race != "Todos") {
+                    if (dog.breed != race) {continue}
+                }
+                filteredCollection.append(dog)
+            }
+        }
+        self.dogsCollectionView.reloadData()
+    }
+    
+    
+    // ---------------------------------------------------
+    // ----------------- BUTTONS FORMAT ------------------
+    // ---------------------------------------------------
+    func initializeButtonFormat(button : UIButton) {
+        button.backgroundColor = UIColor(red: 254.0/255.0, green: 250.0/255.0, blue: 224.0/255.0, alpha: 1.0)
+        button.layer.cornerRadius = 10
+        button.layer.borderWidth = 1
+        button.layer.borderColor = CGColor(red: 1.0/255.0, green: 99.0/255.0, blue: 141.0/255.0, alpha: 1.0)
+        button.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 12)
+        button.setTitle("Todos", for: .normal)
+    }
+    
     
     //Keep Login
 //    func authenticateUserAndConfigureView() {
