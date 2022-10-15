@@ -14,13 +14,22 @@ import DropDown
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    // Collection View
     @IBOutlet weak var dogsCollectionView: UICollectionView!
     
+    // Filter buttons
     @IBOutlet weak var sexButton: UIButton!
     @IBOutlet weak var raceButton: UIButton!
     @IBOutlet weak var colorButton: UIButton!
     @IBOutlet weak var sizeButton: UIButton!
         
+    // Status buttons
+    @IBOutlet weak var perdidosButton: UIButton!
+    @IBOutlet weak var avistadosButton: UIButton!
+    // To use for filters (Perdido || Encontrado)
+    var currentStatusButton: UIButton? = nil
+    var status = "Perdido"
+    
     // Filter options
     let sexOptions : [String] = ["Todos", "Macho", "Hembra"]
     let raceOptions : [String] = ["Todos", "Mestizo", "Husky", "Labrador", "Chihuahua", "Pastor Alemán", "Dálmata"]
@@ -43,6 +52,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // ------------------ VIEW DID LOAD ------------------
     // ---------------------------------------------------
     override func viewDidLoad() {
+        currentStatusButton = self.perdidosButton
         // ----- Initialize button's format ------
         let buttonCollection : [UIButton] = [sexButton, raceButton, colorButton, sizeButton]
         for button in buttonCollection {
@@ -101,6 +111,27 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     
+    // ---------------------------------------------------
+    // -------------- CHANGE DOGS STATUS -----------------
+    // ---------------------------------------------------
+    @IBAction func onClickStatus(_ sender: UIButton) {
+        // Catch that you are clicking on a different button than your current Status
+        if sender != currentStatusButton {
+            currentStatusButton = sender
+            if (status == "Perdido") {
+                status = "Encontrado"
+                avistadosButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+                perdidosButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+            } else {
+                status = "Perdido"
+                perdidosButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+                avistadosButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+            }
+            self.applyFilters(status: self.status, sex: self.sexButton.currentTitle!, size: self.sizeButton.currentTitle!, race: self.raceButton.currentTitle!, color: self.colorButton.currentTitle!)
+        }
+    }
+    
+    
     
     // ---------------------------------------------------
     // ----------------- APPLY FILTERS -------------------
@@ -122,7 +153,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             [weak self] (index: Int, item: String) in
             guard let _ = self else { return }
             sender.setTitle(item, for: .normal)
-            self!.applyFilters(status: "Perdido", sex: self!.sexButton.currentTitle!, size: self!.sizeButton.currentTitle!, race: self!.raceButton.currentTitle!, color: self!.colorButton.currentTitle!)
+            self!.applyFilters(status: self!.status, sex: self!.sexButton.currentTitle!, size: self!.sizeButton.currentTitle!, race: self!.raceButton.currentTitle!, color: self!.colorButton.currentTitle!)
         }
     }
     

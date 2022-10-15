@@ -286,33 +286,39 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="D7I-An-I75"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Perdidos">
-                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
-                                            <color key="baseForegroundColor" red="1" green="0.99607843139999996" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        </buttonConfiguration>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Perdidos">
+                                            <color key="titleColor" red="1" green="0.99607843139999996" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onClickStatus:" destination="rm2-3v-f5d" eventType="touchUpInside" id="lzE-Bb-DXw"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4S-VJ-z4B" userLabel="AvistadosButton">
                                         <rect key="frame" x="130" y="0.0" width="130" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="l0U-K0-a7Z"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Avistados">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
-                                            <color key="baseForegroundColor" red="1" green="0.99607843139999996" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        </buttonConfiguration>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Avistados">
+                                            <color key="titleColor" red="1" green="0.99607843139999996" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onClickStatus:" destination="rm2-3v-f5d" eventType="touchUpInside" id="ktV-22-nNE"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZPC-pB-JyJ" userLabel="TusMascotasButton">
                                         <rect key="frame" x="260" y="0.0" width="130" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="8ye-TI-6RW"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Tus mascotas">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
-                                            <color key="baseForegroundColor" red="1" green="0.99607843139999996" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        </buttonConfiguration>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Tus mascotas">
+                                            <color key="titleColor" red="1" green="0.99607843139999996" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0039215686269999999" green="0.38823529410000002" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -505,13 +511,13 @@
                                                                 <constraint firstAttribute="height" constant="100" id="eZy-73-5c6"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Labrador" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="JwI-JV-pPe" userLabel="DogRace">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Raza" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="JwI-JV-pPe" userLabel="DogRace">
                                                             <rect key="frame" x="0.0" y="105" width="150" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Canelo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="711-Ut-4WG" userLabel="DogName">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Nombre" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="711-Ut-4WG" userLabel="DogName">
                                                             <rect key="frame" x="10" y="129.66666666666663" width="130" height="20.333333333333343"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -520,7 +526,7 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yaq-V2-VH2" userLabel="dogButton">
                                                             <rect key="frame" x="0.0" y="0.0" width="150" height="160"/>
                                                             <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain">
+                                                            <buttonConfiguration key="configuration" style="plain" title="">
                                                                 <backgroundConfiguration key="background" cornerRadius="20">
                                                                     <color key="strokeColor" red="0.0039215686269999999" green="0.38823529410000002" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </backgroundConfiguration>
@@ -568,14 +574,14 @@
                                     <outlet property="delegate" destination="rm2-3v-f5d" id="vcV-hF-ZiE"/>
                                 </connections>
                             </collectionView>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="OsD-0o-6Bi" userLabel="NavStack">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="OsD-0o-6Bi" userLabel="NavStack">
                                 <rect key="frame" x="0.0" y="750" width="390" height="60"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Vp-Rb-ahC" userLabel="mapView">
-                                        <rect key="frame" x="0.0" y="0.0" width="113.66666666666667" height="60"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Vp-Rb-ahC" userLabel="mapView">
+                                        <rect key="frame" x="0.0" y="0.0" width="129.33333333333334" height="60"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygE-Ai-P6J" userLabel="mapButton">
-                                                <rect key="frame" x="37" y="10" width="40" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygE-Ai-P6J" userLabel="mapButton">
+                                                <rect key="frame" x="44.666666666666657" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="wfl-Wf-eas"/>
                                                     <constraint firstAttribute="height" constant="40" id="xag-HF-IN9"/>
@@ -583,8 +589,8 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Off_map" translatesAutoresizingMaskIntoConstraints="NO" id="jfB-xK-R7z" userLabel="mapImage">
-                                                <rect key="frame" x="37" y="10" width="40" height="40"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Off_map" translatesAutoresizingMaskIntoConstraints="NO" id="jfB-xK-R7z" userLabel="mapImage">
+                                                <rect key="frame" x="44.666666666666657" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="1lZ-vv-0MA"/>
                                                     <constraint firstAttribute="height" constant="40" id="D8W-w2-2vu"/>
@@ -599,11 +605,11 @@
                                             <constraint firstItem="jfB-xK-R7z" firstAttribute="centerX" secondItem="2Vp-Rb-ahC" secondAttribute="centerX" id="sW5-fo-BZc"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNL-WU-Ta8" userLabel="homeView">
-                                        <rect key="frame" x="114.66666666666669" y="0.0" width="114" height="60"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YNL-WU-Ta8" userLabel="homeView">
+                                        <rect key="frame" x="130.33333333333331" y="0.0" width="129.33333333333331" height="60"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXD-LL-bEm" userLabel="homeButton">
-                                                <rect key="frame" x="36.999999999999986" y="10" width="40" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXD-LL-bEm" userLabel="homeButton">
+                                                <rect key="frame" x="44.666666666666657" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="CHM-IK-Og4"/>
                                                     <constraint firstAttribute="width" constant="40" id="RPo-b5-H27"/>
@@ -611,8 +617,8 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="On_home" translatesAutoresizingMaskIntoConstraints="NO" id="vym-Za-988" userLabel="homeImage">
-                                                <rect key="frame" x="36.999999999999986" y="10" width="40" height="40"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="On_home" translatesAutoresizingMaskIntoConstraints="NO" id="vym-Za-988" userLabel="homeImage">
+                                                <rect key="frame" x="44.666666666666657" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="5Wg-RW-VLm"/>
                                                     <constraint firstAttribute="width" constant="40" id="R8i-Rv-5PF"/>
@@ -627,11 +633,11 @@
                                             <constraint firstItem="PXD-LL-bEm" firstAttribute="centerY" secondItem="YNL-WU-Ta8" secondAttribute="centerY" id="tT9-WO-uuN"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="soz-a7-V7l" userLabel="registerView">
-                                        <rect key="frame" x="229.66666666666663" y="0.0" width="160.33333333333337" height="60"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="soz-a7-V7l" userLabel="registerView">
+                                        <rect key="frame" x="260.66666666666669" y="0.0" width="129.33333333333331" height="60"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xhe-R5-H8h" userLabel="registerButton">
-                                                <rect key="frame" x="60.333333333333343" y="10" width="40" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xhe-R5-H8h" userLabel="registerButton">
+                                                <rect key="frame" x="44.666666666666629" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="eng-PM-YHM"/>
                                                     <constraint firstAttribute="height" constant="40" id="eoc-qq-4fg"/>
@@ -642,8 +648,8 @@
                                                     <segue destination="s1L-Qq-s4W" kind="show" id="Sa9-vK-weO"/>
                                                 </connections>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Off_register_dog" translatesAutoresizingMaskIntoConstraints="NO" id="RQa-m0-0AV" userLabel="registerImage">
-                                                <rect key="frame" x="60.333333333333343" y="10" width="40" height="40"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Off_register_dog" translatesAutoresizingMaskIntoConstraints="NO" id="RQa-m0-0AV" userLabel="registerImage">
+                                                <rect key="frame" x="44.666666666666629" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="7ag-Dv-QVu"/>
                                                     <constraint firstAttribute="height" constant="40" id="AcD-9j-tDw"/>
@@ -687,8 +693,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="avistadosButton" destination="t4S-VJ-z4B" id="Uaj-MB-OTx"/>
                         <outlet property="colorButton" destination="vdY-y3-HaB" id="MWA-B6-Z4T"/>
                         <outlet property="dogsCollectionView" destination="QOP-ca-Wud" id="VcE-9b-2xp"/>
+                        <outlet property="perdidosButton" destination="T3j-0L-LBA" id="TYI-4M-4FN"/>
                         <outlet property="raceButton" destination="3gA-BJ-0k7" id="X6v-E7-dp6"/>
                         <outlet property="sexButton" destination="k1u-7l-ukf" id="xve-Sb-Q68"/>
                         <outlet property="sizeButton" destination="VgA-RS-G8L" id="IjR-B6-Z26"/>
