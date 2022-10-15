@@ -25,8 +25,12 @@ class SingUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        setUpElements()
+    }
+    
+    func setUpElements(){
+        //hide error label
+        errorLabel.alpha = 0
     }
     
     //check the fileds and validate the data is correct
@@ -67,6 +71,7 @@ class SingUpViewController: UIViewController {
                     self.showError("Error al crear el usuario")
                 }
                 else{
+                    self.performSegue(withIdentifier: "singUpToHome", sender: nil)
                     //if there's no error, user was created succesfully
                     let db = Firestore.firestore()
                     
