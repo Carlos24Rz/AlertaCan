@@ -287,9 +287,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:backgroundTint="#FFFFFF"
             android:text="Editar"
             android:textColor="#01638D"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/id_owner_phone"
             app:strokeColor="#01638D"
@@ -301,24 +303,30 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="64dp"
+            android:layout_marginBottom="16dp"
             android:backgroundTint="#FFFFFF"
             android:text="Eliminar"
             android:textColor="#AA6122"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/id_owner_phone"
             app:strokeColor="#AA6122"
-            app:strokeWidth="1dp"/>
+            app:strokeWidth="1dp" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/id_btn_seen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
             android:backgroundTint="#01638D"
-            android:text="Ver matches"
+            android:text="Me has visto"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/id_btn_edit" />
+            app:layout_constraintTop_toBottomOf="@+id/id_owner_phone"
+            app:layout_constraintVertical_bias="1.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 
