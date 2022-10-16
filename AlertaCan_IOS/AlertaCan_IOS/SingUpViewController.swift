@@ -36,12 +36,14 @@ class SingUpViewController: UIViewController {
     //check the fileds and validate the data is correct
     func validateFields() -> String?{
         //check all fields are filled in
-        if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
+        if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || repeatPasswordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             return "por favor llene todos los espacios"
         }
         //check password is secure
         let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        if Utilities.isPasswordValid(cleanedPassword) == false {
+        let clePassword = repeatPasswordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if Utilities.isPasswordValid(cleanedPassword) == false && Utilities.isPasswordValid(clePassword) == false {
             //password isn't secure enough
             return "Asegurate que la contraseña sea de minimo 8 caracteres, tenga un numero y simbolo"
         }
@@ -62,7 +64,9 @@ class SingUpViewController: UIViewController {
             //this conects to the Auth
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let confirmPassword = repeatPasswordTextField.text!.trimmingCharacters(in:  .whitespacesAndNewlines)
             
+            if password == confirmPassword {
             //create the users
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
                 //check for errors
@@ -71,17 +75,20 @@ class SingUpViewController: UIViewController {
                     self.showError("Error al crear el usuario")
                 }
                 else{
-                    self.performSegue(withIdentifier: "singUpToHome", sender: nil)
                     //if there's no error, user was created succesfully
-                    let db = Firestore.firestore()
+                        let db = Firestore.firestore()
+                        self.performSegue(withIdentifier: "singUpToHome", sender: nil)
+                    }
+                    
                     
                     //transsition to form screen
-                    self.trasitionToForm()
+                    //self.trasitionToForm()
                 }
                 
             }
-                
-            
+            else{
+                self.showError("las contraseñas no coinciden")
+            }
             
         }
     }
@@ -89,12 +96,12 @@ class SingUpViewController: UIViewController {
         errorLabel.text = message
         errorLabel.alpha = 1
     }
-    func trasitionToForm(){
-        let formViewController =
-        storyboard?.instantiateViewController(identifier: Constants.Storyboard.formViewController) as?
-            FormViewController
-        
-        view.window?.rootViewController = formViewController; view.window?.makeKeyAndVisible()
-    }
+//    func trasitionToForm(){
+//        let formViewController =
+//        storyboard?.instantiateViewController(identifier: Constants.Storyboard.formViewController) as?
+//            FormViewController
+//
+//        view.window?.rootViewController = formViewController; view.window?.makeKeyAndVisible()
+//    }
     
 }

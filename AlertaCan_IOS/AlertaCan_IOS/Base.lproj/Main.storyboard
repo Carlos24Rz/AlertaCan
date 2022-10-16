@@ -184,7 +184,6 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Registrar"/>
                                 <connections>
                                     <action selector="singUpTapped:" destination="VuD-3G-4PN" eventType="touchUpInside" id="oeL-Lv-pO1"/>
-                                    <segue destination="rm2-3v-f5d" kind="presentation" identifier="singUpToHome" modalPresentationStyle="fullScreen" id="WK8-PM-VrA"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wc5-FE-yti">
@@ -248,6 +247,7 @@
                         <outlet property="passwordTextField" destination="6Sz-LH-qdB" id="oAn-cQ-j2e"/>
                         <outlet property="repeatPasswordTextField" destination="xkv-T4-xhg" id="CXC-kK-SYb"/>
                         <outlet property="singUpButton" destination="eSS-gC-BjM" id="mFg-qE-nJa"/>
+                        <segue destination="rm2-3v-f5d" kind="presentation" identifier="singUpToHome" modalPresentationStyle="fullScreen" id="6tf-vh-k1Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8lb-N7-VyE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
