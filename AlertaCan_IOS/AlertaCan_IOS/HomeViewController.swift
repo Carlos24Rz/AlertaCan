@@ -55,7 +55,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // ---------------------------------------------------
     @IBAction func changeScreen(_ sender: UIButton) {
         if sender == mapButton {
-            print("Moving to map")
+            performSegue(withIdentifier: "homeToMap", sender: nil)
         } else if sender == registerButton {
             performSegue(withIdentifier: "homeToForm", sender: nil)
         }

@@ -280,13 +280,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="center" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="FuU-em-9LM" userLabel="FilterStack">
-                                <rect key="frame" x="0.0" y="690" width="390" height="50"/>
+                                <rect key="frame" x="20" y="690" width="350" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sbp-SD-5d1" userLabel="SexView">
-                                        <rect key="frame" x="0.0" y="0.0" width="96" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="86" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sexo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="RMm-zR-hNy" userLabel="SexLabel">
-                                                <rect key="frame" x="18" y="0.0" width="60" height="25"/>
+                                                <rect key="frame" x="13" y="0.0" width="60" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="5fF-b1-JKi"/>
                                                     <constraint firstAttribute="width" constant="60" id="S1B-sJ-GIT"/>
@@ -296,7 +296,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXo-bw-g69" userLabel="SexButton">
-                                                <rect key="frame" x="0.0" y="25" width="96" height="20"/>
+                                                <rect key="frame" x="0.0" y="25" width="86" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="tF6-xm-yjV"/>
                                                 </constraints>
@@ -322,10 +322,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0A-wg-CrI" userLabel="RaceView">
-                                        <rect key="frame" x="98" y="0.0" width="96" height="50"/>
+                                        <rect key="frame" x="88" y="0.0" width="86" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raza" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Jqb-bx-rHr" userLabel="RaceLabel">
-                                                <rect key="frame" x="18" y="0.0" width="60" height="25"/>
+                                                <rect key="frame" x="13" y="0.0" width="60" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="1GZ-2x-hlF"/>
                                                     <constraint firstAttribute="height" constant="25" id="8aV-Ks-ro6"/>
@@ -335,7 +335,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yn9-W5-ddf" userLabel="RaceButton">
-                                                <rect key="frame" x="0.0" y="25" width="96" height="20"/>
+                                                <rect key="frame" x="0.0" y="25" width="86" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="CcZ-vY-0zg"/>
                                                 </constraints>
@@ -359,10 +359,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHf-cA-F5e" userLabel="ColorView">
-                                        <rect key="frame" x="196" y="0.0" width="96" height="50"/>
+                                        <rect key="frame" x="176" y="0.0" width="86" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="iTz-yx-dqX" userLabel="ColorLabel">
-                                                <rect key="frame" x="18" y="0.0" width="60" height="25"/>
+                                                <rect key="frame" x="13" y="0.0" width="60" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="clE-35-VFx"/>
                                                     <constraint firstAttribute="width" constant="60" id="jXu-eT-a4f"/>
@@ -372,7 +372,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDo-we-Fne" userLabel="ColorButton">
-                                                <rect key="frame" x="0.0" y="25" width="96" height="20"/>
+                                                <rect key="frame" x="0.0" y="25" width="86" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="PYQ-fV-fYG"/>
                                                 </constraints>
@@ -396,10 +396,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PHV-kd-gaG" userLabel="SizeView">
-                                        <rect key="frame" x="294" y="0.0" width="96" height="50"/>
+                                        <rect key="frame" x="264" y="0.0" width="86" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tamaño" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="INH-La-JhY" userLabel="SizeLabel">
-                                                <rect key="frame" x="18" y="0.0" width="60" height="25"/>
+                                                <rect key="frame" x="13" y="0.0" width="60" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="RNN-iz-ayw"/>
                                                     <constraint firstAttribute="height" constant="25" id="h7q-SO-XpZ"/>
@@ -409,7 +409,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWZ-Aq-yxw" userLabel="SizeButton">
-                                                <rect key="frame" x="0.0" y="25" width="96" height="20"/>
+                                                <rect key="frame" x="0.0" y="25" width="86" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="rTj-MW-fVz"/>
                                                 </constraints>
@@ -483,6 +483,9 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <action selector="changeScreen:" destination="n88-UW-7be" eventType="touchUpInside" id="bQU-2I-CBN"/>
+                                                </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Off_home" translatesAutoresizingMaskIntoConstraints="NO" id="eFt-qe-ZDu" userLabel="homeImage">
                                                 <rect key="frame" x="44.666666666666657" y="10" width="40" height="40"/>
@@ -511,6 +514,9 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <action selector="changeScreen:" destination="n88-UW-7be" eventType="touchUpInside" id="tUM-My-ADw"/>
+                                                </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Off_register_dog" translatesAutoresizingMaskIntoConstraints="NO" id="drF-iq-4k6" userLabel="registerImage">
                                                 <rect key="frame" x="44.666666666666629" y="10" width="40" height="40"/>
@@ -558,6 +564,9 @@
                                                 <color key="strokeColor" systemColor="opaqueSeparatorColor"/>
                                             </backgroundConfiguration>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="changeScreen:" destination="n88-UW-7be" eventType="touchUpInside" id="I4u-9c-NBF"/>
+                                        </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="go_back" translatesAutoresizingMaskIntoConstraints="NO" id="UkV-cW-xdY">
                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -580,21 +589,28 @@
                         <viewLayoutGuide key="safeArea" id="Q09-QQ-LSb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="FuU-em-9LM" firstAttribute="trailing" secondItem="iEJ-g5-pir" secondAttribute="trailing" id="11B-I4-cuj"/>
                             <constraint firstItem="5ul-H3-YUT" firstAttribute="leading" secondItem="iEJ-g5-pir" secondAttribute="leading" id="3zb-ZE-dUw"/>
                             <constraint firstItem="Q09-QQ-LSb" firstAttribute="bottom" secondItem="FuU-em-9LM" secondAttribute="bottom" constant="70" id="5M4-Up-6gU"/>
                             <constraint firstItem="41h-Qy-ndS" firstAttribute="leading" secondItem="Q09-QQ-LSb" secondAttribute="leading" constant="20" id="ARF-tG-qGl"/>
                             <constraint firstItem="1KI-Ic-KYF" firstAttribute="trailing" secondItem="iEJ-g5-pir" secondAttribute="trailing" id="Auk-nr-tdE"/>
-                            <constraint firstItem="FuU-em-9LM" firstAttribute="leading" secondItem="iEJ-g5-pir" secondAttribute="leading" id="BwB-NT-vsk"/>
                             <constraint firstItem="41h-Qy-ndS" firstAttribute="top" secondItem="Q09-QQ-LSb" secondAttribute="top" constant="20" id="CEw-3u-t3F"/>
+                            <constraint firstItem="FuU-em-9LM" firstAttribute="trailing" secondItem="iEJ-g5-pir" secondAttribute="trailing" constant="-20" id="E9B-Nt-HQo"/>
                             <constraint firstItem="5ul-H3-YUT" firstAttribute="top" secondItem="1KI-Ic-KYF" secondAttribute="bottom" constant="70" id="TVV-mL-J3D"/>
                             <constraint firstItem="1KI-Ic-KYF" firstAttribute="top" secondItem="iEJ-g5-pir" secondAttribute="top" id="WOZ-x3-etF"/>
                             <constraint firstItem="5ul-H3-YUT" firstAttribute="bottom" secondItem="Q09-QQ-LSb" secondAttribute="bottom" id="bbp-4y-HiH"/>
                             <constraint firstItem="5ul-H3-YUT" firstAttribute="trailing" secondItem="iEJ-g5-pir" secondAttribute="trailing" id="dli-w4-6mS"/>
                             <constraint firstItem="1KI-Ic-KYF" firstAttribute="leading" secondItem="iEJ-g5-pir" secondAttribute="leading" id="gVK-ln-Gmt"/>
+                            <constraint firstItem="FuU-em-9LM" firstAttribute="leading" secondItem="iEJ-g5-pir" secondAttribute="leading" constant="20" id="mdi-pR-DMu"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="cZW-Wc-7Kn" id="zM4-Cu-3Zj"/>
+                        <outlet property="colorButton" destination="WDo-we-Fne" id="Vcv-wM-3zF"/>
+                        <outlet property="homeButton" destination="wAc-rX-XaG" id="6rV-md-iha"/>
+                        <outlet property="raceButton" destination="Yn9-W5-ddf" id="DvA-VU-2rH"/>
+                        <outlet property="registerButton" destination="UEX-U7-Nxj" id="6wK-6n-ZUX"/>
+                        <outlet property="sexButton" destination="KXo-bw-g69" id="SLh-fe-0Id"/>
+                        <outlet property="sizeButton" destination="GWZ-Aq-yxw" id="FiQ-ka-vJn"/>
                         <segue destination="rm2-3v-f5d" kind="presentation" identifier="mapToHome" modalPresentationStyle="fullScreen" id="6eP-0y-InO"/>
                         <segue destination="bAt-gC-AqA" kind="presentation" identifier="mapToForm" modalPresentationStyle="fullScreen" id="yw1-6w-XQY"/>
                     </connections>
@@ -1045,6 +1061,7 @@
                         <outlet property="registerButton" destination="Xhe-R5-H8h" id="xn8-oh-88l"/>
                         <outlet property="sexButton" destination="k1u-7l-ukf" id="xve-Sb-Q68"/>
                         <outlet property="sizeButton" destination="VgA-RS-G8L" id="IjR-B6-Z26"/>
+                        <segue destination="n88-UW-7be" kind="presentation" identifier="homeToMap" modalPresentationStyle="fullScreen" id="S4x-m2-VyX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kNW-Fv-hh0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1589,6 +1606,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="yw1-6w-XQY"/>
         <segue reference="6eP-0y-InO"/>
+        <segue reference="S4x-m2-VyX"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Logo" width="514" height="510"/>

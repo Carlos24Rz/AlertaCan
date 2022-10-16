@@ -18,6 +18,7 @@
 		64AE821428FA21BC0042D864 /* DropDown in Frameworks */ = {isa = PBXBuildFile; productRef = 64AE821328FA21BC0042D864 /* DropDown */; };
 		64C3015C28F7749200E68F3D /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C3015B28F7749200E68F3D /* Dog.swift */; };
 		64CDE80028FCA4A7004D18D6 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CDE7FF28FCA4A7004D18D6 /* MapViewController.swift */; };
+		64CDE80228FCB7BD004D18D6 /* DogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CDE80128FCB7BD004D18D6 /* DogManager.swift */; };
 		A4900D7728F3CB100013203F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4900D7628F3CB100013203F /* LoginViewController.swift */; };
 		A4900D7928F3CB2A0013203F /* SingUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4900D7828F3CB2A0013203F /* SingUpViewController.swift */; };
 		A4900D7B28F3CFBF0013203F /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4900D7A28F3CFBF0013203F /* FormViewController.swift */; };
@@ -68,6 +69,7 @@
 		642F0E8A28F4DD1000C1469D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		64C3015B28F7749200E68F3D /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
 		64CDE7FF28FCA4A7004D18D6 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		64CDE80128FCB7BD004D18D6 /* DogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogManager.swift; sourceTree = "<group>"; };
 		A4900D7628F3CB100013203F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A4900D7828F3CB2A0013203F /* SingUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUpViewController.swift; sourceTree = "<group>"; };
 		A4900D7A28F3CFBF0013203F /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				070E7C9728B97656000C9B07 /* LaunchScreen.storyboard */,
 				070E7C9A28B97656000C9B07 /* Info.plist */,
 				A493C58A28F8CB740094FF27 /* GoogleService-Info.plist */,
+				64CDE80128FCB7BD004D18D6 /* DogManager.swift */,
 				A4900D7628F3CB100013203F /* LoginViewController.swift */,
 				64C3015B28F7749200E68F3D /* Dog.swift */,
 				A4900D7828F3CB2A0013203F /* SingUpViewController.swift */,
@@ -272,6 +275,7 @@
 				642F0E8928F4DCB600C1469D /* DogCollectionViewCell.swift in Sources */,
 				64C3015C28F7749200E68F3D /* Dog.swift in Sources */,
 				642F0E8B28F4DD1000C1469D /* HomeViewController.swift in Sources */,
+				64CDE80228FCB7BD004D18D6 /* DogManager.swift in Sources */,
 				070E7C9128B97655000C9B07 /* ViewController.swift in Sources */,
 				A4900D7928F3CB2A0013203F /* SingUpViewController.swift in Sources */,
 				070E7C8D28B97655000C9B07 /* AppDelegate.swift in Sources */,
