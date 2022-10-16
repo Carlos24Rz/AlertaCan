@@ -1,21 +1,19 @@
 package com.example.alertacan_android.activities.dogRegistration;
 
-import static android.app.PendingIntent.getActivity;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -26,11 +24,20 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.alertacan_android.R;
-import com.example.alertacan_android.activities.dogInfo.DogInfoActivity;
 import com.example.alertacan_android.activities.home.HomeActivity;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.AutocompletePrediction;
+import com.google.android.libraries.places.api.model.AutocompleteSessionToken;
+import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest;
+import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -44,12 +51,18 @@ import com.squareup.picasso.Picasso;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class DogRegistrationActivity extends AppCompatActivity  {
+
+    private static final long START_TIME_IN_MILLIS = 3000;
+    private CountDownTimer mCountDownTimer;
+    private boolean mTimerRunning;
+    private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
 
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
     public StorageReference reference;
@@ -66,7 +79,7 @@ public class DogRegistrationActivity extends AppCompatActivity  {
     Spinner spinnerSize;
     Spinner spinnerColor;
     Spinner spinnerSex;
-    EditText textLastTime;
+    AutoCompleteTextView textLastTime;
     EditText textDescription;
     EditText textPhone;
 
@@ -84,6 +97,8 @@ public class DogRegistrationActivity extends AppCompatActivity  {
     private String dogOwnerObj = "";
     private Date dogDateMissingObj;
     private String dogUrlObj;
+
+    private PlacesClient placesClient;
 
     // for the image
     private ImageView imageViewDog;
@@ -110,13 +125,15 @@ public class DogRegistrationActivity extends AppCompatActivity  {
         spinnerSize = (Spinner) findViewById(R.id.id_spinner_size);
         spinnerColor = (Spinner) findViewById(R.id.id_spinner_color);
         spinnerSex = (Spinner) findViewById(R.id.id_spinner_sex);
-        textLastTime = (EditText)findViewById(R.id.id_last_location);
+        textLastTime = (AutoCompleteTextView) findViewById(R.id.id_last_location);
         textDescription = (EditText)findViewById(R.id.id_dog_description);
         textPhone = (EditText)findViewById(R.id.id_phone);
 
+        if (!Places.isInitialized()) {
+            Places.initialize(getApplicationContext(),"AIzaSyAc9EcgUw9i8qLE7nHtxhBj6C6rbAT7Uo0");
+        }
 
-
-
+        placesClient = Places.createClient(this);
 
         // initialize date picker
         initDatePicker();
@@ -193,6 +210,24 @@ public class DogRegistrationActivity extends AppCompatActivity  {
             dogDateMissing = java.sql.Timestamp.valueOf(makeDateTimeStamp(dogDateMissingObj.getDate(), dogDateMissingObj.getMonth()+1, dogDateMissingObj.getYear()+1900));
         }
 
+        textLastTime.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (mTimerRunning) {
+                    mCountDownTimer.cancel();
+                    mTimeLeftInMillis = START_TIME_IN_MILLIS;
+                }
+                startTimer(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+
+
         // event listener fot the submit button
         Button btnSubmit = findViewById(R.id.id_btn_submit);
         if(DOG_ID == null){
@@ -203,6 +238,55 @@ public class DogRegistrationActivity extends AppCompatActivity  {
             updateDog(btnSubmit);
         }
     }
+
+    private void startTimer(String query) {
+        mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
+            @Override
+            public void onTick(long l) {
+                mTimeLeftInMillis = l;
+            }
+
+            @Override
+            public void onFinish() {
+                mTimerRunning = false;
+                mTimeLeftInMillis = START_TIME_IN_MILLIS;
+                predictAddress(query);
+            }
+        }.start();
+
+        mTimerRunning = true;
+    }
+
+    private void predictAddress(String query){
+        AutocompleteSessionToken token = AutocompleteSessionToken.newInstance();
+
+        FindAutocompletePredictionsRequest request = FindAutocompletePredictionsRequest.builder()
+                .setSessionToken(token)
+                .setQuery(query)
+                .build();
+
+        placesClient.findAutocompletePredictions(request).addOnSuccessListener((response) -> {
+            ArrayList<String> predictions = new ArrayList<String>();
+
+            for (AutocompletePrediction prediction: response.getAutocompletePredictions()) {
+                predictions.add(prediction.getFullText(null).toString());
+            }
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_list_item_1, predictions);
+
+            textLastTime.setAdapter(adapter);
+            textLastTime.showDropDown();
+
+        }).addOnFailureListener((exception) -> {
+            if (exception instanceof ApiException) {
+                ApiException apiException = (ApiException) exception;
+                Log.e("Place Error", "Place not found: " + apiException.getStatusCode());
+            }
+        });
+
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

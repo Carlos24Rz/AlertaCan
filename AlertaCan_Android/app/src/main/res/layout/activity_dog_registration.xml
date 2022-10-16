@@ -265,15 +265,13 @@
             app:layout_constraintStart_toStartOf="@+id/textView20"
             app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/id_last_location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:ems="10"
             android:hint="Calle Madero, junto al Walmart"
-            android:inputType="textPersonName"
-            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView17"
             app:layout_constraintTop_toBottomOf="@+id/textView17" />
