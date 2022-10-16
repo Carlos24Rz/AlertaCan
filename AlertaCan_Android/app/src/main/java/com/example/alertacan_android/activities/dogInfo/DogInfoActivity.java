@@ -29,10 +29,14 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
+import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 public class DogInfoActivity extends AppCompatActivity {
+
+    public FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     TextView stateTextView;
     TextView nameTextView;
@@ -71,7 +75,7 @@ public class DogInfoActivity extends AppCompatActivity {
 
     Dialog dialogSeen;
     ImageView imgDog;
-    TextView inputName;
+    TextView inputPhone;
     TextView inputLastTime;
     TextView inputMsg;
     Button btnDialogSubmit;
@@ -271,7 +275,7 @@ public class DogInfoActivity extends AppCompatActivity {
                 .into(imgDog);
 
 
-        inputName = dialogSeen.findViewById(R.id.id_dialog_name);
+        inputPhone = dialogSeen.findViewById(R.id.id_dialog_name);
         inputLastTime = dialogSeen.findViewById(R.id.id_dialog_id_seen);
         inputMsg = dialogSeen.findViewById(R.id.id_dialog_msg);
         btnDialogSubmit = dialogSeen.findViewById(R.id.id_dialog_btn_submit);
@@ -279,17 +283,45 @@ public class DogInfoActivity extends AppCompatActivity {
         btnDialogSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String nameObj = inputName.getText().toString();
+                String phoneObj = inputPhone.getText().toString();
                 String lastTimeObj = inputLastTime.getText().toString();
                 String msgObj = inputMsg.getText().toString();
 
-                if(nameObj.equals("") || lastTimeObj.equals("") || msgObj.equals("")){
+                if(lastTimeObj.equals("") || msgObj.equals("")){
                     Toast.makeText(DogInfoActivity.this, "Por favor, llena todos los campos", Toast.LENGTH_SHORT).show();
                 }else{
 
-                    Log.d("dialog", nameObj);
-                    Log.d("dialog", lastTimeObj);
-                    Log.d("dialog", msgObj);
+                    Map<String, Object> newSighting = new HashMap<>();
+                    newSighting.put("phone", phoneObj);
+                    newSighting.put("lastLocation", lastTimeObj);
+                    newSighting.put("msg", msgObj);
+
+                    Timestamp sightingObj = new Timestamp(System.currentTimeMillis());
+                    newSighting.put("date_sighting", sightingObj);
+
+                    newSighting.put("dogId", DOG_ID);
+                    newSighting.put("dogName", dogName);
+
+                    db.collection("sightings")
+                            .add(newSighting)
+                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                @Override
+                                public void onSuccess(DocumentReference documentReference) {
+                                    Toast.makeText(DogInfoActivity.this, "Avistamiento registrado", Toast.LENGTH_SHORT).show();
+                                    dialogSeen.dismiss();
+//                                    Intent myIntent = new Intent(DogRegistrationActivity.this, HomeActivity.class);
+//                                    DogRegistrationActivity.this.startActivity(myIntent);
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(DogInfoActivity.this, "Error al registrar avistamiento", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+
+
                 }
             }
         });
