@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.alertacan_android.R;
 import com.example.alertacan_android.activities.dogInfo.DogInfoActivity;
@@ -35,10 +36,12 @@ public class DogListFragment extends Fragment implements RecyclerViewInterface {
     private CollectionReference notebookRef = db.collection("dogs");
 
     private DogCardAdapter adapter;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private List<Dog> mDogs;
 
     private int fragmentValue;
+    private String email;
 
     private View mView;
 
@@ -54,13 +57,27 @@ public class DogListFragment extends Fragment implements RecyclerViewInterface {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Bundle args = getArguments();
+
+        fragmentValue = getArguments().getInt("menuVal");
+        email = getArguments().getString("userEmail");
+
+        swipeRefreshLayout = view.findViewById(R.id.refreshDogList);
         recyclerView = view.findViewById(R.id.dogListRecylerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(mView.getContext()));
-        mDogs = new ArrayList<>();
 
-        fragmentValue = args.getInt("menuVal");
+        loadDogs();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadDogs();
+            }
+        });
+    }
+
+    private void loadDogs(){
+        mDogs = new ArrayList<>();
 
         Query query;
 
@@ -69,18 +86,18 @@ public class DogListFragment extends Fragment implements RecyclerViewInterface {
                 //get "encontrados" dogs
                 query = notebookRef
                         .whereEqualTo("state","Encontrado")
-                        .whereNotEqualTo("user", args.getString("userEmail"));
+                        .whereNotEqualTo("user", email);
                 break;
             case 1:
                 //get "perdidos" dogs
                 query = notebookRef
                         .whereEqualTo("state","Perdido")
-                        .whereNotEqualTo("user", args.getString("userEmail"));
+                        .whereNotEqualTo("user", email);
                 break;
             default:
                 //get user dogs
                 query = notebookRef
-                        .whereEqualTo("user",args.getString("userEmail"));
+                        .whereEqualTo("user", email);
                 break;
         }
 
@@ -104,6 +121,8 @@ public class DogListFragment extends Fragment implements RecyclerViewInterface {
                         } else {
                             Log.e("PopulateDogFragment", "Error getting documents: ", task.getException());
                         }
+
+                        swipeRefreshLayout.setRefreshing(false);
                     }
                 });
     }
