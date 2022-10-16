@@ -1,5 +1,6 @@
 package com.example.alertacan_android.activities.dogInfo;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,13 +8,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.alertacan_android.R;
 import com.example.alertacan_android.activities.dogRegistration.DogRegistrationActivity;
+import com.example.alertacan_android.activities.home.HomeActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -180,6 +186,44 @@ public class DogInfoActivity extends AppCompatActivity {
 
 
                 DogInfoActivity.this.startActivity(myIntent);
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AlertDialog.Builder(DogInfoActivity.this)
+                        .setTitle("Eliminar perro")
+                        .setMessage("¿Deseas borrar a " + dogName + " de tu cuenta?")
+
+                        // Specifying a listener allows you to take an action before dismissing the dialog.
+                        // The dialog is automatically dismissed when a dialog button is clicked.
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Continue with delete operation
+                                db.collection("dogs").document(DOG_ID)
+                                        .delete()
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Toast.makeText(DogInfoActivity.this, dogName + " ha sido borrado exitosamente", Toast.LENGTH_SHORT).show();
+                                                Intent myIntent = new Intent(DogInfoActivity.this, HomeActivity.class);
+                                                DogInfoActivity.this.startActivity(myIntent);
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Toast.makeText(DogInfoActivity.this, "Ocurrió un error al borrar al perro", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                            }
+                        })
+
+                        // A null listener allows the button to dismiss the dialog and take no further action.
+                        .setNegativeButton(android.R.string.no, null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
             }
         });
 

@@ -1,5 +1,7 @@
 package com.example.alertacan_android.activities.dogRegistration;
 
+import static android.app.PendingIntent.getActivity;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +27,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.alertacan_android.R;
+import com.example.alertacan_android.activities.dogInfo.DogInfoActivity;
+import com.example.alertacan_android.activities.home.HomeActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -109,6 +113,10 @@ public class DogRegistrationActivity extends AppCompatActivity  {
         textLastTime = (EditText)findViewById(R.id.id_last_location);
         textDescription = (EditText)findViewById(R.id.id_dog_description);
         textPhone = (EditText)findViewById(R.id.id_phone);
+
+
+
+
 
         // initialize date picker
         initDatePicker();
@@ -374,6 +382,8 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                                     @Override
                                     public void onSuccess(DocumentReference documentReference) {
                                         Toast.makeText(DogRegistrationActivity.this, "Perro registrado", Toast.LENGTH_SHORT).show();
+                                        Intent myIntent = new Intent(DogRegistrationActivity.this, HomeActivity.class);
+                                        DogRegistrationActivity.this.startActivity(myIntent);
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
