@@ -17,6 +17,7 @@
 		642F0E8B28F4DD1000C1469D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642F0E8A28F4DD1000C1469D /* HomeViewController.swift */; };
 		64AE821428FA21BC0042D864 /* DropDown in Frameworks */ = {isa = PBXBuildFile; productRef = 64AE821328FA21BC0042D864 /* DropDown */; };
 		64C3015C28F7749200E68F3D /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C3015B28F7749200E68F3D /* Dog.swift */; };
+		64CDE80028FCA4A7004D18D6 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CDE7FF28FCA4A7004D18D6 /* MapViewController.swift */; };
 		A4900D7728F3CB100013203F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4900D7628F3CB100013203F /* LoginViewController.swift */; };
 		A4900D7928F3CB2A0013203F /* SingUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4900D7828F3CB2A0013203F /* SingUpViewController.swift */; };
 		A4900D7B28F3CFBF0013203F /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4900D7A28F3CFBF0013203F /* FormViewController.swift */; };
@@ -66,6 +67,7 @@
 		642F0E8828F4DCB600C1469D /* DogCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCollectionViewCell.swift; sourceTree = "<group>"; };
 		642F0E8A28F4DD1000C1469D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		64C3015B28F7749200E68F3D /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
+		64CDE7FF28FCA4A7004D18D6 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A4900D7628F3CB100013203F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A4900D7828F3CB2A0013203F /* SingUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUpViewController.swift; sourceTree = "<group>"; };
 		A4900D7A28F3CFBF0013203F /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				A4900D7628F3CB100013203F /* LoginViewController.swift */,
 				64C3015B28F7749200E68F3D /* Dog.swift */,
 				A4900D7828F3CB2A0013203F /* SingUpViewController.swift */,
+				64CDE7FF28FCA4A7004D18D6 /* MapViewController.swift */,
 				642F0E8A28F4DD1000C1469D /* HomeViewController.swift */,
 				A4900D7A28F3CFBF0013203F /* FormViewController.swift */,
 				642F0E8828F4DCB600C1469D /* DogCollectionViewCell.swift */,
@@ -275,6 +278,7 @@
 				A493C58F28F9E3ED0094FF27 /* MyViewController.swift in Sources */,
 				A493C58D28F8E9820094FF27 /* InfoViewController.swift in Sources */,
 				070E7C8F28B97655000C9B07 /* SceneDelegate.swift in Sources */,
+				64CDE80028FCA4A7004D18D6 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

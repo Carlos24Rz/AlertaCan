@@ -17,6 +17,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // Collection View
     @IBOutlet weak var dogsCollectionView: UICollectionView!
     
+    // Nav buttons
+    @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var mapButton: UIButton!
+    
+    
     // Filter buttons
     @IBOutlet weak var sexButton: UIButton!
     @IBOutlet weak var raceButton: UIButton!
@@ -45,7 +50,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // Collection to display on screen after filters:
     var filteredCollection : [Dog] = []
     
-    // Filter buttons
+    // ---------------------------------------------------
+    // ---------------- MOVE BETWEEN PAGES ---------------
+    // ---------------------------------------------------
+    @IBAction func changeScreen(_ sender: UIButton) {
+        if sender == mapButton {
+            print("Moving to map")
+        } else if sender == registerButton {
+            performSegue(withIdentifier: "homeToForm", sender: nil)
+        }
+    }
+    
     
     
     // ---------------------------------------------------
