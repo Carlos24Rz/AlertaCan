@@ -18,6 +18,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.alertacan_android.R;
+import com.example.alertacan_android.activities.dogMessages.DogMessagesActivity;
 import com.example.alertacan_android.activities.dogRegistration.DogRegistrationActivity;
 import com.example.alertacan_android.activities.home.HomeActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -121,6 +122,15 @@ public class DogInfoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 showDialogSeen();
 
+            }
+        });
+
+        btnNot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(DogInfoActivity.this, DogMessagesActivity.class);
+                myIntent.putExtra("dog_id_intent", DOG_ID);
+                startActivity(myIntent);
             }
         });
 

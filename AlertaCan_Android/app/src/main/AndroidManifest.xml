@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.alertacan_android">
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -23,28 +22,26 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".activities.dogMessages.DogMessagesActivity"/>
         <activity android:name=".activities.map.MapActivity" />
-        <activity android:name= ".activities.dogInfo.DogInfoActivity"/>
-        <activity android:name=".activities.dogRegistration.DogRegistrationActivity"/>
-        <activity android:name=".activities.home.HomeActivity"/>
-        <activity android:name=".activities.signup.SignupActivity"/>
-        <activity android:name=".activities.resetPassword.ResetPasswordActivity"/>
+        <activity android:name=".activities.dogInfo.DogInfoActivity" />
+        <activity android:name=".activities.dogRegistration.DogRegistrationActivity" />
+        <activity android:name=".activities.home.HomeActivity" />
+        <activity android:name=".activities.signup.SignupActivity" />
+        <activity android:name=".activities.resetPassword.ResetPasswordActivity" />
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-
 </manifest>
