@@ -127,8 +127,7 @@ public class MapActivity extends AppCompatActivity
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 String dogName = (String) document.getData().get("name");
-
-                                URL dogImage = (URL) document.getData().get("imageUrl");
+                                String dogBreed = (String) document.getData().get("breed");
 
                                 String placeId = (String) document.getData().get("placeID");
                                 final List<Place.Field> placeFields = Arrays.asList(Place.Field.LAT_LNG);
@@ -149,7 +148,7 @@ public class MapActivity extends AppCompatActivity
                                             LatLng dogLocation = new LatLng(dogLat, dogLon);
                                             googleMap.addMarker(new MarkerOptions()
                                                     .position(dogLocation)
-                                                    .title(dogName)
+                                                    .title(dogName + " - " + dogBreed)
                                                     .icon(BitmapDescriptorFactory
                                                             .fromResource(R.drawable.dog_marker)));
 

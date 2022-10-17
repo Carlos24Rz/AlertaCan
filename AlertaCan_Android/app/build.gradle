@@ -64,4 +64,7 @@ dependencies {
 
     // location service
     implementation 'com.google.android.gms:play-services-location:21.0.0'
+
+    // markers
+    implementation 'com.google.maps.android:android-maps-utils:2.3.0'
 }
