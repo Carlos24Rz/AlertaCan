@@ -48,8 +48,6 @@ class DogManager {
                 self.filteredCollection.append(dog)
             }
             completion()
-            print("Checking handler")
-            print(self.filteredCollection)
         }
     }
 

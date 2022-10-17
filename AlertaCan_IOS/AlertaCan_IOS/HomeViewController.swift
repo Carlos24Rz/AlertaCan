@@ -6,10 +6,6 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseCore
-import Firebase
-import FirebaseFirestore
 import DropDown
 import SwiftUI
 
@@ -46,9 +42,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     let dropDown = DropDown()
     
     // Dog Manager
-    let dogManager = DogManager()
+    var dogManager = DogManager()
 
-    // General database
     // Collection to display on screen after filters:
     var filteredCollection : [Dog] = []
     
@@ -63,7 +58,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "homeToMap") {
+            let destinationVC = segue.destination as! MapViewController
+            destinationVC.dogManager = self.dogManager
+            destinationVC.filteredCollection = self.filteredCollection
+        }
+    }
     
     // ---------------------------------------------------
     // ------------------ VIEW DID LOAD ------------------
@@ -79,11 +80,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             () -> Void in
             self.filteredCollection = self.dogManager.getCollection()
             self.dogsCollectionView.reloadData()
-            print("Done")
-            print(self.filteredCollection)
         }
-        print("-----")
-        print(filteredCollection)
         super.viewDidLoad()
     }
 
@@ -140,7 +137,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     
     // ---------------------------------------------------
-    // ----------------- APPLY FILTERS -------------------
+    // -------------------- FILTERS ----------------------
     // ---------------------------------------------------
     @IBAction func filterPressed(_ sender: UIButton) {
         if sender == sexButton {

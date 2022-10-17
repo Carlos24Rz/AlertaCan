@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DropDown
 
 class MapViewController: UIViewController {
     
@@ -19,6 +20,22 @@ class MapViewController: UIViewController {
     @IBOutlet weak var raceButton: UIButton!
     @IBOutlet weak var colorButton: UIButton!
     @IBOutlet weak var sizeButton: UIButton!
+    
+    // Filter options
+    let sexOptions : [String] = ["Todos", "Macho", "Hembra"]
+    let raceOptions : [String] = ["Todos", "Mestizo", "Husky", "Labrador", "Chihuahua", "Pastor Alemán", "Dálmata"]
+    let colorOptions : [String] = ["Todos", "Amarillo", "Café", "Blanco", "Negro", "Gris"]
+    let sizeOptions : [String] = ["Todos", "Pequeño", "Mediano", "Grande"]
+    
+    // Dropdown menus
+    let dropDown = DropDown()
+    
+    // Dog Manager
+    var dogManager : DogManager? = nil
+    
+    // Collection to display on screen after filters:
+    var filteredCollection : [Dog]? = nil
+    
     
     // ---------------------------------------------------
     // ---------------- MOVE BETWEEN PAGES ---------------
@@ -43,18 +60,9 @@ class MapViewController: UIViewController {
         for button in buttonCollection {
             initializeButtonFormat(button: button)
         }
+        print(filteredCollection!)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     // ---------------------------------------------------
     // ----------------- BUTTONS FORMAT ------------------
@@ -67,5 +75,4 @@ class MapViewController: UIViewController {
         button.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 12)
         button.setTitle("Todos", for: .normal)
     }
-
 }
