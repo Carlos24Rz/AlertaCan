@@ -28,7 +28,7 @@ class DogManager {
     // ---------------------------------------------------
     // ------------------- FETCH DATA --------------------
     // ---------------------------------------------------
-    func fetchFromDatabase() {
+    func fetchFromDatabase(completion: @escaping () -> Void) {
         // Connect to the database
         let db = Firestore.firestore()
         // Retrieve all dogs
@@ -47,9 +47,14 @@ class DogManager {
             for dog in self.dogsCollection {
                 self.filteredCollection.append(dog)
             }
+            completion()
+            print("Checking handler")
+            print(self.filteredCollection)
         }
     }
 
+    
+    
     // ---------------------------------------------------
     // --------------------- FILTERS ---------------------
     // ---------------------------------------------------
@@ -79,8 +84,30 @@ class DogManager {
         filteredValues[key] = value
     }
     
+    func restartFilters() {
+        filteredValues = [
+            "status" : "Perdido",
+            "sex" : "Todos",
+            "size" : "Todos",
+            "race" : "Todos",
+            "color" : "Todos"
+        ]
+    }
+    
+    // ---------------------------------------------------
+    // --------------------- GETTERS ---------------------
+    // ---------------------------------------------------
+    
+    func getAllCollection() -> [Dog] {
+        return dogsCollection
+    }
+    
     func getCollection() -> [Dog] {
         return filteredCollection
+    }
+    
+    func getFilterValues() -> [String : String] {
+        return filteredValues
     }
     
 }

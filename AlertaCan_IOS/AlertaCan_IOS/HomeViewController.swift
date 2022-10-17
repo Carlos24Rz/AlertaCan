@@ -11,6 +11,7 @@ import FirebaseCore
 import Firebase
 import FirebaseFirestore
 import DropDown
+import SwiftUI
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -44,9 +45,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // Dropdown menus
     let dropDown = DropDown()
     
+    // Dog Manager
+    let dogManager = DogManager()
+
     // General database
-    var dogsCollection : [Dog] = []
-    // TODO: Create a copy to filter according to the properties
     // Collection to display on screen after filters:
     var filteredCollection : [Dog] = []
     
@@ -73,34 +75,21 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         for button in buttonCollection {
             initializeButtonFormat(button: button)
         }
-        // ------- DATABASE ------
-        // Connect to the database
-        let db = Firestore.firestore()
-        // Retrieve all dogs
-        db.collection("dogs").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    // for each dog create a dog object and add it to dogs collection
-                    let newDog = Dog(dog: document.data())
-                    self.dogsCollection.append(newDog)
-                }
-            }
-            // Filter dogs with Perdido status and show those
-            // Perdido status is the default
-            for dog in self.dogsCollection {
-                if (dog.state == "Perdido") {
-                    self.filteredCollection.append(dog)
-                }
-            }
-            // Update data after fetching and filter is done
+        dogManager.fetchFromDatabase() {
+            () -> Void in
+            self.filteredCollection = self.dogManager.getCollection()
             self.dogsCollectionView.reloadData()
-            super.viewDidLoad()
+            print("Done")
+            print(self.filteredCollection)
         }
-
-        //authenticateUserAndConfigureView()
+        print("-----")
+        print(filteredCollection)
+        super.viewDidLoad()
     }
+
+
+    
+        //authenticateUserAndConfigureView()
     
     // ---------------------------------------------------
     // ----------------- COLLECTION VIEW -----------------
@@ -135,10 +124,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             currentStatusButton = sender
             if (status == "Perdido") {
                 status = "Encontrado"
+                dogManager.changeFilter(key: "status", value: "Encontrado")
                 avistadosButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
                 perdidosButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
             } else {
                 status = "Perdido"
+                dogManager.changeFilter(key: "status", value: "Perdido")
                 perdidosButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
                 avistadosButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
             }
@@ -173,24 +164,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func applyFilters(status : String, sex : String, size : String, race : String, color : String) {
-        filteredCollection = []
-        for dog in dogsCollection {
-            if (status == dog.state) {
-                if (sex != "Todos") {
-                    if (dog.sex != sex) {continue}
-                }
-                if (size != "Todos") {
-                    if (dog.size != size) {continue}
-                }
-                if (color != "Todos") {
-                    if (dog.color != color) {continue}
-                }
-                if (race != "Todos") {
-                    if (dog.breed != race) {continue}
-                }
-                filteredCollection.append(dog)
-            }
-        }
+        dogManager.changeFilter(key: "status", value: status)
+        dogManager.changeFilter(key: "sex", value: sex)
+        dogManager.changeFilter(key: "size", value: size)
+        dogManager.changeFilter(key: "race", value: race)
+        dogManager.changeFilter(key: "color", value: color)
+        dogManager.applyFilters()
+        filteredCollection = dogManager.getCollection()
         self.dogsCollectionView.reloadData()
     }
     
@@ -241,6 +221,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 extension UIImageView {
     func loadFrom(URLAddres: String) {
         guard let url = URL(string: URLAddres) else {return}
+        self.image = UIImage(named: "loadingDog")
         DispatchQueue.main.async { [weak self] in
             if let imageData = try? Data(contentsOf: url) {
                 if let loadedImage = UIImage(data: imageData) {
