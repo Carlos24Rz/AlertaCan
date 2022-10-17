@@ -15,6 +15,8 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var mapButton: UIButton!
     
+    private let storage = Storage.storage().reference()
+    
     @IBAction func changeScreen(_ sender: UIButton) {
         if (sender == homeButton) {
             performSegue(withIdentifier: "formToHome", sender: nil)
@@ -33,6 +35,7 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Do any additional setup after loading the view.
     }
     
+    
     //action when we tapped the upload photo
     @IBAction func uploadTapped() {
         let picker = UIImagePickerController()
@@ -42,18 +45,38 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         present(picker, animated: true)
     }
     
-    //User finish picking a image
+    //User finish picking an image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        
         picker.dismiss(animated: true, completion: nil)
+        
         guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else{
             return
         }
+        //show the image that the user select
+        DispatchQueue.main.async {
+            self.uploadImageView.image = image
+        }
+        
         guard let imageData = image.pngData() else{
             return
         }
-        //upload image data
-        
+        //Specify the file and path name
+        let path = "images/\(UUID().uuidString).png"
+        let fileRef = storage.child(path)
+        //upload the data
+        fileRef.putData(imageData, metadata: nil, completion: { _, error in
+            guard error == nil else{
+                return
+            }
+            //upload image to firestore data
+            let db = Firestore.firestore()
+            db.collection("images").document().setData(["url" : path])
+        })
+    
     }
+    
+    
     //picker it's cancel
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
         picker.dismiss(animated: true, completion: nil)
