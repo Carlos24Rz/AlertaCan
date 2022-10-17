@@ -68,7 +68,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailEditText"
-            android:singleLine="true"
+            android:maxLines="1"
             android:scrollHorizontally="true"
             android:layout_width="match_parent"
             android:layout_height="64dp" />

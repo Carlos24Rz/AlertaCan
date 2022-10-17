@@ -12,6 +12,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -30,6 +31,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.alertacan_android.R;
 import com.example.alertacan_android.activities.home.HomeActivity;
+import com.example.alertacan_android.adapters.AddressPredictionArrayAdapter;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -55,11 +57,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DogRegistrationActivity extends AppCompatActivity  {
 
-    private static final long START_TIME_IN_MILLIS = 3000;
+    private static final long START_TIME_IN_MILLIS = 1000;
     private CountDownTimer mCountDownTimer;
     private boolean mTimerRunning;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
@@ -90,7 +93,7 @@ public class DogRegistrationActivity extends AppCompatActivity  {
     private String dogSizeObj = "";
     private String dogColorObj = "";
     private String dogSexObj = "";
-    private String dogLastLocationSeenObj = "";
+    private String dogLastLocationSeenObj = null;
     private Timestamp dogDateMissing;
     private String dogPhoneObj = "";
     private String dogDescriptionObj = "";
@@ -99,6 +102,7 @@ public class DogRegistrationActivity extends AppCompatActivity  {
     private String dogUrlObj;
 
     private PlacesClient placesClient;
+    private String dogPlaceIdObj;
 
     // for the image
     private ImageView imageViewDog;
@@ -120,14 +124,14 @@ public class DogRegistrationActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_dog_registration);
 
         // views
-        textName = (EditText)findViewById(R.id.id_dog_name);
-        spinnerBreed = (Spinner) findViewById(R.id.id_spinner_breeds);
-        spinnerSize = (Spinner) findViewById(R.id.id_spinner_size);
-        spinnerColor = (Spinner) findViewById(R.id.id_spinner_color);
-        spinnerSex = (Spinner) findViewById(R.id.id_spinner_sex);
-        textLastTime = (AutoCompleteTextView) findViewById(R.id.id_last_location);
-        textDescription = (EditText)findViewById(R.id.id_dog_description);
-        textPhone = (EditText)findViewById(R.id.id_phone);
+        textName = findViewById(R.id.id_dog_name);
+        spinnerBreed = findViewById(R.id.id_spinner_breeds);
+        spinnerSize = findViewById(R.id.id_spinner_size);
+        spinnerColor = findViewById(R.id.id_spinner_color);
+        spinnerSex = findViewById(R.id.id_spinner_sex);
+        textLastTime = findViewById(R.id.id_last_location);
+        textDescription = findViewById(R.id.id_dog_description);
+        textPhone = findViewById(R.id.id_phone);
 
         if (!Places.isInitialized()) {
             Places.initialize(getApplicationContext(),"AIzaSyAc9EcgUw9i8qLE7nHtxhBj6C6rbAT7Uo0");
@@ -174,6 +178,7 @@ public class DogRegistrationActivity extends AppCompatActivity  {
             dogSizeObj = extras.getString("dog_size_intent");
             dogColorObj = extras.getString("dog_color_intent");
             dogSexObj = extras.getString("dog_sex_intent");
+            dogPlaceIdObj = extras.getString("dog_placeId_intent");
             dogLastLocationSeenObj = extras.getString("dog_last_time_intent");
             dogDescriptionObj = extras.getString("dog_description_intent");
             dogPhoneObj = extras.getString("dog_phone_intent");
@@ -216,15 +221,32 @@ public class DogRegistrationActivity extends AppCompatActivity  {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (mTimerRunning) {
-                    mCountDownTimer.cancel();
-                    mTimeLeftInMillis = START_TIME_IN_MILLIS;
+                if (!textLastTime.isPerformingCompletion()){
+                    dogLastLocationSeenObj = null;
+                    dogPlaceIdObj = "";
+
+                    textLastTime.dismissDropDown();
+                    if (mTimerRunning) {
+                        mCountDownTimer.cancel();
+                        mTimeLeftInMillis = START_TIME_IN_MILLIS;
+                    }
+                    startTimer(charSequence.toString());
+                } else {
+                    Log.i("AutoComplete", "Address has been selected");
+                    dogLastLocationSeenObj = textLastTime.getText().toString();
                 }
-                startTimer(charSequence.toString());
             }
 
             @Override
             public void afterTextChanged(Editable editable) {}
+        });
+
+        textLastTime.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                AutocompletePrediction prediction = (AutocompletePrediction) adapterView.getItemAtPosition(i);
+                dogPlaceIdObj = prediction.getPlaceId();
+            }
         });
 
 
@@ -266,14 +288,9 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                 .build();
 
         placesClient.findAutocompletePredictions(request).addOnSuccessListener((response) -> {
-            ArrayList<String> predictions = new ArrayList<String>();
 
-            for (AutocompletePrediction prediction: response.getAutocompletePredictions()) {
-                predictions.add(prediction.getFullText(null).toString());
-            }
-
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                    android.R.layout.simple_list_item_1, predictions);
+            List<AutocompletePrediction> predictions = new ArrayList<>(response.getAutocompletePredictions());
+            AddressPredictionArrayAdapter adapter = new AddressPredictionArrayAdapter(this,predictions);
 
             textLastTime.setAdapter(adapter);
             textLastTime.showDropDown();
@@ -284,19 +301,19 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                 Log.e("Place Error", "Place not found: " + apiException.getStatusCode());
             }
         });
-
     }
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if ( requestCode==2 && resultCode==RESULT_OK && data!=null){
+        if ( requestCode== 2 && resultCode==RESULT_OK && data!=null){
             imageUri = data.getData();
             imageViewDog.setImageURI(imageUri);
         }
     }
 
+    //for new Dog
     public void submitDog(Button btnSubmit){
         btnSubmit.setOnClickListener(
                 new View.OnClickListener()
@@ -304,7 +321,6 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                     public void onClick(View view)
                     {
                         if (imageUri!=null && dogNameObj!=null && dogLastLocationSeenObj!=null && dogPhoneObj!=null && dogDescriptionObj!=null && dogDateMissing!=null){
-                            // if all the inputs are filled, upload to firebase
                             uploadToFirebase(imageUri);
                         } else{
                             Toast.makeText(DogRegistrationActivity.this, "Por favor llena todos los campos", Toast.LENGTH_SHORT).show();
@@ -313,12 +329,42 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                 });
     }
 
+    //for existing Dog
     public void updateDog(Button btnSubmit){
         btnSubmit.setOnClickListener(
                 new View.OnClickListener()
                 {
                     public void onClick(View view)
                     {
+                        if (dogNameObj!=null && dogLastLocationSeenObj!=null && dogPhoneObj!=null && dogDescriptionObj!=null){
+                            updateFirebaseRecord();
+                        } else{
+                            Toast.makeText(DogRegistrationActivity.this, "Por favor llena todos los campos", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    private void updateFirebaseRecord(){
+        if (imageUri != null) {
+            //agregar nueva imagen a la de base de datos
+            updateRecordWithImage();
+        } else {
+            //modificar documento sin la imagen
+            updateRecordNoImage();
+        }
+    }
+
+    private void updateRecordWithImage(){
+        final StorageReference fileRef = reference.child( "uploads/" + System.currentTimeMillis() + "." + getFileExtension(imageUri));
+        fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+
+                    // the images was successfully submited to firebase
+                    @Override
+                    public void onSuccess(Uri uri) {
                         Map<String, Object> newDog = new HashMap<>();
 
                         // Getting dog is yours
@@ -350,12 +396,15 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                         newDog.put("sex", dogSexObj);
 
                         // Getting dog last time location
-                        dogLastLocationSeenObj = textLastTime.getText().toString();
                         newDog.put("last_time_location", dogLastLocationSeenObj);
 
                         // Getting date missing
                         dogDateMissingObj = dogDateMissing;
                         newDog.put("date_missing", dogDateMissingObj);
+
+                        // Getting date registration
+                        Timestamp dogDateRegistrationObj = new Timestamp(System.currentTimeMillis());
+                        newDog.put("date_registration", dogDateRegistrationObj);
 
                         // Getting phone
                         dogPhoneObj = textPhone.getText().toString();
@@ -366,31 +415,120 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                         newDog.put("description", dogDescriptionObj);
 
                         // Getting image url
+                        dogUrlObj = uri.toString();
                         newDog.put("imageUrl", dogUrlObj);
 
-                        // Getting current user
-                        dogOwnerObj = mAuth.getCurrentUser().getEmail();
-                        newDog.put("user", dogOwnerObj);
+                        newDog.put("placeID", dogPlaceIdObj);
 
                         db.collection("dogs").document(DOG_ID)
                                 .set(newDog, SetOptions.merge())
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
+                                        progressBarImg.setVisibility(View.INVISIBLE);
                                         Toast.makeText(DogRegistrationActivity.this, "Perro actualizado", Toast.LENGTH_SHORT).show();
+
+                                        Intent intent = new Intent(DogRegistrationActivity.this, HomeActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
+                                        finish();
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
+                                        progressBarImg.setVisibility(View.INVISIBLE);
                                         Toast.makeText(DogRegistrationActivity.this, "Error al actualizar el perro", Toast.LENGTH_SHORT).show();
                                     }
                                 });
+                    }
+                });
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                progressBarImg.setVisibility(View.VISIBLE);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                progressBarImg.setVisibility(View.INVISIBLE);
+                Toast.makeText(DogRegistrationActivity.this, "Error al subir la foto", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    private void updateRecordNoImage() {
+
+        progressBarImg.setVisibility(View.VISIBLE);
+        Map<String, Object> newDog = new HashMap<>();
+
+        // Getting dog is yours
+        if (ansRadioG == "Sí"){
+            newDog.put("state", "Perdido");
+        }else {
+            newDog.put("state", "Encontrado");
+        }
+
+        // Getting dog name
+        dogNameObj = textName.getText().toString();
+        newDog.put("name", dogNameObj);
+
+        // Getting breed
+        dogBreedObj = spinnerBreed.getSelectedItem().toString();
+        newDog.put("breed", dogBreedObj);
+
+        // Getting size
+        dogSizeObj = spinnerSize.getSelectedItem().toString();
+        newDog.put("size", dogSizeObj);
+
+        // Getting color
+        dogColorObj = spinnerColor.getSelectedItem().toString();
+        newDog.put("color", dogColorObj);
+
+        // Getting sex
+        dogSexObj = spinnerSex.getSelectedItem().toString();
+        newDog.put("sex", dogSexObj);
+
+        // Getting dog last time location
+        newDog.put("last_time_location", dogLastLocationSeenObj);
+
+        // Getting date missing
+        dogDateMissingObj = dogDateMissing;
+        newDog.put("date_missing", dogDateMissingObj);
+
+        // Getting phone
+        dogPhoneObj = textPhone.getText().toString();
+        newDog.put("owner_phone", dogPhoneObj);
+
+        // Getting description
+        dogDescriptionObj = textDescription.getText().toString();
+        newDog.put("description", dogDescriptionObj);
+
+        newDog.put("placeID", dogPlaceIdObj);
+
+        db.collection("dogs").document(DOG_ID)
+                .set(newDog, SetOptions.merge())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
                         progressBarImg.setVisibility(View.INVISIBLE);
+                        Toast.makeText(DogRegistrationActivity.this, "Perro actualizado", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(DogRegistrationActivity.this, HomeActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        finish();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        progressBarImg.setVisibility(View.INVISIBLE);
+                        Toast.makeText(DogRegistrationActivity.this, "Error al actualizar el perro", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
-
 
     private void uploadToFirebase(Uri  uri){
         final StorageReference fileRef = reference.child( "uploads/" + System.currentTimeMillis() + "." + getFileExtension(uri));
@@ -433,7 +571,6 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                         newDog.put("sex", dogSexObj);
 
                         // Getting dog last time location
-                        dogLastLocationSeenObj = textLastTime.getText().toString();
                         newDog.put("last_time_location", dogLastLocationSeenObj);
 
                         // Getting date missing
@@ -460,14 +597,18 @@ public class DogRegistrationActivity extends AppCompatActivity  {
                         dogOwnerObj = mAuth.getCurrentUser().getEmail();
                         newDog.put("user", dogOwnerObj);
 
+                        newDog.put("placeID", dogPlaceIdObj);
+
                         db.collection("dogs")
                                 .add(newDog)
                                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                     @Override
                                     public void onSuccess(DocumentReference documentReference) {
                                         Toast.makeText(DogRegistrationActivity.this, "Perro registrado", Toast.LENGTH_SHORT).show();
-                                        Intent myIntent = new Intent(DogRegistrationActivity.this, HomeActivity.class);
-                                        DogRegistrationActivity.this.startActivity(myIntent);
+                                        Intent intent = new Intent(DogRegistrationActivity.this, HomeActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
+                                        finish();
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
@@ -612,7 +753,4 @@ public class DogRegistrationActivity extends AppCompatActivity  {
     public void openDatePicker(View view){
         datePickerDialog.show();
     }
-
-
-
 }

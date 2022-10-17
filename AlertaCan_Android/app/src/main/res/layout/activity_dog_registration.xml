@@ -267,13 +267,17 @@
 
         <AutoCompleteTextView
             android:id="@+id/id_last_location"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
             android:ems="10"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:completionThreshold="3000"
             android:hint="Calle Madero, junto al Walmart"
+            android:singleLine="true"
+            android:scrollHorizontally="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView17"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
         <EditText

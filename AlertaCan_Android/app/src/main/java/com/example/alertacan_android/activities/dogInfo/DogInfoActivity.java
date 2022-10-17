@@ -55,6 +55,7 @@ public class DogInfoActivity extends AppCompatActivity {
     String dogSize;
     String dogColor;
     String dogImageUrl;
+    String dogPlaceId;
     String dogLastTimeLocation;
     String dogDescription;
     String dogOwnerPhone;
@@ -122,6 +123,7 @@ public class DogInfoActivity extends AppCompatActivity {
                         Map<String, Object> dataObj = document.getData();
                         dogName = dataObj.get("name").toString();
                         dogStatus = dataObj.get("state").toString();
+                        dogPlaceId = dataObj.get("placeID").toString();
                         dogBreed = dataObj.get("breed").toString();
                         dogSex = dataObj.get("sex").toString();
                         dogSize = dataObj.get("size").toString();
@@ -179,6 +181,7 @@ public class DogInfoActivity extends AppCompatActivity {
                 myIntent.putExtra("dog_size_intent", dogSize);
                 myIntent.putExtra("dog_color_intent", dogColor);
                 myIntent.putExtra("dog_sex_intent", dogSex);
+                myIntent.putExtra("dog_placeId_intent", dogPlaceId);
                 myIntent.putExtra("dog_last_time_intent", dogLastTimeLocation);
                 myIntent.putExtra("dog_description_intent", dogDescription);
                 myIntent.putExtra("dog_phone_intent", dogOwnerPhone);
