@@ -6,14 +6,15 @@
         <entry key="..\:/D_Documents/Movil/AlertaCan/AlertaCan_Android/app/src/main/res/drawable/progress_animation.xml" value="0.1" />
         <entry key="..\:/D_Documents/Movil/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_dog_info.xml" value="0.2" />
         <entry key="..\:/D_Documents/Movil/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_dog_registration.xml" value="0.4" />
-        <entry key="..\:/D_Documents/Movil/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_home.xml" value="0.264" />
+        <entry key="..\:/D_Documents/Movil/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_home.xml" value="0.2" />
         <entry key="..\:/D_Documents/Movil/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/D_Documents/Movil/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_my_dog_info.xml" value="0.264" />
         <entry key="..\:/D_Documents/Movil/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_signup.xml" value="0.264" />
         <entry key="..\:/D_Documents/Movil/AlertaCan/AlertaCan_Android/app/src/main/res/layout/dialog_dog.xml" value="0.264" />
         <entry key="..\:/D_Documents/Movil/AlertaCan/AlertaCan_Android/app/src/main/res/layout/dialog_dog_seen.xml" value="0.4" />
         <entry key="..\:/D_Documents/Movil/AlertaCan/AlertaCan_Android/app/src/main/res/layout/fragment_dog_list.xml" value="0.264" />
-        <entry key="..\:/D_Documents/Movil/AlertaCan/AlertaCan_Android/app/src/main/res/layout/item_dog_card.xml" value="0.259375" />
+        <entry key="..\:/D_Documents/Movil/AlertaCan/AlertaCan_Android/app/src/main/res/layout/item_dog_card.xml" value="0.264" />
+        <entry key="..\:/D_Documents/Movil/AlertaCan/AlertaCan_Android/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.264" />
         <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/drawable/back_navigation.xml" value="0.2155" />
         <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/drawable/ic_home.xml" value="0.1805" />
         <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/drawable/ic_map.xml" value="0.2155" />
