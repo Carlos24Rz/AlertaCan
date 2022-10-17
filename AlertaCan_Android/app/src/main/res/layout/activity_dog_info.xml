@@ -12,14 +12,14 @@
 
         <ImageView
             android:id="@+id/id_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="230dp"
+            android:layout_height="180dp"
             android:layout_marginTop="24dp"
             android:contentDescription="Canelo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/img_canelo" />
+            app:srcCompat="@drawable/progress_animation" />
 
 
         <LinearLayout
@@ -39,21 +39,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Perdido" />
+                android:text="Cargando..." />
 
             <TextView
                 android:id="@+id/id_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Canelo" />
+                android:text="Cargando..." />
 
             <TextView
                 android:id="@+id/id_breed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Labrador" />
+                android:text="Cargando..." />
 
         </LinearLayout>
 
@@ -154,21 +154,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Macho" />
+                android:text="Cargando..." />
 
             <TextView
                 android:id="@+id/id_size"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Mediano" />
+                android:text="Cargando..." />
 
             <TextView
                 android:id="@+id/id_color"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Amarillo" />
+                android:text="Cargando..." />
 
         </LinearLayout>
 
@@ -188,7 +188,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
-            android:text="22 de agosto de 2022"
+            android:text="Cargando..."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView4"
@@ -210,7 +210,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
-            android:text="24 de agosto de 2022"
+            android:text="Cargando..."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView6"
@@ -232,7 +232,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
-            android:text="En el Fast Fruit del Tec Campus Puebla"
+            android:text="Cargando..."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView8"
@@ -254,7 +254,7 @@
             android:layout_width="0dp"
             android:layout_height="33dp"
             android:layout_marginEnd="32dp"
-            android:text="Tiene un mechón de color gris a la altura de la pata superior izquierda."
+            android:text="Cargando..."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView10"
             app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -275,7 +275,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
-            android:text="272-123-4567"
+            android:text="Cargando..."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView12"
@@ -287,9 +287,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:backgroundTint="#FFFFFF"
             android:text="Editar"
             android:textColor="#01638D"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/id_owner_phone"
             app:strokeColor="#01638D"
@@ -301,24 +303,30 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="64dp"
+            android:layout_marginBottom="16dp"
             android:backgroundTint="#FFFFFF"
             android:text="Eliminar"
             android:textColor="#AA6122"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/id_owner_phone"
             app:strokeColor="#AA6122"
-            app:strokeWidth="1dp"/>
+            app:strokeWidth="1dp" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/id_btn_seen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
             android:backgroundTint="#01638D"
-            android:text="Ver matches"
+            android:text="Me has visto"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/id_btn_edit" />
+            app:layout_constraintTop_toBottomOf="@+id/id_owner_phone"
+            app:layout_constraintVertical_bias="1.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 

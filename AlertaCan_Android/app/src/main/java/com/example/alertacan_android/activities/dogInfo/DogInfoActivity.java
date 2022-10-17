@@ -1,7 +1,10 @@
 package com.example.alertacan_android.activities.dogInfo;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,10 +29,14 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
+import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 public class DogInfoActivity extends AppCompatActivity {
+
+    public FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     TextView stateTextView;
     TextView nameTextView;
@@ -65,6 +72,14 @@ public class DogInfoActivity extends AppCompatActivity {
 
     Button btnEdit;
     Button btnDelete;
+    Button btnSeen;
+
+    Dialog dialogSeen;
+    ImageView imgDog;
+    TextView inputPhone;
+    TextView inputLastTime;
+    TextView inputMsg;
+    Button btnDialogSubmit;
 
     public String formatDate(int day, int dayOfMonth, int month, int year){
         String[] days = new String[]{"Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado" };
@@ -94,6 +109,19 @@ public class DogInfoActivity extends AppCompatActivity {
 
         btnEdit = findViewById(R.id.id_btn_edit);
         btnDelete = findViewById(R.id.id_btn_delete);
+        btnSeen = findViewById(R.id.id_btn_seen);
+
+        // Creating dialog
+        dialogSeen = new Dialog(this);
+
+        btnSeen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialogSeen();
+
+            }
+        });
+
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -104,10 +132,12 @@ public class DogInfoActivity extends AppCompatActivity {
         if(!FRAGMENT_VALUE.equals("2")){
             btnEdit.setVisibility(View.INVISIBLE);
             btnDelete.setVisibility(View.INVISIBLE);
+            btnSeen.setVisibility(View.VISIBLE);
         }
         else{
             btnEdit.setVisibility(View.VISIBLE);
             btnDelete.setVisibility(View.VISIBLE);
+            btnSeen.setVisibility(View.INVISIBLE);
         }
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -153,11 +183,11 @@ public class DogInfoActivity extends AppCompatActivity {
                         descriptionTextView.setText(dogDescription);
                         ownerPhoneTextView.setText(dogOwnerPhone);
 
-                        Log.d("PPPPPPP", dogImageUrl);
                         Picasso.get()
                                 .load(dogImageUrl)
                                 .fit()
                                 .centerCrop()
+                                .placeholder( R.drawable.progress_animation )
                                 .into(imageDogView);
                     } else {
                         Log.d("tag2", "No such document");
@@ -229,6 +259,82 @@ public class DogInfoActivity extends AppCompatActivity {
                         .show();
             }
         });
+
+
+    }
+
+
+
+
+    private void showDialogSeen(){
+        dialogSeen.setContentView(R.layout.dialog_dog_seen);
+
+        imgDog = dialogSeen.findViewById(R.id.id_dialog_img);
+        Picasso.get()
+                .load(dogImageUrl)
+                .placeholder( R.drawable.progress_animation )
+                .fit()
+                .centerCrop()
+                .into(imgDog);
+
+
+        inputPhone = dialogSeen.findViewById(R.id.id_dialog_name);
+        inputLastTime = dialogSeen.findViewById(R.id.id_dialog_id_seen);
+        inputMsg = dialogSeen.findViewById(R.id.id_dialog_msg);
+        btnDialogSubmit = dialogSeen.findViewById(R.id.id_dialog_btn_submit);
+
+        btnDialogSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String phoneObj = inputPhone.getText().toString();
+                String lastTimeObj = inputLastTime.getText().toString();
+                String msgObj = inputMsg.getText().toString();
+
+                if(lastTimeObj.equals("") || msgObj.equals("")){
+                    Toast.makeText(DogInfoActivity.this, "Por favor, llena todos los campos", Toast.LENGTH_SHORT).show();
+                }else{
+
+                    Map<String, Object> newSighting = new HashMap<>();
+                    newSighting.put("phone", phoneObj);
+                    newSighting.put("lastLocation", lastTimeObj);
+                    newSighting.put("msg", msgObj);
+
+                    Timestamp sightingObj = new Timestamp(System.currentTimeMillis());
+                    newSighting.put("date_sighting", sightingObj);
+
+                    newSighting.put("dogId", DOG_ID);
+                    newSighting.put("dogName", dogName);
+
+                    db.collection("sightings")
+                            .add(newSighting)
+                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                @Override
+                                public void onSuccess(DocumentReference documentReference) {
+                                    Toast.makeText(DogInfoActivity.this, "Avistamiento registrado", Toast.LENGTH_SHORT).show();
+                                    dialogSeen.dismiss();
+//                                    Intent myIntent = new Intent(DogRegistrationActivity.this, HomeActivity.class);
+//                                    DogRegistrationActivity.this.startActivity(myIntent);
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(DogInfoActivity.this, "Error al registrar avistamiento", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+
+
+                }
+            }
+        });
+
+
+
+        dialogSeen.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialogSeen.show();
+
+
 
 
     }

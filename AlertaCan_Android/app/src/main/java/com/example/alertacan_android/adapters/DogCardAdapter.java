@@ -46,6 +46,7 @@ public class DogCardAdapter extends RecyclerView.Adapter<DogCardAdapter.DogCardV
                 .load(currentDog.getImageUrl())
                 .fit()
                 .centerCrop()
+                .placeholder( R.drawable.progress_animation )
                 .into(holder.dogImageView);
 
     }

@@ -61,4 +61,7 @@ dependencies {
 
     // Importing Authentication
     implementation 'com.google.firebase:firebase-auth'
+
+    // location service
+    implementation 'com.google.android.gms:play-services-location:21.0.0'
 }
