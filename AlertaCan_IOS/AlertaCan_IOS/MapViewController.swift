@@ -54,6 +54,48 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
     
+    // ---------------------------------------------------
+    // --------------------- FILTERS ---------------------
+    // ---------------------------------------------------
+    @IBAction func pressedFilter(_ sender: UIButton) {
+        if sender == sexButton {
+            dropDown.dataSource = sexOptions
+        } else if sender == sizeButton {
+            dropDown.dataSource = sizeOptions
+        } else if sender == raceButton {
+            dropDown.dataSource = raceOptions
+        } else {
+            dropDown.dataSource = colorOptions
+        }
+        dropDown.anchorView = sender
+        dropDown.direction = .top
+        dropDown.topOffset = CGPoint(x: 0, y:-(dropDown.anchorView?.plainView.bounds.height)!)
+        dropDown.show()
+        dropDown.selectionAction = {
+            [weak self] (index: Int, item: String) in
+            guard let _ = self else { return }
+            sender.setTitle(item, for: .normal)
+            self!.applyFilters(status: "Perdido", sex: self!.sexButton.currentTitle!, size: self!.sizeButton.currentTitle!, race: self!.raceButton.currentTitle!, color: self!.colorButton.currentTitle!)
+        }
+    }
+    func applyFilters(status : String, sex : String, size : String, race : String, color : String) {
+        // Remove existing filters
+        let allAnnotations = self.map.annotations
+        self.map.removeAnnotations(allAnnotations)
+        // Change filters
+        dogManager!.changeFilter(key: "status", value: status)
+        dogManager!.changeFilter(key: "sex", value: sex)
+        dogManager!.changeFilter(key: "size", value: size)
+        dogManager!.changeFilter(key: "race", value: race)
+        dogManager!.changeFilter(key: "color", value: color)
+        dogManager!.applyFilters()
+        filteredCollection = dogManager!.getCollection()
+        print("New filters:")
+        for dog in filteredCollection! {
+            print(dog.name!)
+            getCoordinates(placeID: dog.placeID!)
+        }
+    }
     
     
     // ---------------------------------------------------
@@ -74,6 +116,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             getCoordinates(placeID: dog.placeID!)
         }
     }
+    
+    
     
     
     // ---------------------------------------------------
@@ -107,7 +151,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         // Get the coordinates according to the location
         let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         // By how much zoom the span will render it, the smaller the more zoom
-        let span = MKCoordinateSpan(latitudeDelta: 1.00, longitudeDelta: 1.00)
+        let span = MKCoordinateSpan(latitudeDelta: 0.50, longitudeDelta: 0.50)
         // Creating the region that will be displayed
         let region = MKCoordinateRegion(center: coordinate, span: span)
         

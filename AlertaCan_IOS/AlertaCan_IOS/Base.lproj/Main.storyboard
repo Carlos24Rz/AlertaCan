@@ -307,6 +307,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="filterPressed:" destination="rm2-3v-f5d" eventType="touchUpInside" id="jUN-T6-ovy"/>
+                                                    <action selector="pressedFilter:" destination="n88-UW-7be" eventType="touchUpInside" id="q0U-W3-bXJ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -346,6 +347,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="filterPressed:" destination="rm2-3v-f5d" eventType="touchUpInside" id="5ZU-D6-LKF"/>
+                                                    <action selector="pressedFilter:" destination="n88-UW-7be" eventType="touchUpInside" id="o7k-Rl-2cc"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -383,6 +385,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="filterPressed:" destination="rm2-3v-f5d" eventType="touchUpInside" id="rVO-pW-ia3"/>
+                                                    <action selector="pressedFilter:" destination="n88-UW-7be" eventType="touchUpInside" id="Zhk-v8-Blz"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -420,6 +423,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="filterPressed:" destination="rm2-3v-f5d" eventType="touchUpInside" id="uQn-vb-xvD"/>
+                                                    <action selector="pressedFilter:" destination="n88-UW-7be" eventType="touchUpInside" id="sT7-7I-mrG"/>
                                                 </connections>
                                             </button>
                                         </subviews>
