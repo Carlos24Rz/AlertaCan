@@ -23,5 +23,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Nos gustaría el accesso a tu galeria para subir fotos</string>
 </dict>
 </plist>
