@@ -543,7 +543,7 @@
                                     <constraint firstAttribute="height" constant="60" id="oUF-0S-yZ8"/>
                                 </constraints>
                             </stackView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1KI-Ic-KYF">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1KI-Ic-KYF">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="680"/>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41h-Qy-ndS" userLabel="BackButtonView">
@@ -607,6 +607,7 @@
                         <outlet property="backButton" destination="cZW-Wc-7Kn" id="zM4-Cu-3Zj"/>
                         <outlet property="colorButton" destination="WDo-we-Fne" id="Vcv-wM-3zF"/>
                         <outlet property="homeButton" destination="wAc-rX-XaG" id="6rV-md-iha"/>
+                        <outlet property="map" destination="1KI-Ic-KYF" id="bx0-7N-1hS"/>
                         <outlet property="raceButton" destination="Yn9-W5-ddf" id="DvA-VU-2rH"/>
                         <outlet property="registerButton" destination="UEX-U7-Nxj" id="6wK-6n-ZUX"/>
                         <outlet property="sexButton" destination="KXo-bw-g69" id="SLh-fe-0Id"/>

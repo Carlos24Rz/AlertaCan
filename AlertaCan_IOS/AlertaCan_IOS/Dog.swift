@@ -21,8 +21,7 @@ struct Dog {
     var size : String?
     var state : String?
     var user : String?
-    var latitude : Double?
-    var longitude : Double?
+    var placeID : String?
 
     init(dog : Dictionary<String, Any>) {
         breed = dog["breed"] as? String ?? ""
@@ -32,8 +31,7 @@ struct Dog {
         description = dog["description"] as? String ?? ""
         imageUrl = dog["imageUrl"] as? String ?? ""
         last_time_location = dog["last_time_location"] as? String ?? ""
-        latitude = dog["latitude"] as? Double ?? 0.0
-        longitude = dog["longitude"] as? Double ?? 0.0
+        placeID = dog["placeID"] as? String ?? ""
         name = dog["name"] as? String ?? ""
         owner_phone = dog["owner_phone"] as? String ?? ""
         sex = dog["sex"] as? String ?? ""
