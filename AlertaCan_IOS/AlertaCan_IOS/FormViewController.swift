@@ -8,9 +8,12 @@
 import UIKit
 import FirebaseStorage
 import FirebaseFirestore
+import DropDown
 
-class FormViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class FormViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate /*UIPickerViewDelegate, UIPickerViewDataSource*/{
     
+    @IBOutlet weak var vwDropDown: UIView!
+    @IBOutlet weak var raceButton: UIButton!
     @IBOutlet var uploadImageView: UIImageView!
     @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var mapButton: UIButton!
@@ -27,12 +30,27 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
      
     }
     
-
+    let dropDown = DropDown()
+    let raceOptions : [String] = ["Todos", "Mestizo", "Husky", "Labrador", "Chihuahua", "Pastor Alemán", "Dálmata"]
+    
+    var pickerView = UIPickerView()
+    
+    //filters
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        // Do any additional setup after loading the view.
+        dropDown.anchorView = vwDropDown
+        dropDown.dataSource = raceOptions
+        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
+        dropDown.topOffset = CGPoint(x: 0, y:-(dropDown.anchorView?.plainView.bounds.height)!)
+        dropDown.direction = .bottom
+        dropDown.selectionAction = { [weak self] (index: Int, item: String) in //8
+             guard let _ = self else { return }
+            self?.raceButton.setTitle(item, for: .normal)
+           }
+    }
+    
+    @IBAction func showRaceOptions(_ sender:Any) {
+        dropDown.show()
     }
     
     
@@ -83,3 +101,4 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
 
 }
+

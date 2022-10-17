@@ -1251,6 +1251,25 @@
                                     <constraint firstAttribute="height" constant="65" id="smb-tV-1L7"/>
                                 </constraints>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YqP-zU-UK3">
+                                <rect key="frame" x="16" y="271.33333333333331" width="43" height="54.666666666666686"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raza:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DN-Y7-U7w">
+                                        <rect key="frame" x="0.0" y="0.0" width="43" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.3633231656" green="0.58596039580000003" blue="0.76555594410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O5B-TI-xem">
+                                        <rect key="frame" x="0.0" y="20.333333333333375" width="43" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="All"/>
+                                        <connections>
+                                            <action selector="showRaceOptions:" destination="bAt-gC-AqA" eventType="touchUpInside" id="lMN-4T-9yB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XAv-vD-B0u"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1259,6 +1278,7 @@
                             <constraint firstItem="nmo-Kv-O6O" firstAttribute="leading" secondItem="XAv-vD-B0u" secondAttribute="leading" constant="107" id="6ES-DU-7eY"/>
                             <constraint firstItem="VYu-Ac-3tV" firstAttribute="top" secondItem="RUD-0p-hqb" secondAttribute="bottom" constant="12" id="6oB-ZV-QCq"/>
                             <constraint firstItem="hnv-UF-oVS" firstAttribute="leading" secondItem="ZWU-6U-Ei3" secondAttribute="leading" id="Fn0-Ru-zll"/>
+                            <constraint firstItem="YqP-zU-UK3" firstAttribute="leading" secondItem="XAv-vD-B0u" secondAttribute="leading" constant="16" id="IgF-0m-0sD"/>
                             <constraint firstItem="JuM-v8-dEJ" firstAttribute="top" secondItem="nmo-Kv-O6O" secondAttribute="bottom" constant="21" id="J34-TE-F4D"/>
                             <constraint firstItem="hnv-UF-oVS" firstAttribute="trailing" secondItem="ZWU-6U-Ei3" secondAttribute="trailing" id="K84-Vr-JTx"/>
                             <constraint firstItem="VJV-sm-wBX" firstAttribute="top" secondItem="nmo-Kv-O6O" secondAttribute="bottom" constant="20" id="Kfl-0g-ggD"/>
@@ -1267,6 +1287,7 @@
                             <constraint firstItem="JuM-v8-dEJ" firstAttribute="leading" secondItem="VJV-sm-wBX" secondAttribute="trailing" constant="22" id="azT-qd-NGk"/>
                             <constraint firstItem="hnv-UF-oVS" firstAttribute="bottom" secondItem="XAv-vD-B0u" secondAttribute="bottom" id="cCl-ud-4Lc"/>
                             <constraint firstItem="RUD-0p-hqb" firstAttribute="leading" secondItem="XAv-vD-B0u" secondAttribute="leading" constant="16" id="gmi-F9-KuI"/>
+                            <constraint firstItem="YqP-zU-UK3" firstAttribute="top" secondItem="VYu-Ac-3tV" secondAttribute="bottom" constant="12" id="hJZ-wo-T2O"/>
                             <constraint firstItem="RUD-0p-hqb" firstAttribute="top" secondItem="JuM-v8-dEJ" secondAttribute="bottom" constant="12" id="i6L-Yj-ZHn"/>
                             <constraint firstItem="XAv-vD-B0u" firstAttribute="trailing" secondItem="nmo-Kv-O6O" secondAttribute="trailing" constant="107" id="mfl-oI-Ju3"/>
                             <constraint firstItem="JuM-v8-dEJ" firstAttribute="leading" secondItem="VJV-sm-wBX" secondAttribute="trailing" constant="22" id="nLV-ma-ubh"/>
@@ -1278,7 +1299,9 @@
                     <connections>
                         <outlet property="homeButton" destination="ORS-na-48y" id="tTE-sE-1Il"/>
                         <outlet property="mapButton" destination="DxD-hX-pDz" id="iET-Vz-T0I"/>
+                        <outlet property="raceButton" destination="O5B-TI-xem" id="seU-13-fIY"/>
                         <outlet property="uploadImageView" destination="gfY-m1-iQj" id="8hL-Sl-B8c"/>
+                        <outlet property="vwDropDown" destination="YqP-zU-UK3" id="l1f-wR-W6f"/>
                         <segue destination="rm2-3v-f5d" kind="presentation" identifier="formToHome" modalPresentationStyle="fullScreen" id="YtC-yx-BUR"/>
                         <segue destination="n88-UW-7be" kind="presentation" identifier="formToMap" modalPresentationStyle="fullScreen" id="eKA-TR-ChW"/>
                     </connections>
