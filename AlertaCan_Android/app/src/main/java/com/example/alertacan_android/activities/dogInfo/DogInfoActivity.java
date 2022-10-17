@@ -295,10 +295,15 @@ public class DogInfoActivity extends AppCompatActivity {
                 String msgObj = inputMsg.getText().toString();
 
                 if(lastTimeObj.equals("") || msgObj.equals("")){
-                    Toast.makeText(DogInfoActivity.this, "Por favor, llena todos los campos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DogInfoActivity.this, "Por favor, llena todos los campos obligatorios", Toast.LENGTH_SHORT).show();
                 }else{
 
                     Map<String, Object> newSighting = new HashMap<>();
+
+                    if(phoneObj.equals("")){
+                        phoneObj = "Anónimo";
+                    }
+
                     newSighting.put("phone", phoneObj);
                     newSighting.put("lastLocation", lastTimeObj);
                     newSighting.put("msg", msgObj);
