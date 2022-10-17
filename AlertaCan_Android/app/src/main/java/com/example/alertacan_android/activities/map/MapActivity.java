@@ -6,6 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.alertacan_android.R;
 import com.google.android.gms.common.api.ApiException;
@@ -33,13 +37,24 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.net.FetchPlaceRequest;
+import com.google.android.libraries.places.api.net.FetchPlaceResponse;
+import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * An activity that displays a Google map with a marker (pin) to indicate a particular location.
@@ -52,6 +67,10 @@ public class MapActivity extends AppCompatActivity
     private double longitudeUser;
     private LocationRequest locationRequest;
 
+    private Double dogLat;
+    private Double dogLon;
+    private PlacesClient placesClient;
+
 
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -60,6 +79,12 @@ public class MapActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         // Retrieve the content view that renders the map.
         setContentView(R.layout.activity_map);
+
+        //
+        if (!Places.isInitialized()){
+            Places.initialize(getApplicationContext(), "AIzaSyAc9EcgUw9i8qLE7nHtxhBj6C6rbAT7Uo0");
+        }
+        placesClient = Places.createClient(this);
 
         // Get the SupportMapFragment and request notification when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -101,26 +126,75 @@ public class MapActivity extends AppCompatActivity
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Double dogLat = (Double) document.getData().get("latitude");
-                                Double dogLon = (Double) document.getData().get("longitude");
                                 String dogName = (String) document.getData().get("name");
 
-                                LatLng dogLocation = new LatLng(dogLat, dogLon);
-                                googleMap.addMarker(new MarkerOptions()
-                                        .position(dogLocation)
-                                        .title(dogName));
-                                ;
+                                URL dogImage = (URL) document.getData().get("imageUrl");
+
+                                String placeId = (String) document.getData().get("placeID");
+                                final List<Place.Field> placeFields = Arrays.asList(Place.Field.LAT_LNG);
+
+                                final FetchPlaceRequest request = FetchPlaceRequest.newInstance(placeId,placeFields);
+
+                                placesClient.fetchPlace(request).addOnCompleteListener(new OnCompleteListener<FetchPlaceResponse>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<FetchPlaceResponse> task) {
+                                        if (task.isSuccessful()){
+                                            Place place = task.getResult().getPlace();
+                                            dogLat = place.getLatLng().latitude;
+                                            dogLon = place.getLatLng().longitude;
+
+
+
+                                            // creating marker
+                                            LatLng dogLocation = new LatLng(dogLat, dogLon);
+                                            googleMap.addMarker(new MarkerOptions()
+                                                    .position(dogLocation)
+                                                    .title(dogName)
+                                                    .icon(BitmapDescriptorFactory
+                                                            .fromResource(R.drawable.dog_marker)));
+
+                                        } else {
+                                            try {
+                                                throw task.getException();
+                                            } catch (ApiException e){
+                                                Log.e("Places",e.getMessage());
+                                            } catch (Exception e){
+                                                Log.e("Error Places",e.getMessage());
+                                            }
+                                        }
+                                    }
+                                });
+
+
+
                             }
                         } else {
                             Log.d("tag_error", "Error getting documents: ", task.getException());
                         }
                     }
                 });
+    }
 
+    private BitmapDescriptor BitmapFromVector(Context context, int vectorResId) {
+        // below line is use to generate a drawable.
+        Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorResId);
 
+        // below line is use to set bounds to our vector drawable.
+        vectorDrawable.setBounds(0, 0, vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight());
 
+        // below line is use to create a bitmap for our
+        // drawable which we have added.
+        Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
 
+        // below line is use to add bitmap in our canvas.
+        Canvas canvas = new Canvas(bitmap);
 
+        // below line is use to draw our
+        // vector drawable in canvas.
+        vectorDrawable.draw(canvas);
+
+        // after generating our bitmap we are returning our bitmap.
+        return BitmapDescriptorFactory.fromBitmap(bitmap);
     }
 }
 
