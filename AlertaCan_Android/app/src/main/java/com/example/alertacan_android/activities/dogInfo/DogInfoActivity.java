@@ -73,6 +73,7 @@ public class DogInfoActivity extends AppCompatActivity {
     Button btnEdit;
     Button btnDelete;
     Button btnSeen;
+    Button btnNot;
 
     Dialog dialogSeen;
     ImageView imgDog;
@@ -110,6 +111,7 @@ public class DogInfoActivity extends AppCompatActivity {
         btnEdit = findViewById(R.id.id_btn_edit);
         btnDelete = findViewById(R.id.id_btn_delete);
         btnSeen = findViewById(R.id.id_btn_seen);
+        btnNot = findViewById(R.id.id_btn_not);
 
         // Creating dialog
         dialogSeen = new Dialog(this);
@@ -133,11 +135,13 @@ public class DogInfoActivity extends AppCompatActivity {
             btnEdit.setVisibility(View.INVISIBLE);
             btnDelete.setVisibility(View.INVISIBLE);
             btnSeen.setVisibility(View.VISIBLE);
+            btnNot.setVisibility(View.INVISIBLE);
         }
         else{
             btnEdit.setVisibility(View.VISIBLE);
             btnDelete.setVisibility(View.VISIBLE);
             btnSeen.setVisibility(View.INVISIBLE);
+            btnNot.setVisibility(View.VISIBLE);
         }
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
