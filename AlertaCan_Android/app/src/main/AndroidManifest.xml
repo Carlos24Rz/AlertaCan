@@ -27,6 +27,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".activities.map.MapActivity" />
         <activity android:name= ".activities.dogInfo.DogInfoActivity"/>
         <activity android:name=".activities.dogRegistration.DogRegistrationActivity"/>
         <activity android:name=".activities.home.HomeActivity"/>
