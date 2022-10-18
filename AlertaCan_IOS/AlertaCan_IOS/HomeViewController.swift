@@ -44,6 +44,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // Dog Manager
     var dogManager = DogManager()
 
+    // User info
+    var user : String? = nil
+    
     // Collection to display on screen after filters:
     var filteredCollection : [Dog] = []
     

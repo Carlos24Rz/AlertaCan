@@ -21,6 +21,8 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var privacyPolicyButton: UIButton!
     
+    var user : String? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElements()
@@ -46,6 +48,7 @@ class LoginViewController: UIViewController {
                 self.errorLabel.alpha = 1
             }
             else{
+                self.user = email
                 self.performSegue(withIdentifier: "loginToHome", sender: nil)
 //                let formViewController =
 //                self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.formViewController) as?
@@ -58,6 +61,13 @@ class LoginViewController: UIViewController {
         }
         
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "loginToHome") {
+            let destinationVC = segue.destination as! HomeViewController
+            destinationVC.user = self.user
+        }
     }
     
 }
