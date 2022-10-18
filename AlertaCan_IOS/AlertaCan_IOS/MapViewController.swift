@@ -40,6 +40,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     // Collection to display on screen after filters:
     var filteredCollection : [Dog]? = nil
     
+    // User info
+    var user : String? = nil
+    
     // Location Manager
     var locationManager = CLLocationManager()
     
@@ -51,6 +54,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             performSegue(withIdentifier: "mapToForm", sender: nil)
         } else {
             performSegue(withIdentifier: "mapToHome", sender: nil)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "mapToForm") {
+            let destinationVC = segue.destination as! FormViewController
+            destinationVC.dogManager = self.dogManager
+            destinationVC.filteredCollection = self.filteredCollection
+            destinationVC.user = self.user
+        } else if (segue.identifier == "mapToHome") {
+            let destinationVC = segue.destination as! HomeViewController
+            destinationVC.user = self.user!
         }
     }
     

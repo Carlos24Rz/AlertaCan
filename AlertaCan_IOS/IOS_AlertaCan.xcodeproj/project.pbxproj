@@ -156,12 +156,12 @@
 				070E7C9A28B97656000C9B07 /* Info.plist */,
 				A493C58A28F8CB740094FF27 /* GoogleService-Info.plist */,
 				64CDE80128FCB7BD004D18D6 /* DogManager.swift */,
-				64AA39FC28FE6F1600770BBC /* MyPetsViewController.swift */,
 				A4900D7628F3CB100013203F /* LoginViewController.swift */,
 				64C3015B28F7749200E68F3D /* Dog.swift */,
 				64CDE80328FCF64D004D18D6 /* Response.swift */,
 				A4900D7828F3CB2A0013203F /* SingUpViewController.swift */,
 				64CDE7FF28FCA4A7004D18D6 /* MapViewController.swift */,
+				64AA39FC28FE6F1600770BBC /* MyPetsViewController.swift */,
 				642F0E8A28F4DD1000C1469D /* HomeViewController.swift */,
 				A4900D7A28F3CFBF0013203F /* FormViewController.swift */,
 				64AA39FE28FE769300770BBC /* DogTableViewCell.swift */,
@@ -445,6 +445,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QCX4FQ97TS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AlertaCan_IOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -472,6 +473,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QCX4FQ97TS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AlertaCan_IOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

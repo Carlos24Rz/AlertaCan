@@ -69,10 +69,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             let destinationVC = segue.destination as! MapViewController
             destinationVC.dogManager = self.dogManager
             destinationVC.filteredCollection = self.filteredCollection
+            destinationVC.user = self.user
         } else if (segue.identifier == "homeToForm") {
             let destinationVC = segue.destination as! FormViewController
             destinationVC.dogManager = self.dogManager
             destinationVC.filteredCollection = self.filteredCollection
+            destinationVC.user = self.user
         } else {
             let destinationVC = segue.destination as! MyPetsViewController
             destinationVC.dogManager = self.dogManager

@@ -33,7 +33,8 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     // Dog Manager
     var dogManager : DogManager? = nil
     var status = "Perdido"
-
+    // User info
+    var user : String? = nil
     
     // Collection to display on screen after filters:
     var filteredCollection : [Dog]? = nil
@@ -52,6 +53,10 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             let destinationVC = segue.destination as! MapViewController
             destinationVC.dogManager = self.dogManager
             destinationVC.filteredCollection = self.filteredCollection
+            destinationVC.user = self.user
+        } else if (segue.identifier == "formToHome") {
+            let destinationVC = segue.destination as! HomeViewController
+            destinationVC.user = self.user
         }
     }
     

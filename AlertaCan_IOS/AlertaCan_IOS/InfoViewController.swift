@@ -9,6 +9,9 @@ import UIKit
 
 class InfoViewController: UIViewController {
 
+    // User info
+    var user : String? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

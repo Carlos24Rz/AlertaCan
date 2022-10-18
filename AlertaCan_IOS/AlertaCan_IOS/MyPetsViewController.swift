@@ -19,6 +19,49 @@ class MyPetsViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
+    // Nav buttons
+    @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var mapButton: UIButton!
+    
+    // Status buttons
+    @IBOutlet weak var perdidosButton: UIButton!
+    @IBOutlet weak var avistadosButton: UIButton!
+    
+    
+    
+    // ---------------------------------------------------
+    // ---------------- MOVE BETWEEN PAGES ---------------
+    // ---------------------------------------------------
+
+    @IBAction func changeScreen(_ sender: UIButton) {
+        if (sender == perdidosButton || sender == avistadosButton) {
+            performSegue(withIdentifier: "myPetsToHome", sender: nil)
+        } else if (sender == mapButton) {
+            performSegue(withIdentifier: "myPetsToMap", sender: nil)
+        } else if (sender == registerButton) {
+            performSegue(withIdentifier: "myPetsToForm", sender: nil)
+        }
+        
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "myPetsToMap") {
+            let destinationVC = segue.destination as! MapViewController
+            destinationVC.dogManager = self.dogManager
+            destinationVC.filteredCollection = self.filteredCollection
+            destinationVC.user = self.user
+        } else if (segue.identifier == "myPetsToForm") {
+            let destinationVC = segue.destination as! FormViewController
+            destinationVC.dogManager = self.dogManager
+            destinationVC.filteredCollection = self.filteredCollection
+            destinationVC.user = self.user
+        } else if (segue.identifier == "myPetsToHome") {
+            let destinationVC = segue.destination as! HomeViewController
+            destinationVC.user = self.user
+        }
+    }
+    
     
     // ---------------------------------------------------
     // ------------------ VIEW DID LOAD ------------------
