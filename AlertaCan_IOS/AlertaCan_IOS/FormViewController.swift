@@ -10,6 +10,8 @@ import FirebaseStorage
 import FirebaseFirestore
 import DropDown
 import Firebase
+import FirebaseCore
+import FirebaseFirestoreSwift
 
 
 
@@ -33,6 +35,9 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     // Dog Manager
     var dogManager : DogManager? = nil
+    // firestore
+    var db: Firestore!
+    // status screen
     var status = "Perdido"
     // User info
     var user : String? = nil
@@ -63,6 +68,7 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     //Call Dropdown
     let dropDown = DropDown()
+    //
 
   let raceOptions : [String] = ["Todos", "Golder retriever", "Mestizo", "Husky", "Labrador", "Chihuahua", "Pastor alemán", "Dálmata", "Schnauzer", "Pastor belga", "Beagle"]
     let sizeOptions : [String] = ["Todos", "Pequeño", "Mediano", "Grande"]
@@ -70,8 +76,13 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     let sexOptions : [String] = ["Todos", "Macho", "Hembra"]
     
     
-    //var pickerView = UIPickerView()
     
+    //var pickerView = UIPickerView()
+//    @IBAction func didTouchSmokeTestButton(_ sender: AnyObject) {
+//        deleteCollection(collection: "users")
+//                deleteCollection(collection: "cities")
+//    }
+//
     
     //filters
     @IBAction func optionTapped(_ sender: UIButton) {
@@ -93,10 +104,6 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         dropDown.selectionAction = { [weak self] (index: Int, item: String) in
              guard let _ = self else { return }
             sender.setTitle(item, for: .normal)
-            self!.raceButton.currentTitle;
-            self!.sizeButton.currentTitle;
-            self!.colorButton.currentTitle;
-            self!.sexButton.currentTitle;
             
 //            self!.raceButton.currentTitle!;
 //            self!.sexButton.setTitle
@@ -136,9 +143,30 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let buttonCollection : [UIButton] = [sexButton,raceButton,colorButton,sizeButton]
-       
+        // [START setup]
+        let settings = FirestoreSettings()
+
+        Firestore.firestore().settings = settings
+        // [END setup]
+        db = Firestore.firestore()
     }
+    
+    // Add a new document in collection "images"
+    private func setDocuments() {
+        db.collection("images").document("puebla").setData([
+            "breed": "",
+            "color": "",
+            "date missing": Timestamp(date: Date())
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+    }
+    
+    
     
     //action when we tapped the upload photo
     @IBAction func uploadTapped() {
