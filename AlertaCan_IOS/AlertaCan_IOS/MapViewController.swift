@@ -187,4 +187,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         task.resume()
     }
+    
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if (annotation is MKUserLocation) {return nil}
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "custom")
+        
+        if (annotationView == nil) {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        annotationView?.image = UIImage(named: "On_home")
+        return annotationView
+    }
+    
 }
