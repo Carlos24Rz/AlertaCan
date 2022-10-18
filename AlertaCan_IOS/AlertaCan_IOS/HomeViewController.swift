@@ -63,6 +63,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             let destinationVC = segue.destination as! MapViewController
             destinationVC.dogManager = self.dogManager
             destinationVC.filteredCollection = self.filteredCollection
+        } else {
+            let destinationVC = segue.destination as! FormViewController
+            destinationVC.dogManager = self.dogManager
+            destinationVC.filteredCollection = self.filteredCollection
         }
     }
     
@@ -102,8 +106,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // Modify template "dogCard"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dogCard", for: indexPath) as! DogCollectionViewCell
-//        cell.dogImage.image = UIImage(named:  photos[indexPath.row])
         cell.dogImage.loadFrom(URLAddres: filteredCollection[indexPath.row].imageUrl ?? "")
+        cell.dogImage.layer.cornerRadius = cell.dogImage.frame.width/8.5
+        cell.dogImage.layer.masksToBounds = true
+        cell.dogImage.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         cell.nameLabel.text = filteredCollection[indexPath.row].name
         cell.nameLabel.adjustsFontSizeToFitWidth = true
         cell.nameLabel.minimumScaleFactor = 0.2

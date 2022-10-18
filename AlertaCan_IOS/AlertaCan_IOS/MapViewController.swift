@@ -118,6 +118,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         for dog in filteredCollection! {
             getCoordinates(placeID: dog.placeID!)
         }
+        dismiss(animated: false, completion: nil)
     }
     
     
@@ -186,5 +187,4 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         task.resume()
     }
-    
 }

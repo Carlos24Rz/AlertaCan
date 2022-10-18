@@ -10,27 +10,22 @@ import FirebaseStorage
 import FirebaseFirestore
 import DropDown
 
-class FormViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class FormViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate /*UIPickerViewDelegate, UIPickerViewDataSource*/{
     
     @IBOutlet weak var vwDropDown: UIView!
-    @IBOutlet weak var vwSizeDropDown: UIView!
-    @IBOutlet weak var vwColorDropDown: UIView!
-    @IBOutlet weak var vwSexDropDown: UIView!
-    
-    //filters buttons
     @IBOutlet weak var raceButton: UIButton!
-    @IBOutlet weak var sizeButton: UIButton!
-    @IBOutlet weak var colorButton: UIButton!
-    @IBOutlet weak var sexButton: UIButton!
-    
-    //upload photo
     @IBOutlet var uploadImageView: UIImageView!
     @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var mapButton: UIButton!
     
     private let storage = Storage.storage().reference()
     
-    //Change Screen
+    // Dog Manager
+    var dogManager : DogManager? = nil
+    
+    // Collection to display on screen after filters:
+    var filteredCollection : [Dog]? = nil
+    
     @IBAction func changeScreen(_ sender: UIButton) {
         if (sender == homeButton) {
             performSegue(withIdentifier: "formToHome", sender: nil)
@@ -38,17 +33,19 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         else {
             performSegue(withIdentifier: "formToMap", sender: nil)
         }
-     
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "formToMap") {
+            let destinationVC = segue.destination as! MapViewController
+            destinationVC.dogManager = self.dogManager
+            destinationVC.filteredCollection = self.filteredCollection
+        }
     }
     
     //Call Dropdown
     let dropDown = DropDown()
-    
-    //Filter Options
-    let raceOptions : [String] = ["Todos", "Mestizo", "Husky", "Labrador", "Chihuahua", "Pastor Alemán", "Dálmata"]
-    let sizeOptions : [String] = ["Todos", "Pequeño", "Mediano", "Grande"]
-    let colorOptions : [String] = ["Todos", "Amarillo", "Café", "Blanco", "Negro", "Gris"]
-    let sexOptions : [String] = ["Todos", "Macho", "Hembra"]
+    let raceOptions : [String] = ["Todos", "Golder retriever", "Mestizo", "Husky", "Labrador", "Chihuahua", "Pastor alemán", "Dálmata", "Schnauzer", "Pastor belga", "Beagle"]
     
     var pickerView = UIPickerView()
     
