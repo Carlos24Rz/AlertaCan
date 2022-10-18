@@ -94,8 +94,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             initializeButtonFormat(button: button)
         }
         dogManager.restartFilters()
-        dogManager.fetchFromDatabase() {
+        dogManager.fetchFromDatabase() { [self]
             () -> Void in
+            self.changeStatusOnInitScreen(givenStatus: status)
+            self.dogManager.applyFilters()
             self.filteredCollection = self.dogManager.getCollection()
             self.dogsCollectionView.reloadData()
         }
@@ -154,6 +156,18 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    
+    func changeStatusOnInitScreen(givenStatus : String) {
+        // Catch that you are clicking on a different button than your current Status
+        if givenStatus != "Perdido" {
+            currentStatusButton = avistadosButton
+            status = "Encontrado"
+            dogManager.changeFilter(key: "status", value: "Encontrado")
+            avistadosButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+            perdidosButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+            self.applyFilters(status: self.status, sex: self.sexButton.currentTitle!, size: self.sizeButton.currentTitle!, race: self.raceButton.currentTitle!, color: self.colorButton.currentTitle!)
+        }
+    }
     
     
     // ---------------------------------------------------

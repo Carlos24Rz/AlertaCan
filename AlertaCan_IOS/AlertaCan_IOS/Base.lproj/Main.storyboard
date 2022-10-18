@@ -2079,6 +2079,7 @@
                         <segue destination="rm2-3v-f5d" kind="presentation" identifier="myPetsToHome" animates="NO" modalPresentationStyle="fullScreen" id="suB-Og-J9V"/>
                         <segue destination="n88-UW-7be" kind="presentation" identifier="myPetsToMap" modalPresentationStyle="fullScreen" id="oFt-iA-Fcu"/>
                         <segue destination="bAt-gC-AqA" kind="presentation" identifier="myPetsToForm" modalPresentationStyle="fullScreen" id="ba1-T9-dad"/>
+                        <segue destination="rm2-3v-f5d" kind="presentation" identifier="myPetsToHomeAvistados" animates="NO" modalPresentationStyle="fullScreen" id="Hye-7q-cMH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgz-1x-5CT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2468,7 +2469,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ba1-T9-dad"/>
-        <segue reference="suB-Og-J9V"/>
+        <segue reference="Hye-7q-cMH"/>
         <segue reference="oFt-iA-Fcu"/>
     </inferredMetricsTieBreakers>
     <resources>

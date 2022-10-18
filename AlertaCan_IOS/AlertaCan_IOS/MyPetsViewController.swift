@@ -34,14 +34,15 @@ class MyPetsViewController: UIViewController, UITableViewDataSource {
     // ---------------------------------------------------
 
     @IBAction func changeScreen(_ sender: UIButton) {
-        if (sender == perdidosButton || sender == avistadosButton) {
+        if (sender == perdidosButton) {
             performSegue(withIdentifier: "myPetsToHome", sender: nil)
+        } else if (sender == avistadosButton) {
+            performSegue(withIdentifier: "myPetsToHomeAvistados", sender: nil)
         } else if (sender == mapButton) {
             performSegue(withIdentifier: "myPetsToMap", sender: nil)
         } else if (sender == registerButton) {
             performSegue(withIdentifier: "myPetsToForm", sender: nil)
         }
-        
     }
     
     
@@ -59,6 +60,10 @@ class MyPetsViewController: UIViewController, UITableViewDataSource {
         } else if (segue.identifier == "myPetsToHome") {
             let destinationVC = segue.destination as! HomeViewController
             destinationVC.user = self.user
+        } else if (segue.identifier == "myPetsToHomeAvistados") {
+            let destinationVC = segue.destination as! HomeViewController
+            destinationVC.user = self.user
+            destinationVC.status = "Encontrado"
         }
     }
     
