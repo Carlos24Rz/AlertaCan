@@ -104,6 +104,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dogCard", for: indexPath) as! DogCollectionViewCell
 //        cell.dogImage.image = UIImage(named:  photos[indexPath.row])
         cell.dogImage.loadFrom(URLAddres: filteredCollection[indexPath.row].imageUrl ?? "")
+        cell.dogImage.layer.cornerRadius = cell.dogImage.frame.width/8.5
+        cell.dogImage.layer.masksToBounds = true
         cell.nameLabel.text = filteredCollection[indexPath.row].name
         cell.nameLabel.adjustsFontSizeToFitWidth = true
         cell.nameLabel.minimumScaleFactor = 0.2
