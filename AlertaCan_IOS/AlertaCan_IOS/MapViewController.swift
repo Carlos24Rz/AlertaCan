@@ -27,7 +27,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     // Filter options
     let sexOptions : [String] = ["Todos", "Macho", "Hembra"]
-    let raceOptions : [String] = ["Todos", "Mestizo", "Husky", "Labrador", "Chihuahua", "Pastor Alemán", "Dálmata"]
+    let raceOptions : [String] = ["Todos", "Golder retriever", "Mestizo", "Husky", "Labrador", "Chihuahua", "Pastor alemán", "Dálmata", "Schnauzer", "Pastor belga", "Beagle"]
     let colorOptions : [String] = ["Todos", "Amarillo", "Café", "Blanco", "Negro", "Gris"]
     let sizeOptions : [String] = ["Todos", "Pequeño", "Mediano", "Grande"]
     
@@ -75,7 +75,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             [weak self] (index: Int, item: String) in
             guard let _ = self else { return }
             sender.setTitle(item, for: .normal)
-            self!.applyFilters(status: "Perdido", sex: self!.sexButton.currentTitle!, size: self!.sizeButton.currentTitle!, race: self!.raceButton.currentTitle!, color: self!.colorButton.currentTitle!)
+            self!.applyFilters(status: "All", sex: self!.sexButton.currentTitle!, size: self!.sizeButton.currentTitle!, race: self!.raceButton.currentTitle!, color: self!.colorButton.currentTitle!)
         }
     }
     func applyFilters(status : String, sex : String, size : String, race : String, color : String) {
@@ -112,6 +112,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         for button in buttonCollection {
             initializeButtonFormat(button: button)
         }
+        dogManager!.changeFilter(key: "status", value: "All")
+        dogManager!.applyFilters()
+        filteredCollection = dogManager!.getCollection()
         for dog in filteredCollection! {
             getCoordinates(placeID: dog.placeID!)
         }

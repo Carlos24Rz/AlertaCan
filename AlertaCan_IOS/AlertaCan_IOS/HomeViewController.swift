@@ -34,7 +34,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // Filter options
     let sexOptions : [String] = ["Todos", "Macho", "Hembra"]
-    let raceOptions : [String] = ["Todos", "Mestizo", "Husky", "Labrador", "Chihuahua", "Pastor Alemán", "Dálmata"]
+    let raceOptions : [String] = ["Todos", "Golder retriever", "Mestizo", "Husky", "Labrador", "Chihuahua", "Pastor alemán", "Dálmata", "Schnauzer", "Pastor belga", "Beagle"]
     let colorOptions : [String] = ["Todos", "Amarillo", "Café", "Blanco", "Negro", "Gris"]
     let sizeOptions : [String] = ["Todos", "Pequeño", "Mediano", "Grande"]
     
@@ -76,6 +76,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         for button in buttonCollection {
             initializeButtonFormat(button: button)
         }
+        dogManager.restartFilters()
         dogManager.fetchFromDatabase() {
             () -> Void in
             self.filteredCollection = self.dogManager.getCollection()

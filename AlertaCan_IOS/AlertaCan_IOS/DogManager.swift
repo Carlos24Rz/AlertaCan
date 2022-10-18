@@ -60,7 +60,7 @@ class DogManager {
     func applyFilters() {
         filteredCollection = []
         for dog in dogsCollection {
-            if (filteredValues["status"] == dog.state) {
+            if (filteredValues["status"] == dog.state || filteredValues["status"] == "All") {
                 if (filteredValues["sex"] != "Todos") {
                     if (dog.sex != filteredValues["sex"]) {continue}
                 }
