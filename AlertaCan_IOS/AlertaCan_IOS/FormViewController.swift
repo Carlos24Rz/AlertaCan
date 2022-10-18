@@ -10,18 +10,20 @@ import FirebaseStorage
 import FirebaseFirestore
 import DropDown
 
+
+
 class FormViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate /*UIPickerViewDelegate, UIPickerViewDataSource*/{
     
-    @IBOutlet weak var vwDropDown: UIView!
-    @IBOutlet weak var sexButton: UIButton!
-    @IBOutlet weak var sizeButton: UIButton!
-    @IBOutlet weak var colorButton: UIButton!
-    @IBOutlet weak var vwColorDropDown: UIView!
-    @IBOutlet weak var vwSizeDropDown: UIView!
-    @IBOutlet weak var raceButton: UIButton!
+    //bottons
+    @IBOutlet weak var vwRaceDropDown:UIView!
+    @IBOutlet weak var raceButton:UIButton!
+    
     @IBOutlet var uploadImageView: UIImageView!
     @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var mapButton: UIButton!
+    
+        
+    
     
     private let storage = Storage.storage().reference()
     
@@ -50,56 +52,47 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     //Call Dropdown
     let dropDown = DropDown()
-    let raceOptions : [String] = ["Todos", "Golder retriever", "Mestizo", "Husky", "Labrador", "Chihuahua", "Pastor alemán", "Dálmata", "Schnauzer", "Pastor belga", "Beagle"]
-    let colorOptions : [String] = ["Todos", "Amarillo", "Café", "Blanco", "Negro", "Gris"]
-    let sexOptions : [String] = ["Todos", "Macho", "Hembra"]
-    let sizeOptions : [String] = ["Todos", "Pequeño", "Mediano", "Grande"]
+
+  let raceOptions : [String] = ["Todos", "Golder retriever", "Mestizo", "Husky", "Labrador", "Chihuahua", "Pastor alemán", "Dálmata", "Schnauzer", "Pastor belga", "Beagle"]
+//    let sizeOptions : [String] = ["Todos", "Pequeño", "Mediano", "Grande"]
+//    let colorOptions : [String] = ["Todos", "Amarillo", "Café", "Blanco", "Negro", "Gris"]
+//    let sexOptions : [String] = ["Todos", "Macho", "Hembra"]
+    
     
     var pickerView = UIPickerView()
+    
     
     //filters
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Reference outlet
-        dropDown.anchorView = vwDropDown
-        
-        dropDown.anchorView = vwColorDropDown
-        dropDown.anchorView = vwSizeDropDown
-        //data
+        dropDown.anchorView = vwRaceDropDown
         dropDown.dataSource = raceOptions
-        dropDown.dataSource = colorOptions
-        dropDown.dataSource = sizeOptions
-        //luch the dropdown
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
         dropDown.topOffset = CGPoint(x: 0, y:-(dropDown.anchorView?.plainView.bounds.height)!)
         dropDown.direction = .bottom
-        //indetify their data
-        dropDown.selectionAction = { [weak self] (index: Int, item: String) in //8
+        dropDown.selectionAction = { [weak self] (index: Int, item: String) in 
              guard let _ = self else { return }
             self?.raceButton.setTitle(item, for: .normal)
-            self?.sexButton.setTitle(item, for: .normal)
-            self?.sizeButton.setTitle(item, for: .normal)
-            self?.colorButton.setTitle(item, for: .normal)
            }
+       
     }
     
+    //I want to do it here in this funtions what is in the ViwDIDLOad
+    func raceTapped() {
+//        dropDown.anchorView = vwRaceDropDown
+//        dropDown.dataSource = raceOptions
+//        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
+//        dropDown.topOffset = CGPoint(x: 0, y:-(dropDown.anchorView?.plainView.bounds.height)!)
+//        dropDown.direction = .bottom
+        
+    }
     
-    @IBAction func showRaceOptions(_ sender:Any) {
+    @IBAction func showRaceOptions(_ sender:Any){
         dropDown.show()
     }
     
     
-    @IBAction func showSexOptions(_ sender:Any){
-        dropDown.show()
-    }
     
-    @IBAction func showColorOptions(_ sender:Any){
-        dropDown.show()
-    }
-    
-    @IBAction func showSizeOptions(_ sender:Any){
-        dropDown.show()
-    }
     
     
     //action when we tapped the upload photo
@@ -149,4 +142,7 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
 
 }
+
+
+
 
