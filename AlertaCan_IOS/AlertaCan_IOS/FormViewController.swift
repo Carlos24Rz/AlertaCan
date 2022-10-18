@@ -13,6 +13,11 @@ import DropDown
 class FormViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate /*UIPickerViewDelegate, UIPickerViewDataSource*/{
     
     @IBOutlet weak var vwDropDown: UIView!
+    @IBOutlet weak var sexButton: UIButton!
+    @IBOutlet weak var sizeButton: UIButton!
+    @IBOutlet weak var colorButton: UIButton!
+    @IBOutlet weak var vwColorDropDown: UIView!
+    @IBOutlet weak var vwSizeDropDown: UIView!
     @IBOutlet weak var raceButton: UIButton!
     @IBOutlet var uploadImageView: UIImageView!
     @IBOutlet weak var homeButton: UIButton!
@@ -46,6 +51,9 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     //Call Dropdown
     let dropDown = DropDown()
     let raceOptions : [String] = ["Todos", "Golder retriever", "Mestizo", "Husky", "Labrador", "Chihuahua", "Pastor alemán", "Dálmata", "Schnauzer", "Pastor belga", "Beagle"]
+    let colorOptions : [String] = ["Todos", "Amarillo", "Café", "Blanco", "Negro", "Gris"]
+    let sexOptions : [String] = ["Todos", "Macho", "Hembra"]
+    let sizeOptions : [String] = ["Todos", "Pequeño", "Mediano", "Grande"]
     
     var pickerView = UIPickerView()
     
