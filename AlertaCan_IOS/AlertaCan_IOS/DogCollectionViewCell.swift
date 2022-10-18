@@ -12,6 +12,7 @@ class DogCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var dogImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var raceLabel: UILabel!
+    @IBOutlet weak var dogButton: UIButton!
     
 }
 

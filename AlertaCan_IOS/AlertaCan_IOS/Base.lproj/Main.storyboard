@@ -868,6 +868,18 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6cy-7Z-1YR" userLabel="dogView">
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="160"/>
                                                     <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yaq-V2-VH2" userLabel="dogButton">
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="160"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" title="0">
+                                                                <backgroundConfiguration key="background" cornerRadius="20">
+                                                                    <color key="strokeColor" red="0.0039215686269999999" green="0.38823529410000002" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </backgroundConfiguration>
+                                                            </buttonConfiguration>
+                                                            <connections>
+                                                                <action selector="dogPressed:" destination="rm2-3v-f5d" eventType="touchUpInside" id="Wqr-uT-IwP"/>
+                                                            </connections>
+                                                        </button>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadingDog" translatesAutoresizingMaskIntoConstraints="NO" id="rLh-3r-cB7" userLabel="DogImage">
                                                             <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
                                                             <constraints>
@@ -886,15 +898,6 @@
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yaq-V2-VH2" userLabel="dogButton">
-                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="160"/>
-                                                            <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain" title="">
-                                                                <backgroundConfiguration key="background" cornerRadius="20">
-                                                                    <color key="strokeColor" red="0.0039215686269999999" green="0.38823529410000002" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                                </backgroundConfiguration>
-                                                            </buttonConfiguration>
-                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -926,6 +929,7 @@
                                         </constraints>
                                         <size key="customSize" width="150" height="160"/>
                                         <connections>
+                                            <outlet property="dogButton" destination="Yaq-V2-VH2" id="w79-1X-Ano"/>
                                             <outlet property="dogImage" destination="rLh-3r-cB7" id="YhH-S6-qWS"/>
                                             <outlet property="nameLabel" destination="711-Ut-4WG" id="apL-s4-J7g"/>
                                             <outlet property="raceLabel" destination="JwI-JV-pPe" id="K9v-uE-DFI"/>
@@ -1072,6 +1076,7 @@
                         <outlet property="sizeButton" destination="VgA-RS-G8L" id="IjR-B6-Z26"/>
                         <segue destination="n88-UW-7be" kind="presentation" identifier="homeToMap" modalPresentationStyle="fullScreen" id="S4x-m2-VyX"/>
                         <segue destination="p9J-7R-Tfu" kind="presentation" identifier="homeToMyPets" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="MLD-ky-pll"/>
+                        <segue destination="s1L-Qq-s4W" kind="presentation" identifier="homeToInfo" modalPresentationStyle="fullScreen" id="vIY-4W-07r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kNW-Fv-hh0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1593,10 +1598,10 @@
                                         <color key="textColor" red="0.3633231656" green="0.58596039580000003" blue="0.76555594410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="texto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTD-st-tix">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTD-st-tix" userLabel="statusLabel">
                                         <rect key="frame" x="0.0" y="17" width="60" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.1764705882352941" green="0.1764705882352941" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1610,10 +1615,10 @@
                                         <color key="textColor" red="0.3633231656" green="0.58596039580000003" blue="0.76555594410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canelo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHl-DP-9gl">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="WHl-DP-9gl" userLabel="nameLabel">
                                         <rect key="frame" x="0.0" y="17" width="60" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.1764705882352941" green="0.1764705882352941" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1627,44 +1632,44 @@
                                         <color key="textColor" red="0.3633231656" green="0.58596039580000003" blue="0.76555594410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canelo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kyy-II-q4Z">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raza" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kyy-II-q4Z" userLabel="raceLabel">
                                         <rect key="frame" x="0.0" y="17" width="58" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.1764705882352941" green="0.1764705882352941" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0d6-az-YD4">
-                                <rect key="frame" x="36" y="266.33333333333331" width="53" height="37.333333333333314"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0d6-az-YD4">
+                                <rect key="frame" x="36" y="266.33333333333331" width="38.333333333333343" height="37.333333333333314"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sexo:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7L-Cr-xKB">
-                                        <rect key="frame" x="0.0" y="0.0" width="53" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Sexo:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7L-Cr-xKB">
+                                        <rect key="frame" x="0.0" y="0.0" width="38.333333333333336" height="17"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <color key="textColor" red="0.3633231656" green="0.58596039580000003" blue="0.76555594410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canelo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swt-pv-6wH">
-                                        <rect key="frame" x="0.0" y="17" width="53" height="20.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Sexo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swt-pv-6wH" userLabel="sexLabel">
+                                        <rect key="frame" x="0.0" y="17" width="38.333333333333336" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.1764705882352941" green="0.1764705882352941" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Qlz-yC-9NC">
-                                <rect key="frame" x="159" y="266.33333333333331" width="59" height="37.333333333333314"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Qlz-yC-9NC">
+                                <rect key="frame" x="159" y="266.33333333333331" width="73.666666666666657" height="37.333333333333314"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tamaño:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IyM-gj-N2X">
-                                        <rect key="frame" x="0.0" y="0.0" width="59" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tamaño:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IyM-gj-N2X">
+                                        <rect key="frame" x="0.0" y="0.0" width="73.666666666666671" height="17"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <color key="textColor" red="0.3633231656" green="0.58596039580000003" blue="0.76555594410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canelo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6KM-cm-6Z0">
-                                        <rect key="frame" x="0.0" y="17" width="59" height="20.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tamaño" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6KM-cm-6Z0" userLabel="sizeLabel">
+                                        <rect key="frame" x="0.0" y="17" width="73.666666666666671" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.1764705882352941" green="0.1764705882352941" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1678,10 +1683,10 @@
                                         <color key="textColor" red="0.3633231656" green="0.58596039580000003" blue="0.76555594410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canelo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUY-bm-Fgh">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUY-bm-Fgh" userLabel="colorLabel">
                                         <rect key="frame" x="0.0" y="17" width="53" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.1764705882352941" green="0.1764705882352941" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1729,10 +1734,10 @@
                                         <color key="textColor" red="0.3633231656" green="0.58596039580000003" blue="0.76555594410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canelo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cf-53-FYw">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Última vez" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cf-53-FYw" userLabel="lastSeenLabel">
                                         <rect key="frame" x="0.0" y="17" width="141" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.1764705882352941" green="0.1764705882352941" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1746,10 +1751,10 @@
                                         <color key="textColor" red="0.3633231656" green="0.58596039580000003" blue="0.76555594410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canelo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJ6-Vg-NA4">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descripción" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJ6-Vg-NA4" userLabel="descriptionLabel">
                                         <rect key="frame" x="0.0" y="17" width="87" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.1764705882352941" green="0.1764705882352941" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1763,10 +1768,10 @@
                                         <color key="textColor" red="0.3633231656" green="0.58596039580000003" blue="0.76555594410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canelo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zdz-GH-KTA">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teléfono" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zdz-GH-KTA" userLabel="numberLabel">
                                         <rect key="frame" x="0.0" y="17" width="64" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.1764705882352941" green="0.1764705882352941" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1826,6 +1831,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Oqj-97-YMd"/>
+                    <connections>
+                        <outlet property="colorLabel" destination="o3E-cd-afN" id="hzn-fC-nQj"/>
+                        <outlet property="descriptionLabel" destination="tJ6-Vg-NA4" id="W86-Q1-83B"/>
+                        <outlet property="lastSeenLabel" destination="5cf-53-FYw" id="uWu-CX-q1n"/>
+                        <outlet property="nameLabel" destination="WHl-DP-9gl" id="eoU-uq-MO0"/>
+                        <outlet property="numberLabel" destination="Zdz-GH-KTA" id="HQf-wL-zcF"/>
+                        <outlet property="raceLabel" destination="Kyy-II-q4Z" id="hyK-M3-dFL"/>
+                        <outlet property="sexLabel" destination="F7L-Cr-xKB" id="ygh-Qm-YkX"/>
+                        <outlet property="sizeLabel" destination="IyM-gj-N2X" id="n0d-J6-ZqJ"/>
+                        <outlet property="statusLabel" destination="FTD-st-tix" id="KL5-YZ-Tpc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKL-Tf-y4H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2086,10 +2102,10 @@
             </objects>
             <point key="canvasLocation" x="2008" y="1345"/>
         </scene>
-        <!--Info View Controller-->
+        <!--Info Owner View Controller-->
         <scene sceneID="sb9-Sn-pDp">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="pth-I7-Avt" userLabel="Info View Controller" customClass="MyViewController" customModule="IOS_AlertaCan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="pth-I7-Avt" userLabel="Info Owner View Controller" customClass="MyViewController" customModule="IOS_AlertaCan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3rT-It-3FE">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2468,9 +2484,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ba1-T9-dad"/>
-        <segue reference="Hye-7q-cMH"/>
-        <segue reference="oFt-iA-Fcu"/>
+        <segue reference="ITo-jw-1A4"/>
+        <segue reference="6eP-0y-InO"/>
+        <segue reference="S4x-m2-VyX"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Icon_upload_photo" width="24" height="24"/>

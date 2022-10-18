@@ -51,6 +51,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // Collection to display on screen after filters:
     var filteredCollection : [Dog] = []
     
+    // Index of chosen dog
+    var dogIndex : Int = 0
+    
     // ---------------------------------------------------
     // ---------------- MOVE BETWEEN PAGES ---------------
     // ---------------------------------------------------
@@ -75,11 +78,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             destinationVC.dogManager = self.dogManager
             destinationVC.filteredCollection = self.filteredCollection
             destinationVC.user = self.user
-        } else {
+        } else if (segue.identifier == "homeToMyPets") {
             let destinationVC = segue.destination as! MyPetsViewController
             destinationVC.dogManager = self.dogManager
             destinationVC.filteredCollection = self.filteredCollection
             destinationVC.user = self.user!
+        } else if (segue.identifier == "homeToInfo") {
+            let destinationVC = segue.destination as! InfoViewController
+            destinationVC.dogManager = self.dogManager
+            destinationVC.filteredCollection = self.filteredCollection
+            destinationVC.user = self.user!
+            destinationVC.dog = self.filteredCollection[self.dogIndex]
         }
     }
     
@@ -104,7 +113,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewDidLoad()
     }
 
-
+    // ---------------------------------------------------
+    // ---------------- CHOOSING A DOG -------------------
+    // ---------------------------------------------------
+    @IBAction func dogPressed(_ sender: UIButton) {
+        print(sender.currentTitle ?? "no title")
+        dogIndex = Int(String(sender.currentTitle ?? "0")) ?? 0
+        performSegue(withIdentifier: "homeToInfo", sender: nil)
+    }
+    
     
         //authenticateUserAndConfigureView()
     
@@ -130,6 +147,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.nameLabel.minimumScaleFactor = 0.2
         cell.nameLabel.numberOfLines = 0
         cell.raceLabel.text = filteredCollection[indexPath.row].breed
+        cell.dogButton.setTitle(String(indexPath.row), for: .normal)
         return cell
     }
     
