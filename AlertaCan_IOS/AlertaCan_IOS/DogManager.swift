@@ -108,4 +108,15 @@ class DogManager {
         return filteredValues
     }
     
+    func getMyPets(user: String) -> [Dog] {
+        print("Looking for \(user)")
+        var result : [Dog] = []
+        for dog in dogsCollection {
+            if dog.user == user {
+                result.append(dog)
+            }
+        }
+        return result
+    }
+    
 }

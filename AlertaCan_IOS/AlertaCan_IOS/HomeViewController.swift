@@ -28,6 +28,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // Status buttons
     @IBOutlet weak var perdidosButton: UIButton!
     @IBOutlet weak var avistadosButton: UIButton!
+    @IBOutlet weak var myPetsButton: UIButton!
     // To use for filters (Perdido || Encontrado)
     var currentStatusButton: UIButton? = nil
     var status = "Perdido"
@@ -58,6 +59,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             performSegue(withIdentifier: "homeToMap", sender: nil)
         } else if sender == registerButton {
             performSegue(withIdentifier: "homeToForm", sender: nil)
+        } else if (sender == myPetsButton) {
+            performSegue(withIdentifier: "homeToMyPets", sender: nil)
         }
     }
     
@@ -66,10 +69,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             let destinationVC = segue.destination as! MapViewController
             destinationVC.dogManager = self.dogManager
             destinationVC.filteredCollection = self.filteredCollection
-        } else {
+        } else if (segue.identifier == "homeToForm") {
             let destinationVC = segue.destination as! FormViewController
             destinationVC.dogManager = self.dogManager
             destinationVC.filteredCollection = self.filteredCollection
+        } else {
+            let destinationVC = segue.destination as! MyPetsViewController
+            destinationVC.dogManager = self.dogManager
+            destinationVC.filteredCollection = self.filteredCollection
+            destinationVC.user = self.user!
         }
     }
     

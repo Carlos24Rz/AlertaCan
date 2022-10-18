@@ -15,6 +15,8 @@
 		070E7C9928B97656000C9B07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 070E7C9728B97656000C9B07 /* LaunchScreen.storyboard */; };
 		642F0E8928F4DCB600C1469D /* DogCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642F0E8828F4DCB600C1469D /* DogCollectionViewCell.swift */; };
 		642F0E8B28F4DD1000C1469D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642F0E8A28F4DD1000C1469D /* HomeViewController.swift */; };
+		64AA39FD28FE6F1600770BBC /* MyPetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AA39FC28FE6F1600770BBC /* MyPetsViewController.swift */; };
+		64AA39FF28FE769300770BBC /* DogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AA39FE28FE769300770BBC /* DogTableViewCell.swift */; };
 		64AE821428FA21BC0042D864 /* DropDown in Frameworks */ = {isa = PBXBuildFile; productRef = 64AE821328FA21BC0042D864 /* DropDown */; };
 		64C3015C28F7749200E68F3D /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C3015B28F7749200E68F3D /* Dog.swift */; };
 		64CDE80028FCA4A7004D18D6 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CDE7FF28FCA4A7004D18D6 /* MapViewController.swift */; };
@@ -69,6 +71,8 @@
 		070E7C9A28B97656000C9B07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		642F0E8828F4DCB600C1469D /* DogCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCollectionViewCell.swift; sourceTree = "<group>"; };
 		642F0E8A28F4DD1000C1469D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		64AA39FC28FE6F1600770BBC /* MyPetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPetsViewController.swift; sourceTree = "<group>"; };
+		64AA39FE28FE769300770BBC /* DogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogTableViewCell.swift; sourceTree = "<group>"; };
 		64C3015B28F7749200E68F3D /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
 		64CDE7FF28FCA4A7004D18D6 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		64CDE80128FCB7BD004D18D6 /* DogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogManager.swift; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 				070E7C9A28B97656000C9B07 /* Info.plist */,
 				A493C58A28F8CB740094FF27 /* GoogleService-Info.plist */,
 				64CDE80128FCB7BD004D18D6 /* DogManager.swift */,
+				64AA39FC28FE6F1600770BBC /* MyPetsViewController.swift */,
 				A4900D7628F3CB100013203F /* LoginViewController.swift */,
 				64C3015B28F7749200E68F3D /* Dog.swift */,
 				64CDE80328FCF64D004D18D6 /* Response.swift */,
@@ -159,6 +164,7 @@
 				64CDE7FF28FCA4A7004D18D6 /* MapViewController.swift */,
 				642F0E8A28F4DD1000C1469D /* HomeViewController.swift */,
 				A4900D7A28F3CFBF0013203F /* FormViewController.swift */,
+				64AA39FE28FE769300770BBC /* DogTableViewCell.swift */,
 				642F0E8828F4DCB600C1469D /* DogCollectionViewCell.swift */,
 				A4900DB728F3EEEC0013203F /* Constans.swift */,
 				A493C58C28F8E9820094FF27 /* InfoViewController.swift */,
@@ -281,7 +287,9 @@
 				A4900D7D28F3D9C40013203F /* Utilities.swift in Sources */,
 				642F0E8928F4DCB600C1469D /* DogCollectionViewCell.swift in Sources */,
 				64C3015C28F7749200E68F3D /* Dog.swift in Sources */,
+				64AA39FD28FE6F1600770BBC /* MyPetsViewController.swift in Sources */,
 				642F0E8B28F4DD1000C1469D /* HomeViewController.swift in Sources */,
+				64AA39FF28FE769300770BBC /* DogTableViewCell.swift in Sources */,
 				64CDE80228FCB7BD004D18D6 /* DogManager.swift in Sources */,
 				64CDE80428FCF64D004D18D6 /* Response.swift in Sources */,
 				070E7C9128B97655000C9B07 /* ViewController.swift in Sources */,
