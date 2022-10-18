@@ -9,18 +9,19 @@ import UIKit
 import FirebaseStorage
 import FirebaseFirestore
 import DropDown
+import Firebase
 
 
 
 class FormViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate /*UIPickerViewDelegate, UIPickerViewDataSource*/{
     
     //bottons
-    @IBOutlet weak var vwRaceDropDown:UIView!
+//    @IBOutlet weak var vwRaceDropDown:UIView!
     @IBOutlet weak var colorButton:UIButton!
     @IBOutlet weak var raceButton:UIButton!
     @IBOutlet weak var sizeButton:UIButton!
     @IBOutlet weak var sexButton:UIButton!
-    
+    //Storage image
     @IBOutlet var uploadImageView: UIImageView!
     @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var mapButton: UIButton!
@@ -69,24 +70,10 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     let sexOptions : [String] = ["Todos", "Macho", "Hembra"]
     
     
-    var pickerView = UIPickerView()
+    //var pickerView = UIPickerView()
     
     
     //filters
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        dropDown.anchorView = vwRaceDropDown
-//        dropDown.dataSource = raceOptions
-//        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
-//        dropDown.topOffset = CGPoint(x: 0, y:-(dropDown.anchorView?.plainView.bounds.height)!)
-//        dropDown.direction = .bottom
-//        dropDown.selectionAction = { [weak self] (index: Int, item: String) in
-//             guard let _ = self else { return }
-//            self?.raceButton.setTitle(item, for: .normal)
-//           }
-       
-    }
-    
     @IBAction func optionTapped(_ sender: UIButton) {
         if sender == sexButton {
             dropDown.dataSource = sexOptions
@@ -106,43 +93,40 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         dropDown.selectionAction = { [weak self] (index: Int, item: String) in
              guard let _ = self else { return }
             sender.setTitle(item, for: .normal)
-            self!.raceButton.currentTitle
-            self!.sizeButton.currentTitle
-            self!.colorButton.currentTitle
-            self!.sexButton.currentTitle
+            self!.raceButton.currentTitle;
+            self!.sizeButton.currentTitle;
+            self!.colorButton.currentTitle;
+            self!.sexButton.currentTitle;
             
 //            self!.raceButton.currentTitle!;
 //            self!.sexButton.setTitle
 //            self!.colorButton.setTitle
 //            self!.sizeButton.setTitle
            }
-        
-        
-        
     }
     
-    func applyFilters(status : String, sex : String, size : String, race : String, color : String) {
-        dogManager!.changeFilter(key: "status", value: status)
-        dogManager!.changeFilter(key: "sex", value: sex)
-        dogManager!.changeFilter(key: "size", value: size)
-        dogManager!.changeFilter(key: "race", value: race)
-        dogManager!.changeFilter(key: "color", value: color)
-        dogManager!.applyFilters()
-        filteredCollection = dogManager!.getCollection()
+//    func applyFilters(status : String, sex : String, size : String, race : String, color : String) {
+//        dogManager!.changeFilter(key: "status", value: status)
+//        dogManager!.changeFilter(key: "sex", value: sex)
+//        dogManager!.changeFilter(key: "size", value: size)
+//        dogManager!.changeFilter(key: "race", value: race)
+//        dogManager!.changeFilter(key: "color", value: color)
+//        dogManager!.applyFilters()
+//        filteredCollection = dogManager!.getCollection()
 //        self.dogsCollectionView.reloadData()
-    }
+    //}
     
         
     
     //I want to do it here in this funtions what is in the ViwDIDLOad
-    func raceTapped() {
+//    func raceTapped() {
 //        dropDown.anchorView = vwRaceDropDown
 //        dropDown.dataSource = raceOptions
 //        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
 //        dropDown.topOffset = CGPoint(x: 0, y:-(dropDown.anchorView?.plainView.bounds.height)!)
 //        dropDown.direction = .bottom
-        
-    }
+//
+//    }
     
 //    @IBAction func showRaceOptions(_ sender:Any){
 //        dropDown.show()
@@ -150,7 +134,11 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     
     
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let buttonCollection : [UIButton] = [sexButton,raceButton,colorButton,sizeButton]
+       
+    }
     
     //action when we tapped the upload photo
     @IBAction func uploadTapped() {
@@ -174,11 +162,11 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             self.uploadImageView.image = image
         }
         
-        guard let imageData = image.pngData() else{
+        guard let imageData = image.jpegData(compressionQuality: 0.75) else{
             return
         }
         //Specify the file and path name
-        let path = "images/\(UUID().uuidString).png"
+        let path = "images/\(UUID().uuidString).jpg"
         let fileRef = storage.child(path)
         //upload the data
         fileRef.putData(imageData, metadata: nil, completion: { _, error in

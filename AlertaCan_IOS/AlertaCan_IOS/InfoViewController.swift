@@ -44,6 +44,17 @@ class InfoViewController: UIViewController {
     func initializeDogInfo(_ dog : Dog) {
         statusLabel.text = dog.state
         nameLabel.text = dog.name
+        raceLabel.text = dog.breed
+        sexLabel.text = dog.sex
+        sizeLabel.text = dog.size
+        colorLabel.text = dog.color
+        lastSeenLabel.text = dog.last_time_location
+        descriptionLabel.text = dog.description
+        numberLabel.text = dog.owner_phone
+        
+        
+        
+        
         // Y así con todos los labels...
     }
 }
