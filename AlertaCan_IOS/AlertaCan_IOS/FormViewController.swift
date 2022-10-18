@@ -20,6 +20,12 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     private let storage = Storage.storage().reference()
     
+    // Dog Manager
+    var dogManager : DogManager? = nil
+    
+    // Collection to display on screen after filters:
+    var filteredCollection : [Dog]? = nil
+    
     @IBAction func changeScreen(_ sender: UIButton) {
         if (sender == homeButton) {
             performSegue(withIdentifier: "formToHome", sender: nil)
@@ -27,11 +33,18 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         else {
             performSegue(withIdentifier: "formToMap", sender: nil)
         }
-     
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "formToMap") {
+            let destinationVC = segue.destination as! MapViewController
+            destinationVC.dogManager = self.dogManager
+            destinationVC.filteredCollection = self.filteredCollection
+        }
     }
     
     let dropDown = DropDown()
-    let raceOptions : [String] = ["Todos", "Mestizo", "Husky", "Labrador", "Chihuahua", "Pastor Alemán", "Dálmata"]
+    let raceOptions : [String] = ["Todos", "Golder retriever", "Mestizo", "Husky", "Labrador", "Chihuahua", "Pastor alemán", "Dálmata", "Schnauzer", "Pastor belga", "Beagle"]
     
     var pickerView = UIPickerView()
     
