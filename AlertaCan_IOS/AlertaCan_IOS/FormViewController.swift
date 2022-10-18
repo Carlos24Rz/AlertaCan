@@ -32,6 +32,8 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     // Dog Manager
     var dogManager : DogManager? = nil
+    var status = "Perdido"
+
     
     // Collection to display on screen after filters:
     var filteredCollection : [Dog]? = nil
@@ -98,11 +100,31 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         dropDown.direction = .bottom
         dropDown.selectionAction = { [weak self] (index: Int, item: String) in
              guard let _ = self else { return }
-            self?.raceButton.setTitle(item, for: .normal)
+            sender.setTitle(item, for: .normal)
+            self!.raceButton.currentTitle
+            self!.sizeButton.currentTitle
+            self!.colorButton.currentTitle
+            self!.sexButton.currentTitle
+            
+//            self!.raceButton.currentTitle!;
+//            self!.sexButton.setTitle
+//            self!.colorButton.setTitle
+//            self!.sizeButton.setTitle
            }
         
         
         
+    }
+    
+    func applyFilters(status : String, sex : String, size : String, race : String, color : String) {
+        dogManager!.changeFilter(key: "status", value: status)
+        dogManager!.changeFilter(key: "sex", value: sex)
+        dogManager!.changeFilter(key: "size", value: size)
+        dogManager!.changeFilter(key: "race", value: race)
+        dogManager!.changeFilter(key: "color", value: color)
+        dogManager!.applyFilters()
+        filteredCollection = dogManager!.getCollection()
+//        self.dogsCollectionView.reloadData()
     }
     
         
