@@ -16,7 +16,10 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     //bottons
     @IBOutlet weak var vwRaceDropDown:UIView!
+    @IBOutlet weak var colorButton:UIButton!
     @IBOutlet weak var raceButton:UIButton!
+    @IBOutlet weak var sizeButton:UIButton!
+    @IBOutlet weak var sexButton:UIButton!
     
     @IBOutlet var uploadImageView: UIImageView!
     @IBOutlet weak var homeButton: UIButton!
@@ -54,9 +57,9 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     let dropDown = DropDown()
 
   let raceOptions : [String] = ["Todos", "Golder retriever", "Mestizo", "Husky", "Labrador", "Chihuahua", "Pastor alemán", "Dálmata", "Schnauzer", "Pastor belga", "Beagle"]
-//    let sizeOptions : [String] = ["Todos", "Pequeño", "Mediano", "Grande"]
-//    let colorOptions : [String] = ["Todos", "Amarillo", "Café", "Blanco", "Negro", "Gris"]
-//    let sexOptions : [String] = ["Todos", "Macho", "Hembra"]
+    let sizeOptions : [String] = ["Todos", "Pequeño", "Mediano", "Grande"]
+    let colorOptions : [String] = ["Todos", "Amarillo", "Café", "Blanco", "Negro", "Gris"]
+    let sexOptions : [String] = ["Todos", "Macho", "Hembra"]
     
     
     var pickerView = UIPickerView()
@@ -65,17 +68,44 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     //filters
     override func viewDidLoad() {
         super.viewDidLoad()
-        dropDown.anchorView = vwRaceDropDown
-        dropDown.dataSource = raceOptions
+//        dropDown.anchorView = vwRaceDropDown
+//        dropDown.dataSource = raceOptions
+//        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
+//        dropDown.topOffset = CGPoint(x: 0, y:-(dropDown.anchorView?.plainView.bounds.height)!)
+//        dropDown.direction = .bottom
+//        dropDown.selectionAction = { [weak self] (index: Int, item: String) in
+//             guard let _ = self else { return }
+//            self?.raceButton.setTitle(item, for: .normal)
+//           }
+       
+    }
+    
+    @IBAction func optionTapped(_ sender: UIButton) {
+        if sender == sexButton {
+            dropDown.dataSource = sexOptions
+        } else if sender == sizeButton {
+            dropDown.dataSource = sizeOptions
+        } else if sender == raceButton {
+            dropDown.dataSource = raceOptions
+        } else {
+            dropDown.dataSource = colorOptions
+        }
+        dropDown.anchorView = sender
+        //dropDown.dataSource = raceOptions
+        dropDown.show()
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
         dropDown.topOffset = CGPoint(x: 0, y:-(dropDown.anchorView?.plainView.bounds.height)!)
         dropDown.direction = .bottom
-        dropDown.selectionAction = { [weak self] (index: Int, item: String) in 
+        dropDown.selectionAction = { [weak self] (index: Int, item: String) in
              guard let _ = self else { return }
             self?.raceButton.setTitle(item, for: .normal)
            }
-       
+        
+        
+        
     }
+    
+        
     
     //I want to do it here in this funtions what is in the ViwDIDLOad
     func raceTapped() {
@@ -87,9 +117,9 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
     }
     
-    @IBAction func showRaceOptions(_ sender:Any){
-        dropDown.show()
-    }
+//    @IBAction func showRaceOptions(_ sender:Any){
+//        dropDown.show()
+//    }
     
     
     

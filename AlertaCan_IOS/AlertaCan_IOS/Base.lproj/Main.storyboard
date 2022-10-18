@@ -1270,7 +1270,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="All"/>
                                         <connections>
-                                            <action selector="showRaceOptions:" destination="bAt-gC-AqA" eventType="touchUpInside" id="aYx-UN-mFM"/>
+                                            <action selector="optionTapped:" destination="bAt-gC-AqA" eventType="touchUpInside" id="pAx-26-tcX"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1288,6 +1288,9 @@
                                         <rect key="frame" x="0.0" y="20.333333333333375" width="64.666666666666671" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="All"/>
+                                        <connections>
+                                            <action selector="optionTapped:" destination="bAt-gC-AqA" eventType="touchUpInside" id="Uj1-Wu-KGn"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -1304,6 +1307,9 @@
                                         <rect key="frame" x="0.0" y="20.333333333333318" width="45.666666666666664" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="All"/>
+                                        <connections>
+                                            <action selector="optionTapped:" destination="bAt-gC-AqA" eventType="touchUpInside" id="I5g-X1-VA7"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -1320,6 +1326,9 @@
                                         <rect key="frame" x="0.0" y="20.333333333333318" width="43" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="All"/>
+                                        <connections>
+                                            <action selector="optionTapped:" destination="bAt-gC-AqA" eventType="touchUpInside" id="3wp-Jm-qLS"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -1451,11 +1460,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="colorButton" destination="rDH-PH-8e0" id="1am-8I-J5K"/>
                         <outlet property="homeButton" destination="ORS-na-48y" id="tTE-sE-1Il"/>
                         <outlet property="mapButton" destination="DxD-hX-pDz" id="iET-Vz-T0I"/>
                         <outlet property="raceButton" destination="O5B-TI-xem" id="kJd-g8-0Cn"/>
+                        <outlet property="sexButton" destination="Q1h-f0-Dsk" id="3jF-WQ-Ypi"/>
+                        <outlet property="sizeButton" destination="GMx-k1-t2f" id="5IA-Cy-v4L"/>
                         <outlet property="uploadImageView" destination="gfY-m1-iQj" id="8hL-Sl-B8c"/>
-                        <outlet property="vwRaceDropDown" destination="YqP-zU-UK3" id="QDn-bQ-XcA"/>
                         <segue destination="rm2-3v-f5d" kind="presentation" identifier="formToHome" modalPresentationStyle="fullScreen" id="YtC-yx-BUR"/>
                         <segue destination="n88-UW-7be" kind="presentation" identifier="formToMap" modalPresentationStyle="fullScreen" id="eKA-TR-ChW"/>
                     </connections>
