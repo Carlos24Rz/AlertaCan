@@ -40,4 +40,21 @@ struct Dog {
         user = dog["user"] as? String ?? ""
     }
     
+    func getMatchingScore(dog: Dog) -> Int {
+        var points = 0
+        if (dog.size == self.size) {
+            points += 1
+        }
+        if (dog.breed == self.breed) {
+            points += 1
+        }
+        if (dog.sex == self.sex) {
+            points += 1
+        }
+        if (dog.color == self.color) {
+            points += 1
+        }
+        return points
+    }
+    
 }

@@ -123,4 +123,60 @@ class DogManager {
         return filteredCollection.firstIndex(where: {$0.name == name}) ?? 0
     }
     
+    // Threshold: 3 properties are the same
+    func getSimilarDogs(givenDog: Dog) -> [Dog] {
+        var result: [Dog] = []
+        var points = 0
+        var one: [Dog] = []
+        var two: [Dog] = []
+        var three: [Dog] = []
+        var four: [Dog] = []
+        for dog in dogsCollection {
+            points = 0
+            if (dog.state == "Perdido") {continue}
+            if (dog.size == givenDog.size) {
+                points += 1
+            }
+            if (dog.breed == givenDog.breed) {
+                points += 1
+            }
+            if (dog.sex == givenDog.sex) {
+                points += 1
+            }
+            if (dog.color == givenDog.color) {
+                points += 1
+            }
+            if (points == 4) {
+                four.append(dog)
+            } else if (points == 3) {
+                three.append(dog)
+            } else if (points == 2) {
+                two.append(dog)
+            } else {
+                one.append(dog)
+            }
+        }
+        var counter = 0
+        for dog in four {
+            result.append(dog)
+            counter += 1
+        }
+        for dog in three {
+            if (counter >= 8) {return result}
+            result.append(dog)
+            counter += 1
+        }
+        for dog in two {
+            if (counter >= 8) {return result}
+            result.append(dog)
+            counter += 1
+        }
+        for dog in one {
+            if (counter >= 8) {return result}
+            result.append(dog)
+            counter += 1
+        }
+        return result
+    }
+    
 }

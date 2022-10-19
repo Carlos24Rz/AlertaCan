@@ -23,6 +23,9 @@
 		64CDE80228FCB7BD004D18D6 /* DogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CDE80128FCB7BD004D18D6 /* DogManager.swift */; };
 		64CDE80428FCF64D004D18D6 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CDE80328FCF64D004D18D6 /* Response.swift */; };
 		64CDE80728FD012D004D18D6 /* DeepCodable in Frameworks */ = {isa = PBXBuildFile; productRef = 64CDE80628FD012D004D18D6 /* DeepCodable */; };
+		64D9902628FFCBE200C63E92 /* InfoOwnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D9902528FFCBE200C63E92 /* InfoOwnerViewController.swift */; };
+		64D9902828FFCF8700C63E92 /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D9902728FFCF8700C63E92 /* MatchViewController.swift */; };
+		64D9902A28FFD83800C63E92 /* DogMatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D9902928FFD83800C63E92 /* DogMatchTableViewCell.swift */; };
 		A4900D7728F3CB100013203F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4900D7628F3CB100013203F /* LoginViewController.swift */; };
 		A4900D7928F3CB2A0013203F /* SingUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4900D7828F3CB2A0013203F /* SingUpViewController.swift */; };
 		A4900D7B28F3CFBF0013203F /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4900D7A28F3CFBF0013203F /* FormViewController.swift */; };
@@ -57,7 +60,6 @@
 		A4900DB828F3EEEC0013203F /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4900DB728F3EEEC0013203F /* Constans.swift */; };
 		A493C58B28F8CB740094FF27 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A493C58A28F8CB740094FF27 /* GoogleService-Info.plist */; };
 		A493C58D28F8E9820094FF27 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A493C58C28F8E9820094FF27 /* InfoViewController.swift */; };
-		A493C58F28F9E3ED0094FF27 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A493C58E28F9E3ED0094FF27 /* MyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,9 @@
 		64CDE7FF28FCA4A7004D18D6 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		64CDE80128FCB7BD004D18D6 /* DogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogManager.swift; sourceTree = "<group>"; };
 		64CDE80328FCF64D004D18D6 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		64D9902528FFCBE200C63E92 /* InfoOwnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoOwnerViewController.swift; sourceTree = "<group>"; };
+		64D9902728FFCF8700C63E92 /* MatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
+		64D9902928FFD83800C63E92 /* DogMatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogMatchTableViewCell.swift; sourceTree = "<group>"; };
 		A4900D7628F3CB100013203F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A4900D7828F3CB2A0013203F /* SingUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUpViewController.swift; sourceTree = "<group>"; };
 		A4900D7A28F3CFBF0013203F /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
@@ -84,7 +89,6 @@
 		A4900DB728F3EEEC0013203F /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		A493C58A28F8CB740094FF27 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A493C58C28F8E9820094FF27 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
-		A493C58E28F9E3ED0094FF27 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,14 +165,16 @@
 				64CDE80328FCF64D004D18D6 /* Response.swift */,
 				A4900D7828F3CB2A0013203F /* SingUpViewController.swift */,
 				64CDE7FF28FCA4A7004D18D6 /* MapViewController.swift */,
+				64D9902728FFCF8700C63E92 /* MatchViewController.swift */,
 				64AA39FC28FE6F1600770BBC /* MyPetsViewController.swift */,
 				642F0E8A28F4DD1000C1469D /* HomeViewController.swift */,
 				A4900D7A28F3CFBF0013203F /* FormViewController.swift */,
 				64AA39FE28FE769300770BBC /* DogTableViewCell.swift */,
+				64D9902928FFD83800C63E92 /* DogMatchTableViewCell.swift */,
 				642F0E8828F4DCB600C1469D /* DogCollectionViewCell.swift */,
 				A4900DB728F3EEEC0013203F /* Constans.swift */,
 				A493C58C28F8E9820094FF27 /* InfoViewController.swift */,
-				A493C58E28F9E3ED0094FF27 /* MyViewController.swift */,
+				64D9902528FFCBE200C63E92 /* InfoOwnerViewController.swift */,
 			);
 			path = AlertaCan_IOS;
 			sourceTree = "<group>";
@@ -281,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64D9902A28FFD83800C63E92 /* DogMatchTableViewCell.swift in Sources */,
 				A4900D7B28F3CFBF0013203F /* FormViewController.swift in Sources */,
 				A4900D7728F3CB100013203F /* LoginViewController.swift in Sources */,
 				A4900DB828F3EEEC0013203F /* Constans.swift in Sources */,
@@ -289,13 +296,14 @@
 				64C3015C28F7749200E68F3D /* Dog.swift in Sources */,
 				64AA39FD28FE6F1600770BBC /* MyPetsViewController.swift in Sources */,
 				642F0E8B28F4DD1000C1469D /* HomeViewController.swift in Sources */,
+				64D9902628FFCBE200C63E92 /* InfoOwnerViewController.swift in Sources */,
 				64AA39FF28FE769300770BBC /* DogTableViewCell.swift in Sources */,
 				64CDE80228FCB7BD004D18D6 /* DogManager.swift in Sources */,
 				64CDE80428FCF64D004D18D6 /* Response.swift in Sources */,
 				070E7C9128B97655000C9B07 /* ViewController.swift in Sources */,
 				A4900D7928F3CB2A0013203F /* SingUpViewController.swift in Sources */,
 				070E7C8D28B97655000C9B07 /* AppDelegate.swift in Sources */,
-				A493C58F28F9E3ED0094FF27 /* MyViewController.swift in Sources */,
+				64D9902828FFCF8700C63E92 /* MatchViewController.swift in Sources */,
 				A493C58D28F8E9820094FF27 /* InfoViewController.swift in Sources */,
 				070E7C8F28B97655000C9B07 /* SceneDelegate.swift in Sources */,
 				64CDE80028FCA4A7004D18D6 /* MapViewController.swift in Sources */,

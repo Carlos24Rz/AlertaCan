@@ -117,7 +117,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // ---------------- CHOOSING A DOG -------------------
     // ---------------------------------------------------
     @IBAction func dogPressed(_ sender: UIButton) {
-        print(sender.currentTitle ?? "no title")
         dogIndex = Int(String(sender.currentTitle ?? "0")) ?? 0
         performSegue(withIdentifier: "homeToInfo", sender: nil)
     }

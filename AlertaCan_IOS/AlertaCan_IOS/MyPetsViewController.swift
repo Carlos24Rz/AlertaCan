@@ -12,6 +12,9 @@ class MyPetsViewController: UIViewController, UITableViewDataSource {
     // Dog Manager
     var dogManager : DogManager? = nil
     
+    // dogIndex for InfoOwner
+    var dogIndex: Int = 0
+    
     // Collection to display on screen after filters:
     var filteredCollection : [Dog]? = nil
     var myPets: [Dog] = []
@@ -64,7 +67,13 @@ class MyPetsViewController: UIViewController, UITableViewDataSource {
             let destinationVC = segue.destination as! HomeViewController
             destinationVC.user = self.user
             destinationVC.status = "Encontrado"
-        }
+        } else if (segue.identifier == "myPetsToInfoOwner") {
+            let destinationVC = segue.destination as! InfoOwnerViewController
+            destinationVC.dogManager = self.dogManager!
+            destinationVC.filteredCollection = self.filteredCollection!
+            destinationVC.user = self.user
+            destinationVC.dog = self.filteredCollection![self.dogIndex]
+        } 
     }
     
     
@@ -78,6 +87,15 @@ class MyPetsViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
     }
     
+    
+    
+    // ---------------------------------------------------
+    // ------------------ CHOOSING A DOG -----------------
+    // ---------------------------------------------------
+    @IBAction func choosingDog(_ sender: UIButton) {
+        dogIndex = Int(String(sender.currentTitle ?? "0")) ?? 0
+        performSegue(withIdentifier: "myPetsToInfoOwner", sender: nil)
+    }
     
     // ---------------------------------------------------
     // ------------------ TABLE VIEW ---------------------
@@ -102,6 +120,7 @@ class MyPetsViewController: UIViewController, UITableViewDataSource {
         cell.nameLabel.numberOfLines = 0
         cell.raceLabel.text = myPets[indexPath.row].breed
         cell.nameLabel.text = myPets[indexPath.row].name
+        cell.dogButton.setTitle(String(indexPath.row), for: .normal)
         return cell
     }
 }
