@@ -9,7 +9,7 @@ import UIKit
 
 class InfoViewController: UIViewController {
 
-    // Outlets
+    // Outlets labels
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var raceLabel: UILabel!
@@ -20,6 +20,11 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var dogImage: UIImageView!
     @IBOutlet weak var numberLabel: UILabel!
+    
+    // Outlets Nav
+    @IBOutlet weak var mapButton: UIButton!
+    @IBOutlet weak var homeButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
     
     
     // Dog Manager
@@ -34,7 +39,43 @@ class InfoViewController: UIViewController {
     // Dog info
     var dog : Dog? = nil
     
+    // ---------------------------------------------------
+    // ---------------- MOVE BETWEEN PAGES ---------------
+    // ---------------------------------------------------
+
+    @IBAction func changeScreen(_ sender: UIButton) {
+        if sender == mapButton {
+            performSegue(withIdentifier: "infoToMap", sender: nil)
+        } else if sender == registerButton {
+            performSegue(withIdentifier: "infoToForm", sender: nil)
+        } else if (sender == homeButton) {
+            performSegue(withIdentifier: "infoToHome", sender: nil)
+        }
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "infoToMap") {
+            let destinationVC = segue.destination as! MapViewController
+            destinationVC.dogManager = self.dogManager
+            destinationVC.filteredCollection = self.filteredCollection
+            destinationVC.user = self.user
+        } else if (segue.identifier == "infoToForm") {
+            let destinationVC = segue.destination as! FormViewController
+            destinationVC.dogManager = self.dogManager
+            destinationVC.filteredCollection = self.filteredCollection
+            destinationVC.user = self.user
+        } else if (segue.identifier == "infoToHome") {
+            let destinationVC = segue.destination as! HomeViewController
+            destinationVC.dogManager = self.dogManager
+            destinationVC.filteredCollection = self.filteredCollection
+            destinationVC.user = self.user!
+        }
+    }
+    
+    
+    // ---------------------------------------------------
+    // ------------------ VIEW DID LOAD ------------------
+    // ---------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         print(dog ?? "Not dog found")
@@ -54,7 +95,5 @@ class InfoViewController: UIViewController {
         numberLabel.text = dog.owner_phone
         dogImage.loadFrom(URLAddres: dog.imageUrl ?? "")
         dogImage.layer.cornerRadius = dogImage.frame.width/8.5
-//        dogImage.layer.masksToBounds = true
-//        dogImage.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         }
 }

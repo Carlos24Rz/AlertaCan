@@ -1502,6 +1502,9 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <action selector="changeScreen:" destination="s1L-Qq-s4W" eventType="touchUpInside" id="UEz-kb-Cz6"/>
+                                                </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Off_map" translatesAutoresizingMaskIntoConstraints="NO" id="tvo-gn-zDR" userLabel="mapImage">
                                                 <rect key="frame" x="44.666666666666657" y="10" width="40" height="40"/>
@@ -1530,6 +1533,9 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <action selector="changeScreen:" destination="s1L-Qq-s4W" eventType="touchUpInside" id="Cge-aj-ryH"/>
+                                                </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Off_home" translatesAutoresizingMaskIntoConstraints="NO" id="WxR-ya-0cv" userLabel="homeImage">
                                                 <rect key="frame" x="44.666666666666657" y="10" width="40" height="40"/>
@@ -1558,8 +1564,11 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <action selector="changeScreen:" destination="s1L-Qq-s4W" eventType="touchUpInside" id="o2A-Nj-MGP"/>
+                                                </connections>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="On_resgiter_dog" translatesAutoresizingMaskIntoConstraints="NO" id="aA3-4J-dm4" userLabel="registerImage">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Off_register_dog" translatesAutoresizingMaskIntoConstraints="NO" id="aA3-4J-dm4" userLabel="registerImage">
                                                 <rect key="frame" x="44.666666666666629" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="6S5-eZ-Abl"/>
@@ -1834,13 +1843,19 @@
                         <outlet property="colorLabel" destination="NUY-bm-Fgh" id="plf-Ce-GIp"/>
                         <outlet property="descriptionLabel" destination="tJ6-Vg-NA4" id="W86-Q1-83B"/>
                         <outlet property="dogImage" destination="1ld-OM-bhh" id="URw-0V-c3I"/>
+                        <outlet property="homeButton" destination="dY2-cp-FJD" id="ZM9-97-pCm"/>
                         <outlet property="lastSeenLabel" destination="5cf-53-FYw" id="uWu-CX-q1n"/>
+                        <outlet property="mapButton" destination="LkV-MH-nXW" id="CAE-sc-tWU"/>
                         <outlet property="nameLabel" destination="WHl-DP-9gl" id="eoU-uq-MO0"/>
                         <outlet property="numberLabel" destination="Zdz-GH-KTA" id="HQf-wL-zcF"/>
                         <outlet property="raceLabel" destination="Kyy-II-q4Z" id="hyK-M3-dFL"/>
+                        <outlet property="registerButton" destination="ifN-KD-mln" id="Uf1-hO-Jut"/>
                         <outlet property="sexLabel" destination="swt-pv-6wH" id="hay-8u-fQ5"/>
                         <outlet property="sizeLabel" destination="6KM-cm-6Z0" id="EbP-m2-owh"/>
                         <outlet property="statusLabel" destination="FTD-st-tix" id="KL5-YZ-Tpc"/>
+                        <segue destination="rm2-3v-f5d" kind="presentation" identifier="infoToHome" modalPresentationStyle="fullScreen" id="Rpy-Fb-C9Z"/>
+                        <segue destination="n88-UW-7be" kind="presentation" identifier="infoToMap" modalPresentationStyle="fullScreen" id="lWi-eN-T6c"/>
+                        <segue destination="bAt-gC-AqA" kind="presentation" identifier="infoToForm" modalPresentationStyle="fullScreen" id="JbT-Dt-aUr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKL-Tf-y4H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2181,7 +2196,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="On_resgiter_dog" translatesAutoresizingMaskIntoConstraints="NO" id="7LC-hp-IoH" userLabel="registerImage">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Off_register_dog" translatesAutoresizingMaskIntoConstraints="NO" id="7LC-hp-IoH" userLabel="registerImage">
                                                 <rect key="frame" x="44.666666666666629" y="10" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Jou-Aw-y3a"/>
@@ -2484,10 +2499,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="as3-em-gvK"/>
-        <segue reference="ITo-jw-1A4"/>
-        <segue reference="6eP-0y-InO"/>
-        <segue reference="S4x-m2-VyX"/>
+        <segue reference="vIY-4W-07r"/>
+        <segue reference="JbT-Dt-aUr"/>
+        <segue reference="Rpy-Fb-C9Z"/>
+        <segue reference="lWi-eN-T6c"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Icon_upload_photo" width="24" height="24"/>
