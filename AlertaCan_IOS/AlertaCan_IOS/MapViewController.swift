@@ -43,6 +43,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     // User info
     var user : String? = nil
     
+    // Dog Index
+    var dogIndex = 0
+    
     // Location Manager
     var locationManager = CLLocationManager()
     
@@ -66,6 +69,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         } else if (segue.identifier == "mapToHome") {
             let destinationVC = segue.destination as! HomeViewController
             destinationVC.user = self.user!
+        } else if (segue.identifier == "mapToInfo") {
+            let destinationVC = segue.destination as! InfoViewController
+            destinationVC.dogManager = self.dogManager!
+            destinationVC.filteredCollection = self.filteredCollection!
+            destinationVC.user = self.user!
+            destinationVC.dogManager = self.dogManager!
+            destinationVC.dog = self.filteredCollection![dogIndex]
         }
     }
     
@@ -105,10 +115,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         dogManager!.changeFilter(key: "color", value: color)
         dogManager!.applyFilters()
         filteredCollection = dogManager!.getCollection()
-        print("New filters:")
         for dog in filteredCollection! {
-            print(dog.name!)
-            getCoordinates(placeID: dog.placeID!)
+            getCoordinates(placeID: dog.placeID!, name: dog.name!, race: dog.breed!, status: dog.state!)
         }
     }
     
@@ -131,7 +139,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         dogManager!.applyFilters()
         filteredCollection = dogManager!.getCollection()
         for dog in filteredCollection! {
-            getCoordinates(placeID: dog.placeID!)
+            getCoordinates(placeID: dog.placeID!, name: dog.name!, race: dog.breed!, status: dog.state!)
         }
         dismiss(animated: false, completion: nil)
     }
@@ -178,45 +186,63 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
     }
     
-    // Create a PIN
-    func createPIN(latitude : Double, longitude : Double) {
+    // -------- Create a PIN ---------
+    func createPIN(latitude : Double, longitude : Double, name : String, race : String, status: String) {
         let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         // Create the object
         let pin = MKPointAnnotation()
         // Assign its coordinates
         pin.coordinate = coordinate
+        
+        pin.title = "\(name) - \(race)"
+        pin.subtitle = status
         // Add it to the mapView
         map.addAnnotation(pin)
     }
     
-    func getCoordinates(placeID : String) {
+    // -------- Find coordinates of a dog ---------
+    func getCoordinates(placeID : String, name : String, race : String, status: String) {
         let googleURL = URL(string: "https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeID + "&key=AIzaSyAc9EcgUw9i8qLE7nHtxhBj6C6rbAT7Uo0")!
         
         let task = URLSession.shared.dataTask(with: googleURL) {(data, response, error) in
             guard let data = data else { return }
             do {
                 let res = try! JSONDecoder().decode(Response.self, from: data)
-                self.createPIN(latitude: res.location["lat"]!, longitude: res.location["lng"]!)
+                self.createPIN(latitude: res.location["lat"]!, longitude: res.location["lng"]!, name: name, race: race, status: status)
             }
         }
         
         task.resume()
     }
     
+    // ------ Function when information button is tap ------
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        dogIndex = view.tag
+        performSegue(withIdentifier: "mapToInfo", sender: nil)
+    }
     
+    
+    // -------- Customize map marker --------
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if (annotation is MKUserLocation) {return nil}
         
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "custom")
+        let dogInfo = (annotation.title)!!.components(separatedBy: " - ")
         
-        if (annotationView == nil) {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
-        } else {
-            annotationView?.annotation = annotation
+        let index = dogManager?.getIndex(name: dogInfo[0])
+        
+        let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "something")
+
+        switch annotation.subtitle {
+        case "Encontrado":
+            annotationView.markerTintColor = UIColor(red: 1.0/255.0, green: 99.0/255.0, blue: 141.0/255, alpha: 1.0)
+        default:
+            annotationView.markerTintColor = .red
         }
-        
-        annotationView?.image = UIImage(named: "On_home")
+        annotationView.glyphImage = UIImage(named: "huella-2")
+        annotationView.canShowCallout = true
+        let infoButton = UIButton(type: .detailDisclosure)
+        annotationView.tag = index!
+        annotationView.rightCalloutAccessoryView = infoButton
         return annotationView
-    }
-    
 }
+    

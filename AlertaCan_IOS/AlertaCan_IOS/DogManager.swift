@@ -119,4 +119,8 @@ class DogManager {
         return result
     }
     
+    func getIndex(name: String) -> Int {
+        return filteredCollection.firstIndex(where: {$0.name == name}) ?? 0
+    }
+    
 }
