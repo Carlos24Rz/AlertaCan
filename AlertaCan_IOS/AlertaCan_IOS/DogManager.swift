@@ -29,6 +29,7 @@ class DogManager {
     // ------------------- FETCH DATA --------------------
     // ---------------------------------------------------
     func fetchFromDatabase(completion: @escaping () -> Void) {
+        dogsCollection = []
         // Connect to the database
         let db = Firestore.firestore()
         // Retrieve all dogs
@@ -109,7 +110,6 @@ class DogManager {
     }
     
     func getMyPets(user: String) -> [Dog] {
-        print("Looking for \(user)")
         var result : [Dog] = []
         for dog in dogsCollection {
             if dog.user == user {
