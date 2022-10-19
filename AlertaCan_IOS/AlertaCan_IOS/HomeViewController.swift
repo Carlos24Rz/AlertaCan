@@ -122,9 +122,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         performSegue(withIdentifier: "homeToInfo", sender: nil)
     }
     
-    
-        //authenticateUserAndConfigureView()
-    
+        
     // ---------------------------------------------------
     // ----------------- COLLECTION VIEW -----------------
     // ---------------------------------------------------

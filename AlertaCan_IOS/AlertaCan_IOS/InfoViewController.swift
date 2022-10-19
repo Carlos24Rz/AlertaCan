@@ -18,6 +18,7 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var colorLabel: UILabel!
     @IBOutlet weak var lastSeenLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var dogImage: UIImageView!
     @IBOutlet weak var numberLabel: UILabel!
     
     
@@ -51,10 +52,9 @@ class InfoViewController: UIViewController {
         lastSeenLabel.text = dog.last_time_location
         descriptionLabel.text = dog.description
         numberLabel.text = dog.owner_phone
-        
-        
-        
-        
-        // Y así con todos los labels...
-    }
+        dogImage.loadFrom(URLAddres: dog.imageUrl ?? "")
+        dogImage.layer.cornerRadius = dogImage.frame.width/8.5
+//        dogImage.layer.masksToBounds = true
+//        dogImage.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        }
 }
