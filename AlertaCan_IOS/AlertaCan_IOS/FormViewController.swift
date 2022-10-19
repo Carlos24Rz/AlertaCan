@@ -27,12 +27,15 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet var uploadImageView: UIImageView!
     @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var mapButton: UIButton!
+    //Textflied format
+    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
     
         
     
-    
+    //storage reference
     private let storage = Storage.storage().reference()
-    
+    private let database = Firestore.firestore()
     // Dog Manager
     var dogManager : DogManager? = nil
     // firestore
@@ -68,8 +71,7 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     //Call Dropdown
     let dropDown = DropDown()
-    //
-
+    //filter options
   let raceOptions : [String] = ["Todos", "Golder retriever", "Mestizo", "Husky", "Labrador", "Chihuahua", "Pastor alemán", "Dálmata", "Schnauzer", "Pastor belga", "Beagle"]
     let sizeOptions : [String] = ["Todos", "Pequeño", "Mediano", "Grande"]
     let colorOptions : [String] = ["Todos", "Amarillo", "Café", "Blanco", "Negro", "Gris"]
@@ -84,7 +86,7 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 //    }
 //
     
-    //filters
+    //filters Menu
     @IBAction func optionTapped(_ sender: UIButton) {
         if sender == sexButton {
             dropDown.dataSource = sexOptions
@@ -152,19 +154,11 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     // Add a new document in collection "images"
-    private func setDocuments() {
-        db.collection("images").document("puebla").setData([
-            "breed": "",
-            "color": "",
-            "date missing": Timestamp(date: Date())
-        ]) { err in
-            if let err = err {
-                print("Error writing document: \(err)")
-            } else {
-                print("Document successfully written!")
-            }
-        }
-    }
+   
+    let SetDocumnets: [String: Any] = [ "breed": "Husky",
+            "color": "black",
+                                        "date missing": Timestamp(date: Date()), //"address": addressTextField.text
+    ]
     
     
     
@@ -212,6 +206,19 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     //picker it's cancel
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    //Botton Upload Format
+    @IBAction func UploadButton(){
+        view.endEditing(true)
+        
+        database.collection("images").document("info").setData(SetDocumnets) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
     }
 
 }
