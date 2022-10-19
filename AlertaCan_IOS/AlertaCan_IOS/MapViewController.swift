@@ -244,5 +244,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         annotationView.tag = index!
         annotationView.rightCalloutAccessoryView = infoButton
         return annotationView
-}
+    }
     
+}
