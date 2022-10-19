@@ -30,6 +30,8 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     //Textflied format
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var descriptionTextField: UITextField!
     
         
     
@@ -44,6 +46,8 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     var status = "Perdido"
     // User info
     var user : String? = nil
+    //genrate document with a reference ID
+    var refData: DocumentReference? = nil
     
     // Collection to display on screen after filters:
     var filteredCollection : [Dog]? = nil
@@ -77,14 +81,7 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     let colorOptions : [String] = ["Todos", "Amarillo", "Café", "Blanco", "Negro", "Gris"]
     let sexOptions : [String] = ["Todos", "Macho", "Hembra"]
     
-    
-    
-    //var pickerView = UIPickerView()
-//    @IBAction func didTouchSmokeTestButton(_ sender: AnyObject) {
-//        deleteCollection(collection: "users")
-//                deleteCollection(collection: "cities")
-//    }
-//
+
     
     //filters Menu
     @IBAction func optionTapped(_ sender: UIButton) {
@@ -106,40 +103,8 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         dropDown.selectionAction = { [weak self] (index: Int, item: String) in
              guard let _ = self else { return }
             sender.setTitle(item, for: .normal)
-            
-//            self!.raceButton.currentTitle!;
-//            self!.sexButton.setTitle
-//            self!.colorButton.setTitle
-//            self!.sizeButton.setTitle
            }
     }
-    
-//    func applyFilters(status : String, sex : String, size : String, race : String, color : String) {
-//        dogManager!.changeFilter(key: "status", value: status)
-//        dogManager!.changeFilter(key: "sex", value: sex)
-//        dogManager!.changeFilter(key: "size", value: size)
-//        dogManager!.changeFilter(key: "race", value: race)
-//        dogManager!.changeFilter(key: "color", value: color)
-//        dogManager!.applyFilters()
-//        filteredCollection = dogManager!.getCollection()
-//        self.dogsCollectionView.reloadData()
-    //}
-    
-        
-    
-    //I want to do it here in this funtions what is in the ViwDIDLOad
-//    func raceTapped() {
-//        dropDown.anchorView = vwRaceDropDown
-//        dropDown.dataSource = raceOptions
-//        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
-//        dropDown.topOffset = CGPoint(x: 0, y:-(dropDown.anchorView?.plainView.bounds.height)!)
-//        dropDown.direction = .bottom
-//
-//    }
-    
-//    @IBAction func showRaceOptions(_ sender:Any){
-//        dropDown.show()
-//    }
     
     
     
@@ -152,13 +117,6 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // [END setup]
         db = Firestore.firestore()
     }
-    
-    // Add a new document in collection "images"
-   
-    let SetDocumnets: [String: Any] = [ "breed": "Husky",
-            "color": "black",
-                                        "date missing": Timestamp(date: Date()), //"address": addressTextField.text
-    ]
     
     
     
@@ -212,7 +170,14 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBAction func UploadButton(){
         view.endEditing(true)
         
-        database.collection("images").document("info").setData(SetDocumnets) { err in
+        refData = database.collection("images").addDocument(data : [
+            "breed": "Husky",
+            "color": "black",
+            "date_missing": Timestamp(date: Date()),
+            "last_time_location": addressTextField.text ?? "",
+            "owner_phone": phoneTextField.text ?? "",
+            "description": descriptionTextField.text ?? "",
+            "name": nameTextField.text ?? ""]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
             } else {

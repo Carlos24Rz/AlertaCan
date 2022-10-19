@@ -1471,8 +1471,10 @@
                     <connections>
                         <outlet property="addressTextField" destination="2zd-L0-jvJ" id="3E7-rl-h2t"/>
                         <outlet property="colorButton" destination="rDH-PH-8e0" id="1am-8I-J5K"/>
+                        <outlet property="descriptionTextField" destination="crj-vf-PMq" id="goS-zp-Wca"/>
                         <outlet property="homeButton" destination="ORS-na-48y" id="tTE-sE-1Il"/>
                         <outlet property="mapButton" destination="DxD-hX-pDz" id="iET-Vz-T0I"/>
+                        <outlet property="nameTextField" destination="oBu-t0-YTw" id="PmB-iU-5F4"/>
                         <outlet property="phoneTextField" destination="9AN-L8-Jri" id="qJW-V2-hEA"/>
                         <outlet property="raceButton" destination="O5B-TI-xem" id="kJd-g8-0Cn"/>
                         <outlet property="sexButton" destination="Q1h-f0-Dsk" id="3jF-WQ-Ypi"/>
