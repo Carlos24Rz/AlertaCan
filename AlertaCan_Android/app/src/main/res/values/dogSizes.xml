@@ -5,4 +5,10 @@
         <item>Mediano</item>
         <item>Grande</item>
     </string-array>
+    <string-array name="sizes_array_filter">
+        <item>Todos</item>
+        <item>Pequeño</item>
+        <item>Mediano</item>
+        <item>Grande</item>
+    </string-array>
 </resources>

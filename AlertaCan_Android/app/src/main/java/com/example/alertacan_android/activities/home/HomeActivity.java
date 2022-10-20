@@ -1,6 +1,7 @@
 package com.example.alertacan_android.activities.home;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -81,10 +82,12 @@ public class HomeActivity extends AppCompatActivity {
                     }
                 }).attach();
 
+
         bottomMenu = findViewById(R.id.bottomNavigationView);
 
         Toast.makeText(HomeActivity.this, mAuth.getCurrentUser().getEmail(),
                 Toast.LENGTH_SHORT).show();
+
 
         bottomMenu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -148,6 +151,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
+    @SuppressLint("MissingPermission")
     private void getCurrentLocation(){
         // asking for permissions
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){

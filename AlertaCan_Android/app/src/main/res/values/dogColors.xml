@@ -8,4 +8,13 @@
         <item>Negro</item>
         <item>Gris</item>
     </string-array>
+    <string-array name="colors_array_filter">
+        <item>Todos</item>
+        <item>Amarillo</item>
+        <item>Café</item>
+        <item>Naranja</item>
+        <item>Blanco</item>
+        <item>Negro</item>
+        <item>Gris</item>
+    </string-array>
 </resources>

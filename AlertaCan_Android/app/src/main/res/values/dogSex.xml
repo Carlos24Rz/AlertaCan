@@ -4,4 +4,9 @@
         <item>Macho</item>
         <item>Hembra</item>
     </string-array>
+    <string-array name="sex_array_filter">
+        <item>Todos</item>
+        <item>Macho</item>
+        <item>Hembra</item>
+    </string-array>
 </resources>

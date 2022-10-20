@@ -14,4 +14,21 @@
         <item>Husky</item>
         <item>Pastor belga</item>
     </string-array>
+
+    <string-array name="breeds_array_filter">
+        <item>Todos</item>
+        <item>Mestizo</item>
+        <item>Bulldog</item>
+        <item>Chihuahua</item>
+        <item>Beagle</item>
+        <item>Pitbull</item>
+        <item>Schnauzer</item>
+        <item>Labrador</item>
+        <item>Pastor alemán</item>
+        <item>Pug</item>
+        <item>Golden retriever</item>
+        <item>Husky</item>
+        <item>Pastor belga</item>
+    </string-array>
+
 </resources>

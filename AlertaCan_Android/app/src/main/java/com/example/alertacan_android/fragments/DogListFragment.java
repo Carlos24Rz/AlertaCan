@@ -21,6 +21,7 @@ import com.example.alertacan_android.interfaces.RecyclerViewInterface;
 import com.example.alertacan_android.models.Dog;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -30,7 +31,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DogListFragment extends Fragment implements RecyclerViewInterface {
+public class DogListFragment extends Fragment implements RecyclerViewInterface, FilterDogsFabFragment.BottomSheetListener {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference notebookRef = db.collection("dogs");
@@ -38,6 +39,9 @@ public class DogListFragment extends Fragment implements RecyclerViewInterface {
     private DogCardAdapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
+    private FloatingActionButton filterFAB;
+    private FloatingActionButton clearFAB;
+    private List<Dog> prev;
     private List<Dog> mDogs;
 
     private int fragmentValue;
@@ -61,8 +65,12 @@ public class DogListFragment extends Fragment implements RecyclerViewInterface {
         fragmentValue = getArguments().getInt("menuVal");
         email = getArguments().getString("userEmail");
 
+
         swipeRefreshLayout = view.findViewById(R.id.refreshDogList);
         recyclerView = view.findViewById(R.id.dogListRecylerView);
+        filterFAB = view.findViewById(R.id.floatingActionButton);
+        clearFAB = view.findViewById(R.id.clearFloatingActionButton);
+        clearFAB.setVisibility(View.INVISIBLE);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(mView.getContext()));
 
@@ -72,6 +80,30 @@ public class DogListFragment extends Fragment implements RecyclerViewInterface {
             @Override
             public void onRefresh() {
                 loadDogs();
+            }
+        });
+
+        filterFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FilterDogsFabFragment bottomSheet = new FilterDogsFabFragment();
+                Bundle args = new Bundle();
+                args.putString("user",email);
+                args.putInt("fragmentVal",fragmentValue);
+                bottomSheet.setArguments(args);
+                bottomSheet.show(getChildFragmentManager(), "filterBottomSheet");
+            }
+        });
+
+        clearFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                swipeRefreshLayout.setEnabled(true);
+                filterFAB.setVisibility(View.VISIBLE);
+                clearFAB.setVisibility(View.INVISIBLE);
+                mDogs.clear();
+                mDogs.addAll(prev);
+                adapter.notifyDataSetChanged();
             }
         });
     }
@@ -133,5 +165,17 @@ public class DogListFragment extends Fragment implements RecyclerViewInterface {
         intent.putExtra("dogId", mDogs.get(position).getId());
         intent.putExtra("fragmentValue", Integer.toString(fragmentValue));
         startActivity(intent);
+    }
+
+    @Override
+    public void onFilteredClicked(List<Dog> dogs) {
+        swipeRefreshLayout.setEnabled(false);
+        filterFAB.setVisibility(View.INVISIBLE);
+        clearFAB.setVisibility(View.VISIBLE);
+        prev = new ArrayList<>();
+        prev.addAll(mDogs);
+        mDogs.clear();
+        mDogs.addAll(dogs);
+        adapter.notifyDataSetChanged();
     }
 }

@@ -19,7 +19,26 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
-
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/clearFloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:backgroundTint="#E42D48"
+        android:layout_gravity="end|bottom"
+        android:clickable="true"
+        app:srcCompat="@drawable/ic_baseline_clear_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:backgroundTint="#019DDF"
+        android:layout_gravity="end|bottom"
+        android:clickable="true"
+        app:srcCompat="@drawable/ic_baseline_filter_alt_24" />
 
 </FrameLayout>
