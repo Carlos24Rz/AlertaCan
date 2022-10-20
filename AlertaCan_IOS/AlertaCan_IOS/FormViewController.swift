@@ -171,13 +171,15 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         view.endEditing(true)
         
         refData = database.collection("images").addDocument(data : [
-            "breed": "Husky",
-            "color": "black",
             "date_missing": Timestamp(date: Date()),
             "last_time_location": addressTextField.text ?? "",
             "owner_phone": phoneTextField.text ?? "",
             "description": descriptionTextField.text ?? "",
-            "name": nameTextField.text ?? ""]) { err in
+            "name": nameTextField.text ?? "",
+            "race" : raceOptions,
+            "color": colorOptions,
+            "breed": raceOptions,
+            "size" : sizeOptions]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
             } else {
