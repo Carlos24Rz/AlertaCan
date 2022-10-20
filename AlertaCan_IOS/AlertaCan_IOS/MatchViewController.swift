@@ -11,6 +11,39 @@ class MatchViewController: UIViewController, UITableViewDataSource {
 
     var matchingDogs : [Dog] = []
     
+    @IBOutlet weak var mapButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var homeButton: UIButton!
+    
+    @IBAction func changeScreen(_ sender: UIButton) {
+        if (sender == mapButton) {
+            performSegue(withIdentifier: "matchToMap", sender: nil)
+        } else if (sender == registerButton) {
+            performSegue(withIdentifier: "matchToForm", sender: nil)
+        } else if (sender == homeButton) {
+            performSegue(withIdentifier: "matchToHome", sender: nil)
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "matchToMap") {
+            let destinationVC = segue.destination as! MapViewController
+            destinationVC.dogManager = self.dogManager
+            destinationVC.filteredCollection = self.filteredCollection
+            destinationVC.user = self.user
+        } else if (segue.identifier == "matchToForm") {
+            let destinationVC = segue.destination as! FormViewController
+            destinationVC.dogManager = self.dogManager
+            destinationVC.filteredCollection = self.filteredCollection
+            destinationVC.user = self.user
+        } else if (segue.identifier == "matchToHome") {
+            let destinationVC = segue.destination as! HomeViewController
+            destinationVC.user = self.user
+        }
+    }
+    
+    
     @IBOutlet weak var originalDog: UIImageView!
     // ---------------------------------------------------
     // -------------- TRANSITION VARIABLES ---------------
