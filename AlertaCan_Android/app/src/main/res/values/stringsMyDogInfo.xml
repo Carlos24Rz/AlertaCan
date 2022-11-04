@@ -1,0 +1,16 @@
+<resources>
+    <string name="dog_state">Estado</string>
+    <string name="dog_name">Nombre</string>
+    <string name="dog_breed">Raza</string>
+    <string name="dog_sex">Sexo</string>
+    <string name="dog_size">Tamaño</string>
+    <string name="dog_color">Color</string>
+
+    <string name="dog_date_disappearance">Fecha de desaparición</string>
+    <string name="dog__date_registration">Fecha de registro</string>
+    <string name="dog_last_time_seen">Visto por última vez</string>
+
+    <string name="dog_description">Descripción</string>
+    <string name="dog_owner_phone">Télefono del dueño</string>
+
+</resources>

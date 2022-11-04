@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Información del perro"
+            android:textColor="#01638D"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="36dp"
+            android:text="¿Este perro es tuyo?"
+            android:textColor="#01638D"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="109dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="4dp"
+            android:text="Inserta imagen del perro"
+            android:textColor="#01638D"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/id_image_dog"
+            app:layout_constraintStart_toStartOf="@+id/id_dog_name"
+            app:layout_constraintTop_toTopOf="@+id/id_image_dog"
+            app:layout_constraintVertical_bias="0.437" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="Nombre del perro"
+            android:textColor="#01638D"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView7"
+            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="130dp"
+            android:layout_height="27dp"
+            android:layout_marginEnd="32dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/textView7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView7">
+
+            <RadioButton
+                android:id="@+id/radio1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="Sí" />
+
+            <RadioButton
+                android:id="@+id/radio2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="No" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/id_dog_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:ems="10"
+            android:hint="Canelo"
+            android:inputType="textPersonName"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <ImageView
+            android:id="@+id/id_image_dog"
+            android:layout_width="168dp"
+            android:layout_height="112dp"
+            android:layout_marginTop="36dp"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.868"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_dog_name"
+            app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24"
+            tools:ignore="ImageContrastCheck" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="150dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="36dp"
+            android:text="Raza"
+            android:textColor="#01638D"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/textView11"
+            app:layout_constraintTop_toBottomOf="@+id/id_image_dog" />
+
+        <Spinner
+            android:id="@+id/id_spinner_breeds"
+            android:layout_width="150dp"
+            android:layout_height="41dp"
+            app:layout_constraintEnd_toEndOf="@+id/textView13"
+            app:layout_constraintStart_toStartOf="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="150dp"
+            android:layout_height="19dp"
+            android:text="Tamaño"
+            android:textColor="#01638D"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/id_image_dog"
+            app:layout_constraintTop_toTopOf="@+id/textView13" />
+
+        <Spinner
+            android:id="@+id/id_spinner_size"
+            android:layout_width="150dp"
+            android:layout_height="41dp"
+            app:layout_constraintEnd_toEndOf="@+id/textView14"
+            app:layout_constraintStart_toStartOf="@+id/textView14"
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="150dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="36dp"
+            android:text="Color"
+            android:textColor="#01638D"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/id_spinner_breeds"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/id_spinner_breeds"
+            app:layout_constraintTop_toBottomOf="@+id/id_spinner_breeds" />
+
+        <Spinner
+            android:id="@+id/id_spinner_color"
+            android:layout_width="150dp"
+            android:layout_height="41dp"
+            app:layout_constraintEnd_toEndOf="@+id/textView15"
+            app:layout_constraintStart_toStartOf="@+id/textView15"
+            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="150dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="36dp"
+            android:text="Sexo"
+            android:textColor="#01638D"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/id_spinner_size"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/id_spinner_size"
+            app:layout_constraintTop_toBottomOf="@+id/id_spinner_size" />
+
+        <Spinner
+            android:id="@+id/id_spinner_sex"
+            android:layout_width="150dp"
+            android:layout_height="41dp"
+            app:layout_constraintEnd_toEndOf="@+id/textView16"
+            app:layout_constraintStart_toStartOf="@+id/textView16"
+            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="36dp"
+            android:text="Visto por última vez"
+            android:textColor="#01638D"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_spinner_color" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="36dp"
+            android:text="@string/dog_description"
+            android:textColor="#01638D"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_phone" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="36dp"
+            android:text="Télefono"
+            android:textColor="#01638D"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/datePickerButton" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="36dp"
+            android:text="Fecha de desaparición"
+            android:textColor="#01638D"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_last_location" />
+
+        <Button
+            android:id="@+id/datePickerButton"
+            style="?android:spinnerStyle"
+            android:layout_width="0dp"
+            android:layout_height="39dp"
+            android:layout_marginEnd="32dp"
+            android:onClick="openDatePicker"
+
+
+            android:text="JAN 01 2020"
+            android:textColor="#2D2D2D"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView20"
+            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+        <AutoCompleteTextView
+            android:id="@+id/id_last_location"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:ems="10"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:completionThreshold="3000"
+            android:hint="Calle Madero, junto al Walmart"
+            android:singleLine="true"
+            android:scrollHorizontally="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+        <EditText
+            android:id="@+id/id_phone"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="32dp"
+            android:ems="10"
+            android:inputType="phone"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView19"
+            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+        <EditText
+            android:id="@+id/id_dog_description"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="32dp"
+            android:ems="10"
+            android:hint="Es igualito a Scooby Doo"
+            android:inputType="textPersonName"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView21"
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+        <Button
+            android:id="@+id/id_btn_submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="44dp"
+            android:text="Publicar perro"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_dog_description"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_btn_submit" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

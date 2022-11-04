@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "276743648976",
+    "project_id": "alertacan-771a2",
+    "storage_bucket": "alertacan-771a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:276743648976:android:5b98b3cee0d5197dfb10d5",
+        "android_client_info": {
+          "package_name": "com.example.alertacan_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "276743648976-ocad72uia86q9hh0jfg0i4u32bqq0ptq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUcPWs5ZWaLyRGg-Y1SA0bzALkIsabkO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "276743648976-ocad72uia86q9hh0jfg0i4u32bqq0ptq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

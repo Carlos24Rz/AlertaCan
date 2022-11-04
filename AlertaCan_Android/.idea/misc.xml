@@ -3,11 +3,34 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/drawable/back_navigation.xml" value="0.2155" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/drawable/blue_border_bottom.xml" value="0.1" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/drawable/borderbottom.xml" value="0.209" />
         <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/drawable/ic_home.xml" value="0.1805" />
-        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_home.xml" value="0.33" />
-        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/drawable/ic_map.xml" value="0.2155" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/font/quicksand.xml" value="0.24882428388200087" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_dog_messages.xml" value="0.25" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_dog_registration.xml" value="0.19148936170212766" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_home.xml" value="0.18" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_main.xml" value="0.18802083333333333" />
-        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.21120136810602821" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_map.xml" value="0.1" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_my_dog_info.xml" value="0.25" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_reset_password.xml" value="0.1" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/activity_signup.xml" value="0.33" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/address_list.xml" value="0.2231722958529286" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/address_prediction_item.xml" value="0.33" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/bottom_sheet_dog_filter.xml" value="0.38740344622697565" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/content_dog_messages.xml" value="0.22119037568594344" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/dialog_dog_seen.xml" value="0.33" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/dialog_message.xml" value="0.33" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/fragment_dog_list.xml" value="0.22" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/item_dog.xml" value="0.22402736212056434" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/item_dog_card.xml" value="0.33" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/layout_address_list.xml" value="0.22402736212056434" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/message_item.xml" value="0.32751091703056767" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/layout/toolbar.xml" value="0.2" />
+        <entry key="..\:/Users/Carlos/Documents/AlertaCan/AlertaCan_Android/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />
       </map>
     </option>
   </component>
